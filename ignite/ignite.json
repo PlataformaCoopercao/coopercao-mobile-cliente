@@ -1,0 +1,14 @@
+{
+  "createdWith": "2.1.2",
+  "examples": "classic",
+  "askToOverwrite": true,
+  "generators": {
+    "component": "ignite-expo",
+    "container": "ignite-expo",
+    "listview": "ignite-expo",
+    "list": "ignite-expo",
+    "redux": "ignite-expo",
+    "saga": "ignite-expo",
+    "screen": "ignite-expo"
+  }
+}
