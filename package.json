@@ -23,11 +23,13 @@
     "storybook": "storybook start -p 7007"
   },
   "dependencies": {
+    "@expo/vector-icons": "^8.0.0",
     "apisauce": "^0.14.3",
     "expo": "^30.0.0",
     "format-json": "^1.0.3",
     "identity-obj-proxy": "^3.0.0",
     "lodash": "^4.17.4",
+    "native-base": "^2.8.1",
     "prop-types": "^15.6.0",
     "querystringify": "1.0.0",
     "ramda": "^0.25.0",
@@ -36,7 +38,8 @@
     "react-native-check-box": "^2.1.6",
     "react-native-material-dropdown": "^0.11.1",
     "react-native-modal-datetime-picker": "^6.0.0",
-    "react-navigation": "^2.13.0",
+    "react-native-vector-icons": "^6.1.0",
+    "react-navigation": "^2.18.2",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
