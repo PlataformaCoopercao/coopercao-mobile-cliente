@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
-import {
-  Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card, CardItem, List, Footer, FooterTab, Badge, Spinner
+import {Container, Header, Title, Content, Body, Text, Icon,
+  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
+   CardItem, List, Footer, FooterTab, Badge, Spinner
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
@@ -12,21 +12,21 @@ import { StackNavigator } from "react-navigation"
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
-import styles from './Styles/PasseadorPasseiosScreenStyle'
+import styles from './Styles/PasseiosLivresScreenStyle'
 
-var BUTTONS = ["Iniciar Passeio", "Requisitar Substituição", "Cancelar Passeio", "Cancelar"];
-var DESTRUCTIVE_INDEX = 2;
+var BUTTONS = ["Atribuir Passeio", "Cancelar"];
 var CANCEL_INDEX = 3;
+var btnEditar = null;
 const dataArrayPasseios = [
-  'Data: 12/12/2018    Horário: 10:00\nCão: Barghest\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Garmr\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Will\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: CuSith\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Fenrir\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Inugami\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Anubis\nRua dos Bobos, nº 0'
+  'Data: 12/12/2018    Horário: 15:00\nCão: Barghest\nRua dos Bobos, nº 0',
+  'Data: 08/12/2018    Horário: 12:10\nCão: Garmr\nRua dos Guardanapos, nº 301',
+  'Data: 21/12/2018    Horário: 10:00\nCão: Will\nRua dos Dados, nº 3465',
+  'Data: 14/12/2018    Horário: 16:20\nCão: CuSith\nRua das Tomadas, nº 16',
+  'Data: 17/12/2018    Horário: 15:30\nCão: Fenrir\nRua dos Monitores, nº 469',
+  'Data: 13/12/2018    Horário: 08:00\nCão: Inugami\nRua das Caixas, nº 862',
+  'Data: 10/12/2018    Horário: 09:00\nCão: Anubis\nRua das Bermudas, nº 2670'
 ];
-var tam = dataArrayPasseios.length
+
 class PasseadorPasseiosScreen extends Component {
   constructor(props) {
     super(props);
@@ -60,9 +60,9 @@ class PasseadorPasseiosScreen extends Component {
       return (
         <Root>
           <Container>
-          <Header style={{backgroundColor:'red'}}>
+            <Header style={{backgroundColor:'red'}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>Passeios Atribuidos</Title></Body>
+              <Body><Title dark>Passeios Livres</Title></Body>
             </Header>
             <Content padder>
               <ScrollView>
