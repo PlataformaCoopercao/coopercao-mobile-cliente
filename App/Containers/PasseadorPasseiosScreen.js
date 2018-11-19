@@ -3,7 +3,9 @@ import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card, CardItem, List, Footer, FooterTab, Badge
+  Left, Right, Accordion, Root, Button, ActionSheet,
+  Subtitle, Card, CardItem, List, Footer, FooterTab,
+  Badge, Spinner
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
@@ -49,13 +51,18 @@ class PasseadorPasseiosScreen extends Component {
   render() {
     if (this.state.fontLoading) {
       return (
-        <AppLoading />
+        <Container>
+        <Header />
+        <Content>
+          <Spinner color='red' />
+        </Content>
+        </Container>
       );
     } else {
       return (
         <Root>
           <Container>
-            <Header>
+          <Header style={{backgroundColor:'red'}}>
               <Left><Icon name='arrow-back' /></Left>
               <Body><Title dark>Passeios Atribuidos</Title></Body>
             </Header>
@@ -87,25 +94,25 @@ class PasseadorPasseiosScreen extends Component {
                 </List>
               </ScrollView>
             </Content>
-              <Footer>
-                <FooterTab>
+            <Footer style={{backgroundColor:'red'}}>
+                <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='person'/>
-                    <Text>Perfil</Text>
+                    <Icon name='person' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
                   <Button>
-                    <Icon name='md-calendar'/>
-                    <Text>Histórico</Text>
+                    <Icon name='md-calendar' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Histórico</Text>
+                  </Button>
+                  <Button badge vertical >
+                    <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
+                    <Icon name='list-box' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Atribuido</Text>
                   </Button>
                   <Button badge vertical>
-                    <Badge info><Text>2</Text></Badge>
-                    <Icon name='list-box'/>
-                    <Text>Atribuido</Text>
-                  </Button>
-                  <Button badge vertical>
-                    <Badge info><Text>5</Text></Badge>
-                    <Icon name='walk'/>
-                    <Text>Livre</Text>
+                  <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
+                    <Icon name='walk' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Livres</Text>
                   </Button>
                 </FooterTab>
               </Footer>
