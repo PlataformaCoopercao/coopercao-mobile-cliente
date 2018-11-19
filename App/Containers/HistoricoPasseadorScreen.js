@@ -58,12 +58,12 @@ class TelaHistoricoPasseadorScreen extends Component {
     } else {
       return (
         <Root>
-          <Container>
-          <Header style={{backgroundColor:'red'}}>
+          <Container style={{backgroundColor:'black'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
               <Body><Title dark>Histórico de Passeios</Title></Body>
             </Header>
-            <Content padder>
+            <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
                 <Card>
                   <CardItem>

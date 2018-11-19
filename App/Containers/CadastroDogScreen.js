@@ -61,8 +61,8 @@ class CadastroDogScreen extends Component {
       );
     } else {
     return (
-      <Container>
-        <Header style={{backgroundColor:'red'}}>
+      <Container style={{backgroundColor:'black'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}}>
           <Left>
             <Icon name='arrow-back'/>
           </Left>
@@ -70,7 +70,7 @@ class CadastroDogScreen extends Component {
             <Title>Cadastro do Cachorro</Title>
           </Body>
         </Header>
-        <Content style={{alignContent:"stretch"}}>
+        <Content padder style={{backgroundColor: 'white', alignContent:"stretch"}}>
         <List>
           <ListItem style={{alignSelf:'center'}}>
             <Thumbnail large source={{uri: uri}}/>
@@ -108,7 +108,6 @@ class CadastroDogScreen extends Component {
       <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
       <Text>Cadastrar</Text>   
       </Button>
-
         </Content>
         <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>

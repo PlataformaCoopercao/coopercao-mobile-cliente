@@ -49,8 +49,8 @@ class PasseadorPasseiosScreen extends Component {
   render() {
     if (this.state.fontLoading) {
       return (
-        <Container>
-        <Header />
+        <Container style={{backgroundColor:'black'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}}/>
         <Content>
           <Spinner color='red' />
         </Content>
@@ -59,12 +59,12 @@ class PasseadorPasseiosScreen extends Component {
     } else {
       return (
         <Root>
-          <Container>
-            <Header style={{backgroundColor:'red'}}>
+          <Container style={{backgroundColor:'black'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
               <Body><Title dark>Passeios Livres</Title></Body>
             </Header>
-            <Content padder>
+            <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
                 <List dataArray={dataArrayPasseios}
                   renderRow={(item) =>
