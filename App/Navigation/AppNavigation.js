@@ -6,6 +6,7 @@ import PasseiosLivresScreen from '../Containers/PasseiosLivresScreen.js'
 import CadastroDogScreen from '../Containers/CadastroDogScreen.js'
 import HistoricoPasseadorScreen from '../Containers/HistoricoPasseadorScreen.js'
 import HistoricoClienteScreen from '../Containers/HistoricoClienteScreen.js'
+import ExtratoScreen from '../Containers/ExtratoScreen.js'
 
 import styles from './Styles/NavigationStyles'
 
@@ -17,11 +18,12 @@ const PrimaryNav = createStackNavigator({
   PasseiosLivresScreen: { screen: PasseiosLivresScreen},
   CadastroDogScreen: { screen: CadastroDogScreen},
   HistoricoPasseadorScreen: { screen: HistoricoPasseadorScreen},
-  HistoricoClienteScreen: { screen: HistoricoClienteScreen}
+  HistoricoClienteScreen: { screen: HistoricoClienteScreen},
+  ExtratoScreen: { screen: ExtratoScreen },
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'LoginScreen',
+  initialRouteName: 'ExtratoScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
