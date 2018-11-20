@@ -155,15 +155,13 @@ class HistoricoClienteScreen extends Component {
                     <Icon name='md-calendar' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button badge vertical >
-                    <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
-                    <Icon name='list-box' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Atribuido</Text>
+                  <Button>
+                    <Icon name='ios-paper' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
-                  <Button badge vertical>
-                  <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
+                  <Button>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Livres</Text>
+                    <Text style={{color:'white'}}>Passeios</Text>
                   </Button>
                 </FooterTab>
               </Footer>

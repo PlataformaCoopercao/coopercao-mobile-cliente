@@ -109,7 +109,7 @@ class CadastroDogScreen extends Component {
       <Text>Cadastrar</Text>   
       </Button>
         </Content>
-        <Footer style={{backgroundColor:'red'}}>
+          <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
@@ -120,8 +120,8 @@ class CadastroDogScreen extends Component {
                     <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
                   <Button>
-                    <Icon name='ios-paw' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Cães</Text>
+                    <Icon name='ios-paper' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
                   <Button>
                     <Icon name='walk' style={{color:'white'}}/>
