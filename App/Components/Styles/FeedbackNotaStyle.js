@@ -12,20 +12,18 @@ export default StyleSheet.create({
   },
   wrap: {
     width: WIDTH,
-    marginBottom: 50,
+    marginBottom: 30,
   },
   welcome: {
     fontSize: 18,
     textAlign: 'center',
     color: '#777',
     fontWeight: '600',
-    fontFamily: 'Avenir',
     marginBottom: 50,
   },
   reactions: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'transparent',
+    justifyContent: 'center',
   },
   smileyWrap: {
     width: DISTANCE,
@@ -37,13 +35,13 @@ export default StyleSheet.create({
     width: size,
     height: size,
     borderRadius: size/2,
-    backgroundColor: '#c7ced3',
+    backgroundColor: 'transparent',
   },
   bigSmiley: {
     width: DISTANCE,
     height: DISTANCE,
     borderRadius: DISTANCE/2,
-    backgroundColor: '#ffb18d',
+    backgroundColor: 'transparent',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -52,16 +50,17 @@ export default StyleSheet.create({
     width: DISTANCE,
     height: DISTANCE,
     position: 'absolute',
+    backgroundColor: 'transparent',
     top: 0,
     left: 0,
   },
   reactionText: {
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
     color: '#999',
     fontWeight: '400',
-    fontFamily: 'Avenir',
     marginTop: 5,
+    marginBottom: 30,
   },
   line: {
     height: 4 / PixelRatio.get(),
@@ -70,5 +69,5 @@ export default StyleSheet.create({
     left: (DISTANCE-size) / 2,
     top: DISTANCE/2 + (2 / PixelRatio.get()),
   },
-  
+
 })
