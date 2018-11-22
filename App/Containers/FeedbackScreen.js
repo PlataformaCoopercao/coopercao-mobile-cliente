@@ -13,7 +13,7 @@ import { Font, AppLoading, Expo } from "expo"
 import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 // Styles
 
 
@@ -70,14 +70,14 @@ class FeedbackScreen extends Component {
           <Container style={{backgroundColor:'black'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>Avalie o Passeio</Title></Body>
+              <Body><Title dark>{strings('FeedbackScreen.rateWalk')}</Title></Body>
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
             <KeyboardAvoidingView behavior='position'>
               <Body>
               <FeedbackNota></FeedbackNota>
                 <Item>
-                <Text>Quantas vezes o cachorro fez xixi?</Text>
+                <Text>{strings('FeedbackScreen.pee')}</Text>
               <Picker
                 iosHeader="Selecione um"
                 mode="dropdown"
@@ -91,7 +91,7 @@ class FeedbackScreen extends Component {
               </Picker>
                 </Item>
                 <Item>
-                <Text>Quantas vezes o cachorro fez cocô?</Text>
+                <Text>{strings('FeedbackScreen.poop')}</Text>
               <Picker
                 iosHeader="Selecione um"
                 mode="dropdown"
@@ -105,15 +105,15 @@ class FeedbackScreen extends Component {
               </Picker>
                 </Item>
                 <Item>
-                  <Label customLabel>Observações</Label>
+                  <Label customLabel>{strings('General.comments')}</Label>
                 </Item>
               </Body>
               <Form>
-                <Textarea style={{backgroundColor:'lightgrey', borderColor:'black'}} rowSpan={5} bordered placeholder="Deixe seus comentários aqui" />
+                <Textarea style={{backgroundColor:'lightgrey', borderColor:'black'}} rowSpan={5} bordered placeholder={strings('FeedbackScreen.feedback')} />
               </Form>
               <Body>
               <Button style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
-                 <Text style={{color:'white', fontSize: 16}}>Avaliar</Text>
+                 <Text style={{color:'white', fontSize: 16}}>{strings('General.rate_button')}</Text>
               </Button>
               </Body>
               </KeyboardAvoidingView>
@@ -122,21 +122,21 @@ class FeedbackScreen extends Component {
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
                     <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
                     <Icon name='list-box' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Atribuido</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.assign_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
                   <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Livres</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.available_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

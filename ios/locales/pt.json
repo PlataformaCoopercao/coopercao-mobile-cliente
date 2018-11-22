@@ -1,0 +1,94 @@
+{
+  "General":{
+      "confirm_button": "Confirmar",
+      "back_button": "Voltar",
+      "comments": "Observações",
+      "cancel": "Cancelar",
+      "walk": "Passeio",
+      "rate_button": "Avaliar"
+
+  },
+  "FeedbackNota": {
+    "tell": "Conte-nos como se sente"
+  },
+  "AvaliacaoScreen": {
+      "rate": "Avalie seu passeador",
+      "placeHComments": "Deixe seus comentarios aqui"
+    },
+    "Footer":{
+      "profile_button": "Perfil",
+      "history_button": "Histórico",
+      "extract_button": "Extrato",
+      "walks_button" : "Passeios",
+      "assign_button": "Atribuído",
+      "available_button": "Livres"
+    },
+    "FeedbackScreen":{
+      "rateWalk": "Avalie o passeio",
+        "pee": "Quantas vezes o cachorro fez xixi?",
+        "poop": "Quantas vezes o cachorro fez cocô?",
+        "feedback": "Deixe seu feedback"
+    },
+    "PasseadorPasseiosScreen":{
+        "assignedWalks": "Passeios Atribuídos",
+        "startWalk": "Iniciar Passeio",
+        "requestReplace": "Requisitar Substituição",
+        "cancelWalk": "Cancelar Passeio"
+    },
+    "LoginScreen":{
+      "email": "Email",
+      "password": "Senha",
+      "enter": "Entrar",
+      "firstAccess": "Primeiro acesso",
+      "forgotPassword": "Esqueci minha senha" 
+  },
+  "HistoricoPasseadorScreen":{
+      "walkHistory": "Walk History"
+  },
+  "CadastroDogScreen":{
+      "dogRegister": "Cadastro de Cachorro",
+      "placeHName": "Nome",
+      "placeHAge": "Idade",
+      "placeHRace": "Raça",
+      "size": "Porte",
+      "chooseOne": "Escolha um",
+      "mini": "Mini",
+      "little": "Pequeno",
+      "medium": "Médio",
+      "big": "Grande",
+      "giant": "Gigante",
+      "register": "Cadastrar"
+  },
+  "PasseioAvulsoScreen":{
+      "singleWalks": "Passeios Avulso",
+      "chooseDateTime": "Escolha data e hora",
+      "singleWalkQuestion": "Selecione o cachorro que irá passear:",
+      "enableAddress": "Habilitar outro endereço?"
+  },
+  "PasseioScreen":{
+      "date": "Data",
+      "time": "Hora",
+      "address": "Endereço",
+      "start": "Inicio",
+      "end": "Fim",
+      "begin": "Iniciar",
+      "finalize": "Finalizar",
+      "doFeedback": "Realizar feedback"
+  },
+  "PasseiosLivresScreen":{
+      "assignWalk": "Atribuir Passeio",
+      "availableTitle": "Passeios Livres"
+  },
+  "HistoricoClienteScreen":{
+      "search": "Buscar"
+  },
+  "ExtratoScreen":{
+      "extract": "Extrato",
+      "extractOf": "Extrato de",
+      "expenses": "Gastos",
+      "plannedWalks": "Passeios de Plano",
+      "onewayWalk": "Passeios Avulso",
+      "penalties": "Multas",
+      "total": "Total" 
+  }
+}

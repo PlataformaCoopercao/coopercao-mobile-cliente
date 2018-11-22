@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { strings } from '../locales/i18n';
 import { ScrollView, KeyboardAvoidingView, StyleSheet} from 'react-native'
 import { connect } from 'react-redux'
 import {
@@ -53,22 +53,22 @@ class AvaliacaoScreen extends Component {
           <Container style={{backgroundColor:'black'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>Avalie seu Passeador</Title></Body>
+              <Body><Title dark>{strings('AvaliacaoScreen.rate')}</Title></Body>
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
             <KeyboardAvoidingView behavior='position'>
               <Body>
               <FeedbackNota></FeedbackNota>
                 <Item>
-                  <Label customLabel>Observações</Label>
+                  <Label customLabel>{strings('General.comments')}</Label>
                 </Item>
               </Body>
               <Form>
-                <Textarea style={{backgroundColor:'lightgrey'}}rowSpan={5} bordered placeholder="Deixe seus comentários aqui" />
+                <Textarea style={{backgroundColor:'lightgrey'}}rowSpan={5} bordered placeholder={strings('AvaliacaoScreen.placeHComments')} />
               </Form>
               <Body>
               <Button style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
-                 <Text style={{color:'white', fontSize: 16}}>Avaliar</Text>
+                 <Text style={{color:'white', fontSize: 16}}>{strings('General.rate_button')}</Text>
               </Button>
               </Body>
               </KeyboardAvoidingView>
@@ -77,19 +77,19 @@ class AvaliacaoScreen extends Component {
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoClienteScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('ExtratoScreen')}>
                     <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.extract_button')}</Text>
                   </Button>
                   <Button>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.walks_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

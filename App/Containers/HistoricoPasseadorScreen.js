@@ -12,7 +12,7 @@ import { Colors } from '../Themes/'
 import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 // Styles
 
 const dataArrayPasseios = [
@@ -62,7 +62,7 @@ class TelaHistoricoPasseadorScreen extends Component {
           <Container style={{backgroundColor:'black'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>Histórico de Passeios</Title></Body>
+              <Body><Title dark>{strings('HistoricoPasseadorScreen.walkHistory')}</Title></Body>
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
@@ -91,21 +91,21 @@ class TelaHistoricoPasseadorScreen extends Component {
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
                     <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
                     <Icon name='list-box' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Atribuido</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.assign_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
                   <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Livres</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.available_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

@@ -12,7 +12,7 @@ import { Colors } from '../Themes/'
 import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 const uri = "https://randomuser.me/api/portraits/women/89.jpg";
 const feed = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.'
 
@@ -122,7 +122,7 @@ class HistoricoClienteScreen extends Component {
             <Icon name='arrow-back'/>
           </Left>
           <Body style={{alignSelf:'center'}}>
-            <Title>Extrato</Title>
+            <Title>{strings('ExtratoScreen.extract')}</Title>
           </Body>
           </Header>
             <Content padder style={{backgroundColor: 'white'}}>
@@ -131,23 +131,23 @@ class HistoricoClienteScreen extends Component {
                   renderRow={(item) =>
                     <Card> 
                       <CardItem>
-                      <Left><Text>Extrato de {item}</Text></Left>
-                        <Right><Label>Gastos</Label></Right>
+                      <Left><Text>{strings('ExtratoScreen.extractOf')} {item}</Text></Left>
+                        <Right><Label>{strings('ExtratoScreen.expenses')}</Label></Right>
                       </CardItem>
                       <CardItem>
-                        <Left><Label>Passeios de Plano</Label></Left>
+                        <Left><Label>{strings('ExtratoScreen.plannedWalks')}</Label></Left>
                         <Right><Label style={{color: 'red'}}>365,00 $</Label></Right>
                       </CardItem>
                       <CardItem>
-                        <Left><Label>Passeios Avulso</Label></Left>
+                        <Left><Label>{strings('ExtratoScreen.onewayWalk')}</Label></Left>
                         <Right><Label style={{color: 'red'}}>150,00 $</Label></Right>
                       </CardItem>
                       <CardItem>
-                        <Left><Label>Multas</Label></Left>
+                        <Left><Label>{strings('ExtratoScreen.penalties')}</Label></Left>
                         <Right><Label style={{color: 'red'}}>35,00 $</Label></Right>
                       </CardItem>
                       <CardItem>
-                        <Left><Label>Total</Label></Left>
+                        <Left><Label>{strings('ExtratoScreen.total')}</Label></Left>
                         <Right><Label style={{color: 'red'}}>550,00 $</Label></Right>
                       </CardItem>
                     </Card>
@@ -159,19 +159,19 @@ class HistoricoClienteScreen extends Component {
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoClienteScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('ExtratoScreen')}>
                     <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.extract_button')}</Text>
                   </Button>
                   <Button>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.walks_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

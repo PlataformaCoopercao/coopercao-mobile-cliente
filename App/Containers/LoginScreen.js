@@ -10,7 +10,7 @@ import { Colors } from '../Themes/'
 import { StackNavigator, NavigationActions } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 // Styles
 import styles from './Styles/PasseiosLivresScreenStyle'
 import HistoricoClienteScreen from './HistoricoClienteScreen';
@@ -81,27 +81,27 @@ class LoginScreen extends Component {
         <List>
           <ListItem>
               <InputGroup>
-                  <Input placeholder="Email" />
+                  <Input placeholder={strings('LoginScreen.email')} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input placeholder="Senha" />
+                  <Input placeholder={strings('LoginScreen.password')} />
               </InputGroup>
           </ListItem>
       </List>
       <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => navigate('HistoricoPasseadorScreen')}>
-      <Text>Cadastrar</Text>   
+      <Text>{strings('LoginScreen.enter')}</Text>   
       </Button>
       <Left>
       <Button style={{ marginTop: 5, marginBottom: 5, backgroundColor:'gray' }}>
-      <Text>Primeiro Acesso</Text>
+      <Text>{strings('LoginScreen.firstAccess')}</Text>
       </Button>
       </Left>
       <Body/>
       <Right>
       <Button style={{ marginTop: 5, marginBottom: 5, backgroundColor:'gray' }}>
-      <Text>Esqueci minha senha</Text>
+      <Text>{strings('LoginScreen.forgotPassword')}</Text>
       </Button>
       </Right>
         </Content>

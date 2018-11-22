@@ -11,7 +11,7 @@ import {
 import { Font, AppLoading, Expo } from "expo"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 // Styles
 import CheckBox from 'react-native-check-box'
 
@@ -99,7 +99,7 @@ class TelaPasseioAvulsoScreen extends Component {
           <Container>
             <Header>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark  style = {{left : -100}}>Passeios Avulsos</Title></Body>
+              <Body><Title dark  style = {{left : -100}}>{strings('PasseioAvulsoScreen.singleWalks')}</Title></Body>
             </Header>
             <Content padder>
               <ScrollView style={styles.container}>
@@ -116,7 +116,7 @@ class TelaPasseioAvulsoScreen extends Component {
                   </View>
 
                   <View style={styles.inputContainer}>
-                    <Text style={styles.inputText}>Escolha data e hora:</Text>
+                    <Text style={styles.inputText}>{strings('PasseioAvulsoScreen.chooseDateTime')}:</Text>
                     <View style={styles.flexContainer}>
                       <Text onPress={this.showPicker}
                         style={styles.input} editable={false} selectTextOnFocus={false}>
@@ -127,7 +127,7 @@ class TelaPasseioAvulsoScreen extends Component {
           <View style={styles.dropdowns}>
 
                     <Dropdown
-                      label='Selecione o cachorro que irá passear?'
+                      label={strings('PasseioAvulsoScreen.singleWalkQuestion')}
                       data={data}
                     />
                   </View>
@@ -143,7 +143,7 @@ class TelaPasseioAvulsoScreen extends Component {
                         })
                       }}
                       isChecked={this.state.isChecked}
-                      leftText={"Habilitar outro endereço?"}
+                      leftText={strings('PasseioAvulsoScreen.enableAddress')}
                     />
                     <Text></Text>
                     <Text></Text>
@@ -156,16 +156,16 @@ class TelaPasseioAvulsoScreen extends Component {
 
                   <View style={styles.inputContainer}>
                     <Text style={styles.inputText}> </Text>
-                    <Text style={styles.inputText}>Observações:</Text>
+                    <Text style={styles.inputText}>{strings('General.comments')}</Text>
                     <TextInput multiline style={styles.inputObsTxt}
                       placeholder={''} placeholderTextColor={Colors.coal} />
                   </View>
                   <View style={styles.btns}>
                     <TouchableOpacity style={styles.btnEntrar} >
-                      <Text style={styles.textEntrar}>Confirmar</Text>
+                      <Text style={styles.textEntrar}>{strings('General.confirm_button')}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.btnVoltar} >
-                      <Text style={styles.textEntrar}>Voltar</Text>
+                      <Text style={styles.textEntrar}>{strings('General.back_button')}</Text>
                     </TouchableOpacity>
                   </View>
 
@@ -176,21 +176,21 @@ class TelaPasseioAvulsoScreen extends Component {
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
                     <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
                     <Icon name='list-box' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Atribuido</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.assign_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
                   <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Livres</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.available_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

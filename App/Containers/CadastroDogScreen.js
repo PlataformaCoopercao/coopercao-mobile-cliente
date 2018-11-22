@@ -10,7 +10,7 @@ import { Font, AppLoading, Expo } from "expo"
 import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 // Styles
 import { Images, Colors } from '../Themes';
 import { TextInput } from 'react-native-gesture-handler';
@@ -67,7 +67,7 @@ class CadastroDogScreen extends Component {
             <Icon name='arrow-back'/>
           </Left>
           <Body>
-            <Title>Cadastro do Cachorro</Title>
+            <Title>{strings('CadastroDogScreen.dogRegister')}</Title>
           </Body>
         </Header>
         <Content padder style={{backgroundColor: 'white', alignContent:"stretch"}}>
@@ -77,55 +77,55 @@ class CadastroDogScreen extends Component {
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input placeholder="Nome" />
+                  <Input placeholder={strings('CadastroDogScreen.placeHName')} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input placeholder="Idade" />
+                  <Input placeholder={strings('CadastroDogScreen.placeHAge')} />
               </InputGroup>
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input placeholder="Raça"/>
+                  <Input placeholder={strings('CadastroDogScreen.placeHRace')}/>
               </InputGroup>
           </ListItem>
           <ListItem>
-              <Text>Porte</Text>
+              <Text>{strings('CadastroDogScreen.size')}</Text>
               <Picker
-                iosHeader="Selecione um"
+                iosHeader={strings('CadastroDogScreen.chooseOne')}
                 mode="dropdown"
                 selectedValue={this.state.selected}
                 onValueChange={this.onValueChange.bind(this)} >
-                  <Item label="Mini" value="key0" />
-                  <Item label="Pequeno" value="key1" />
-                  <Item label="Médio" value="key2" />
-                  <Item label="Grande" value="key3" />
-                  <Item label="Gigante" value="key4" />
+                  <Item label={strings('CadastroDogScreen.mini')} value="key0" />
+                  <Item label={strings('CadastroDogScreen.little')} value="key1" />
+                  <Item label={strings('CadastroDogScreen.medium')} value="key2" />
+                  <Item label={strings('CadastroDogScreen.big')} value="key3" />
+                  <Item label={strings('CadastroDogScreen.giant')} value="key4" />
               </Picker>
           </ListItem>
       </List>
       <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
-      <Text>Cadastrar</Text>   
+      <Text>{strings('CadastroDogScreen.register')}</Text>   
       </Button>
         </Content>
         <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoClienteScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('ExtratoScreen')}>
                     <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.extract_button')}</Text>
                   </Button>
                   <Button>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.walks_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

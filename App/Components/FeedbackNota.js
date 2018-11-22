@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
 import { PixelRatio, StyleSheet, Text, View, PanResponder, Animated, TouchableOpacity } from 'react-native';
 import styles from './Styles/FeedbackNotaStyle'
-
+import { strings } from '../locales/i18n';
 const REACTIONS = [
   { label: "Preocupado", src: require('../Images/worried.png'), bigSrc: require('../Images/worried_big.png') },
   { label: "Triste", src: require('../Images/sad.png'), bigSrc: require('../Images/sad_big.png') },
@@ -55,7 +55,7 @@ export default class FeedbackNota extends Component {
       <View style={styles.container}>
         <View style={styles.wrap}>
           <Text style={styles.welcome}>
-            Conte-nos como se sente:
+          {strings('FeedbackNota.tell')}:
           </Text>
           
           <View style={styles.line} />

@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { Colors } from '../Themes/'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-
+import { strings } from '../locales/i18n';
 // Styles
 import styles from './Styles/PasseioScreenStyle'
 
@@ -155,7 +155,7 @@ class PasseioScreen extends Component {
           <Container style={{backgroundColor:'black'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>Passeio</Title></Body>
+              <Body><Title dark>{strings('General.walk')}</Title></Body>
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
             <ScrollView>
@@ -169,30 +169,30 @@ class PasseioScreen extends Component {
                     <Right><Text style={{justifyContent:'center'}}>{cao}</Text></Right>
                   </CardItem>
                   <CardItem>
-                    <Label> Data: </Label>
+                    <Label> {strings('PasseioScreen.date')}: </Label>
                     <Text style={{justifyContent:'center'}}>{data}</Text>
-                    <Right><Label> Hora: </Label></Right>
+                    <Right><Label> {strings('PasseioScreen.time')}: </Label></Right>
                     <Text style={{justifyContent:'center'}}>{hora}</Text>
                   </CardItem>
                   <CardItem>
-                    <Label> Endereço: </Label>
+                    <Label> {strings('PasseioScreen.address')}: </Label>
                     <Text style={{justifyContent:'center'}}>{endereco}</Text>
                   </CardItem>
                   <CardItem>
-                  <Label> Inicio: </Label>
+                  <Label> {strings('PasseioScreen.start')}: </Label>
                     <Text style={{justifyContent:'center'}}>{this.state.horaInicio}</Text>
-                    <Right><Label> Fim: </Label></Right>
+                    <Right><Label> {strings('PasseioScreen.end')}: </Label></Right>
                     <Text style={{justifyContent:'center'}}>{this.state.horaFinal}</Text>
                   </CardItem>
                 </Card>
                 <Button style={{ alignSelf: 'center', marginTop: 10, marginBottom: 10, backgroundColor:'red' }} onPress={this.showTimeInicio} disabled={!this.state.btnIniciar}> 
-                  <Text>Iniciar</Text>
+                  <Text>{strings('PasseioScreen.begin')}</Text>
                 </Button>
                 <Button style={{ alignSelf: 'center', marginTop: 10, marginBottom: 10, backgroundColor:'red' }} onPress={this.showTimeFim}>
-                  <Text>Finalizar</Text>
+                  <Text>{strings('PasseioScreen.finalize')}</Text>
                 </Button>
                 <Button style={{ alignSelf: 'center', marginTop: 10, marginBottom: 10, backgroundColor:'gray' }} onPress={() => navigate('FeedbackScreen')}>
-                  <Text>Realizar Feedback</Text>
+                  <Text>{strings('PasseioScreen.doFeedback')}</Text>
                 </Button>
               </ScrollView>
             </Content>
@@ -200,21 +200,21 @@ class PasseioScreen extends Component {
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
                     <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
                     <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
                     <Icon name='list-box' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Atribuido</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.assign_button')}</Text>
                   </Button>
                   <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
                   <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Livres</Text>
+                    <Text style={{color:'white'}}>{strings('Footer.available_button')}</Text>
                   </Button>
                 </FooterTab>
               </Footer>

@@ -1,0 +1,94 @@
+{
+    "General":{
+        "confirm_button": "Confirm",
+        "back_button": "Back",
+        "comments": "Comments",
+        "cancel": "Cancel",
+        "walk": "Walk",
+        "rate_button": "Rate"
+
+    },
+    "FeedbackNota": {
+      "tell": "Tell us how you feel"
+    },
+    "AvaliacaoScreen": {
+        "rate": "Rate your dogwalker",
+        "placeHComments": "Leave your comments here"
+      },
+      "Footer":{
+        "profile_button": "Profile",
+        "history_button": "History",
+        "extract_button": "Extract",
+        "walks_button" : "Walks",
+        "assign_button": "Assigned",
+        "available_button": "Available"
+      },
+      "FeedbackScreen":{
+          "rateWalk": "Rate the walk",
+          "pee": "How many times did the dog pee?",
+          "poop": "How many times did the dog poop?",
+          "feedback": "Leave your feedback"
+      },
+      "PasseadorPasseiosScreen":{
+          "assignedWalks": "Assigned Walks",
+          "startWalk": "Start Walk",
+          "requestReplace": "Request Replacement",
+          "cancelWalk": "Cancel Walk"
+      },
+      "LoginScreen":{
+        "email": "Email",
+        "password": "Password",
+        "enter": "Sign in",
+        "firstAccess": "First Access",
+        "forgotPassword": "Forgot my password" 
+    },
+    "HistoricoPasseadorScreen":{
+        "walkHistory": "Walk History"
+    },
+    "CadastroDogScreen":{
+        "dogRegister": "Dog Registration",
+        "placeHName": "Name",
+        "placeHAge": "Age",
+        "placeHRace": "Race",
+        "size": "Size",
+        "chooseOne": "Choose One",
+        "mini": "Mini",
+        "little": "Little",
+        "medium": "Medium",
+        "big": "Big",
+        "giant": "Giant",
+        "register": "Register"
+    },
+    "PasseioAvulsoScreen":{
+        "singleWalks": "One-Way Walks",
+        "chooseDateTime": "Choose date and time",
+        "singleWalkQuestion": "Select the dog that will walk:",
+        "enableAddress": "Enable another address?"
+    },
+    "PasseioScreen":{
+        "date": "Date",
+        "time": "Time",
+        "address": "Address",
+        "start": "Start",
+        "end": "End",
+        "begin": "Begin",
+        "finalize": "Finalize",
+        "doFeedback": "Perform feedback"
+    },
+    "PasseiosLivresScreen":{
+        "assignWalk": "Assign Walk",
+        "availableTitle": "Available Walks"
+    },
+    "HistoricoClienteScreen":{
+        "search": "Search"
+    },
+    "ExtratoScreen":{
+        "extract": "Extract",
+        "extractOf": "Extract of",
+        "expenses": "Expenses",
+        "plannedWalks": "Planned Walks",
+        "onewayWalk": "One-Way Walks",
+        "penalties": "Penalties",
+        "total": "Total" 
+    }
+  }
