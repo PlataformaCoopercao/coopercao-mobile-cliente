@@ -3,7 +3,7 @@ import I18n from 'react-native-i18n';
 
 // Import all locales
 import en from './en.json';
-import pt from './pt.json';
+import pt from './pt_BR.json';
 
 // Should the app fallback to English if user locale doesn't exists
 I18n.fallbacks = true;
@@ -17,7 +17,7 @@ I18n.translations = {
 const currentLocale = I18n.currentLocale();
 
 // Is it a RTL language?
-export const isRTL = currentLocale.indexOf('pt') === 0 || currentLocale.indexOf('ar') === 0;
+export const isRTL = currentLocale.indexOf('pt_BR') === 0 || currentLocale.indexOf('ar') === 0;
 
 // Allow RTL alignment in RTL languages
 ReactNative.I18nManager.allowRTL(isRTL);

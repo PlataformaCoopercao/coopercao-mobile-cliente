@@ -9,7 +9,12 @@
 
   },
   "FeedbackNota": {
-    "tell": "Conte-nos como se sente"
+    "tell": "Conte-nos como se sente",
+    "worried_label": "Preocupado",
+    "sad_label": "Triste",
+    "satisfied_label": "Satisfeito",
+    "happy_label": "Feliz",
+    "surprised_label": "Surpreso"
   },
   "AvaliacaoScreen": {
       "rate": "Avalie seu passeador",
