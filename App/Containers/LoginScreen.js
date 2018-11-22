@@ -7,12 +7,13 @@ import {Container, Header, Title, Content, Body, Text, Icon,
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
-import { StackNavigator } from "react-navigation"
+import { StackNavigator, NavigationActions } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
 // Styles
 import styles from './Styles/PasseiosLivresScreenStyle'
+import HistoricoClienteScreen from './HistoricoClienteScreen';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class LoginScreen extends Component {
       edited: ''
     };
   }
+
   // required to load native-base font in expo
   async componentWillMount() {
     await Font.loadAsync({
@@ -33,6 +35,7 @@ class LoginScreen extends Component {
     this.setState({ fontLoading: false });
   }
   render () {
+    const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
         <Container>
@@ -87,7 +90,7 @@ class LoginScreen extends Component {
               </InputGroup>
           </ListItem>
       </List>
-      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
+      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => navigate('HistoricoPasseadorScreen')}>
       <Text>Cadastrar</Text>   
       </Button>
       <Left>

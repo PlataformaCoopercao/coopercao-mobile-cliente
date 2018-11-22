@@ -7,6 +7,10 @@ import CadastroDogScreen from '../Containers/CadastroDogScreen.js'
 import HistoricoPasseadorScreen from '../Containers/HistoricoPasseadorScreen.js'
 import HistoricoClienteScreen from '../Containers/HistoricoClienteScreen.js'
 import ExtratoScreen from '../Containers/ExtratoScreen.js'
+import PasseioScreen from '../Containers/PasseioScreen.js'
+import PasseioAvulsoScreen from '../Containers/PasseioAvulsoScreen.js'
+import FeedbackScreen from '../Containers/FeedbackScreen.js'
+import AvaliacaoScreen from '../Containers/AvaliacaoScreen.js'
 
 import styles from './Styles/NavigationStyles'
 
@@ -20,10 +24,14 @@ const PrimaryNav = createStackNavigator({
   HistoricoPasseadorScreen: { screen: HistoricoPasseadorScreen},
   HistoricoClienteScreen: { screen: HistoricoClienteScreen},
   ExtratoScreen: { screen: ExtratoScreen },
+  PasseioScreen: { screen: PasseioScreen},
+  PasseioAvulsoScreen: { screen: PasseioAvulsoScreen},
+  FeedbackScreen: { screen: FeedbackScreen},
+  AvaliacaoScreen: { screen: AvaliacaoScreen},
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'ExtratoScreen',
+  initialRouteName: 'FeedbackScreen',
   navigationOptions: {
     headerStyle: styles.header
   }

@@ -46,6 +46,7 @@ class TelaHistoricoPasseadorScreen extends Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
         <Container>
@@ -92,16 +93,16 @@ class TelaHistoricoPasseadorScreen extends Component {
                     <Icon name='person' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button>
+                  <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button badge vertical >
+                  <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
                     <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
                     <Icon name='list-box' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Atribuido</Text>
                   </Button>
-                  <Button badge vertical>
+                  <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
                   <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
                     <Icon name='walk' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Livres</Text>

@@ -80,6 +80,7 @@ class HistoricoClienteScreen extends Component {
   // }
   
   render() {
+    const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
         <Container>
@@ -160,11 +161,11 @@ class HistoricoClienteScreen extends Component {
                     <Icon name='person' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button>
+                  <Button onPress={() => navigate('HistoricoClienteScreen')}>
                     <Icon name='md-calendar' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button>
+                  <Button onPress={() => navigate('ExtratoScreen')}>
                     <Icon name='ios-paper' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
