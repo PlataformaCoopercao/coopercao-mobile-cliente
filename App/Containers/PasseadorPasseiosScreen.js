@@ -7,7 +7,7 @@ import {
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
-import { StackNavigator } from "react-navigation"
+import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
@@ -50,7 +50,7 @@ class PasseadorPasseiosScreen extends Component {
     const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
-        <Container style={{backgroundColor:'black'}}>
+        <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}/>
         <Content>
           <Spinner color='red' />
@@ -60,10 +60,11 @@ class PasseadorPasseiosScreen extends Component {
     } else {
       return (
         <Root>
-          <Container style={{backgroundColor:'black'}}>
+          <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>{strings('PasseadorPasseiosScreen.assignedWalks')}</Title></Body>
+              <Body><Title style={{left: -90, color: Colors.snow}}>{strings('PasseadorPasseiosScreen.assignedWalks')}</Title></Body>
+              
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>

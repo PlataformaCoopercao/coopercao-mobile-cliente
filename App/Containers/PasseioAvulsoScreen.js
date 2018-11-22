@@ -14,7 +14,7 @@ import { Font, AppLoading, Expo } from "expo"
 import { strings } from '../locales/i18n';
 // Styles
 import CheckBox from 'react-native-check-box'
-
+import styles from './Styles/PasseioAvulsoScreenStyle'
 import { Images, Colors } from '../Themes'
 import { TextInput } from 'react-native-gesture-handler';
 

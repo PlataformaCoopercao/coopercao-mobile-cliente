@@ -59,10 +59,11 @@ class TelaHistoricoPasseadorScreen extends Component {
     } else {
       return (
         <Root>
-          <Container style={{backgroundColor:'black'}}>
+          <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>{strings('HistoricoPasseadorScreen.walkHistory')}</Title></Body>
+              <Body><Title style={{color: Colors.snow}}>{strings('HistoricoPasseadorScreen.walkHistory')}</Title></Body>
+              <Right/>
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>

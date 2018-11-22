@@ -50,7 +50,7 @@ class PasseadorPasseiosScreen extends Component {
     const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
-        <Container style={{backgroundColor:'black'}}>
+        <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}/>
         <Content>
           <Spinner color='red' />
@@ -60,10 +60,10 @@ class PasseadorPasseiosScreen extends Component {
     } else {
       return (
         <Root>
-          <Container style={{backgroundColor:'black'}}>
+          <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
               <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>{strings('PasseiosLivresScreen.availableTitle')}</Title></Body>
+              <Body><Title style={{left: -90, color: Colors.snow}}>{strings('PasseiosLivresScreen.availableTitle')}</Title></Body>
             </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
