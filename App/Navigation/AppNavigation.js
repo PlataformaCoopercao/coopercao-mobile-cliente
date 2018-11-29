@@ -13,7 +13,6 @@ import FeedbackScreen from '../Containers/FeedbackScreen.js'
 import AvaliacaoScreen from '../Containers/AvaliacaoScreen.js'
 import CadastroClienteScreen from '../Containers/CadastroClienteScreen'
 import PacotesPasseioScreen from '../Containers/PacotesPasseioScreen'
-import MenuClienteScreen from '../Containers/MenuClienteScreen.js'
 
 import styles from './Styles/NavigationStyles'
 
@@ -31,8 +30,7 @@ const PrimaryNav = createBottomTabNavigator({
   FeedbackScreen: { screen: FeedbackScreen},
   AvaliacaoScreen: { screen: AvaliacaoScreen},
   CadastroClienteScreen: { screen: CadastroClienteScreen},
-  PacotesPasseioScreen: {screen: PacotesPasseioScreen},
-  MenuClienteScreen : {screen: MenuClienteScreen}
+  PacotesPasseioScreen: {screen: PacotesPasseioScreen}
 }, {
   // Default config for all screens
   headerMode: 'none',
