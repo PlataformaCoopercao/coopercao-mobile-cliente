@@ -54,13 +54,13 @@ class MenuClienteScreen extends Component {
       );
     } else {
       return (
-        <Container style={{ backgroundColor: 'black' }}>
+        <Container style={{ backgroundColor: 'red' }}>
           <Header style={{ backgroundColor: 'red', marginTop: 15 }}>
             <Left>
               <Icon name='arrow-back' />
             </Left>
             <Body>
-              <Title>{"Menu"}</Title>
+              <Title style={{color: Colors.snow}}>{"Menu"}</Title>
             </Body>
             <Right>
 

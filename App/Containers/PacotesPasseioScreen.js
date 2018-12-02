@@ -87,7 +87,7 @@ class PacotesPasseioScreen extends Component {
               <Icon name='arrow-back'/>
             </Left>
             <Body>
-              <Title>Agendar Pacote de Passeio</Title>
+              <Title style={{color: Colors.snow, left: -90}}>Agendar Pacote</Title>
             </Body>
           </Header>
 
@@ -267,7 +267,7 @@ class PacotesPasseioScreen extends Component {
           <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='person' style={{color:'white'}}/>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
                   <Button>
