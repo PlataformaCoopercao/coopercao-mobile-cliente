@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 7380,
   "devToolsPort": 19002,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://dz-zfh.anonymous.coopercao-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.dz-zfh.anonymous.coopercao-mobile.exp.direct",
+  "ngrokPid": 8588
 }
