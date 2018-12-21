@@ -10,6 +10,7 @@ import {
 } from 'native-base'
 import FeedbackNota from '../Components/FeedbackNota';
 import { Font, AppLoading, Expo } from "expo"
+import { Images, Colors } from '../Themes';
 import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -51,10 +52,10 @@ class AvaliacaoScreen extends Component {
       return (
         <Root>
           <Container style={{backgroundColor:'black'}}>
-          <Header style={{backgroundColor:'red', marginTop: 22}}>
-              <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark>{strings('AvaliacaoScreen.rate')}</Title></Body>
-            </Header>
+          <Header style={{ backgroundColor: 'red'}}>
+          <Left><Icon name='arrow-back' /></Left>
+                <Body><Title style={{ left: -90, color: Colors.snow }}>Avalie o Passeador</Title></Body>
+          </Header>
             <Content padder style={{backgroundColor: 'white'}}>
             <KeyboardAvoidingView behavior='position'>
               <Body>
@@ -76,7 +77,7 @@ class AvaliacaoScreen extends Component {
           <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='person' style={{color:'white'}}/>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
                     <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
                   </Button>
                   <Button onPress={() => navigate('HistoricoClienteScreen')}>

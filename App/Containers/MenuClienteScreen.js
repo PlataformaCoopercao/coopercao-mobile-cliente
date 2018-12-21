@@ -55,7 +55,7 @@ class MenuClienteScreen extends Component {
     } else {
       return (
         <Container style={{ backgroundColor: 'red' }}>
-          <Header style={{ backgroundColor: 'red', marginTop: 15 }}>
+          <Header style={{ backgroundColor: 'red'}}>
             <Left>
               <Icon name='arrow-back' />
             </Left>
@@ -109,7 +109,7 @@ class MenuClienteScreen extends Component {
           <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
               <Button>
-                <Icon name='person' style={{ color: 'white' }} />
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
                 <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>

@@ -12,8 +12,7 @@ import { StackNavigator, NavigationActions } from "react-navigation"
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 // Styles
-import styles from './Styles/PasseiosLivresScreenStyle'
-import HistoricoClienteScreen from './HistoricoClienteScreen';
+import styles from './Styles/LoginScreenStyle'
 
 class LoginScreen extends Component {
   constructor(props) {

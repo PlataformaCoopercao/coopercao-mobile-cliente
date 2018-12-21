@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, KeyboardAvoidingView, View, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+import DateTimePicker from 'react-native-modal-datetime-picker'
+import moment from 'moment'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card, CardItem, List, Footer, FooterTab, Badge, Spinner
+  Left, Right, Accordion, Form, Textarea, Root, Button, ActionSheet, Subtitle, Card, CardItem, List, Footer, FooterTab, Badge, Spinner
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
@@ -36,9 +38,35 @@ class PasseiosClienteScreen extends Component {
     this.state = {
       fontLoading: true, // to load font in expo
       clicked: 9,
-      edited: ''
+      edited: '',
+      chosenDate: '',
+      isVisible: false
     };
   }
+
+  handlePicker = (datetime) => {
+    this.setState(
+      {
+        isVisible: false,
+        chosenDate: moment(datetime).format('DD/MM/YY - HH:mm')
+      }
+    )
+  }
+
+  showPicker = () => {
+    this.setState(
+      { isVisible: true }
+    )
+  }
+
+  hidePicker = () => {
+    this.setState(
+      {
+        isVisible: false
+      }
+    )
+  }
+
   // required to load native-base font in expo
   async componentWillMount() {
     await Font.loadAsync({
@@ -70,35 +98,66 @@ class PasseiosClienteScreen extends Component {
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
-              <Header style={{ backgroundColor: 'red', marginTop: 22 }}>
+              <Header style={{ backgroundColor: 'red'}}>
                 <Left><Icon name='arrow-back' /></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Remarcar Passeio</Title></Body>
 
               </Header>
               <Content padder style={{ backgroundColor: 'white' }}>
                 <ScrollView>
-                  <Text>AYO</Text>
+                  <View>
+                    <DateTimePicker
+                      isVisible={this.state.isVisible}
+                      onConfirm={this.handlePicker}
+                      onCancel={this.hidePicker}
+                      mode={'datetime'}
+                      datePickerModeAndroid={'spinner'}
+                    />
+                  </View>
+                  <View style={styles.inputContainer}>
+                    <Text style={styles.inputText}>Escolha data e hora:</Text>
+                    <View style={styles.flexContainer}>
+                      <Text onPress={this.showPicker}
+                        style={styles.input} editable={false} selectTextOnFocus={false}>
+                        {this.state.chosenDate}
+                      </Text>
+                    </View>
+                  </View>
+                  <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+                    <Text style={styles.inputText}>Justificativa: </Text>
+                    <Form>
+                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Terei que remarcar o passeio pois...' />
+                    </Form>
+                  </View>
+                  <View style={styles.espalhar}>
+                    <Button style={styles.botaoCancela} onPress={() => {
+                                  this.setState({ clicked: "9" });
+                                }}>
+                      <Text style={{ color: 'white', fontSize: 16 }}>Voltar</Text>
+                    </Button>
+                    <Button style={styles.botaoConfirma}>
+                      <Text style={{ color: 'white', fontSize: 16 }}>Remarcar</Text>
+                    </Button>
+                  </View>
                 </ScrollView>
               </Content>
-              <Footer style={{ backgroundColor: 'red' }}>
-                <FooterTab style={{ backgroundColor: 'red' }}>
+              <Footer style={{backgroundColor:'red'}}>
+                <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='md-person' type='Ionicons' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
-                    <Icon name='md-calendar' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+                  <Button>
+                    <Icon name='md-calendar' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
-                    <Badge style={{ backgroundColor: 'black' }}><Text style={{ color: 'white' }}>2</Text></Badge>
-                    <Icon name='list-box' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.assign_button')}</Text>
+                  <Button>
+                    <Icon name='ios-paper' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
-                    <Badge style={{ backgroundColor: 'black' }}><Text style={{ color: 'white' }}>7</Text></Badge>
-                    <Icon name='walk' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.available_button')}</Text>
+                  <Button>
+                    <Icon name='walk' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Passeios</Text>
                   </Button>
                 </FooterTab>
               </Footer>
@@ -106,39 +165,52 @@ class PasseiosClienteScreen extends Component {
           </Root>
         )
         // ----------------FIM DA TELA DE REMARCAR  PASSEIO
-      } else if(this.state.clicked == "Cancelar Passeio"){  //-------------------- TELA CANCELAR PASSEIO
+      } else if (this.state.clicked == "Cancelar Passeio") {  //-------------------- TELA CANCELAR PASSEIO
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
-              <Header style={{ backgroundColor: 'red', marginTop: 22 }}>
+              <Header style={{ backgroundColor: 'red'}}>
                 <Left><Icon name='arrow-back' /></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Cancelar Passeio</Title></Body>
 
               </Header>
               <Content padder style={{ backgroundColor: 'white' }}>
                 <ScrollView>
-                  <Text>AYO</Text>
+                  <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+                    <Text style={styles.inputText}>Justificativa: </Text>
+                    <Form>
+                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Estou cancelando o passeio porque...' />
+                    </Form>
+                  </View>
+                  <View style={styles.espalhar}>
+                    <Button style={styles.botaoCancela} onPress={() => {
+                                  this.setState({ clicked: "9" });
+                                }}>
+                      <Text style={{ color: 'white', fontSize: 16 }}>Voltar</Text>
+                    </Button>
+                    <Button style={styles.botaoConfirma}>
+                      <Text style={{ color: 'white', fontSize: 16 }}>Cancelar</Text>
+                    </Button>
+                  </View>
                 </ScrollView>
               </Content>
-              <Footer style={{ backgroundColor: 'red' }}>
-                <FooterTab style={{ backgroundColor: 'red' }}>
+              <Footer style={{backgroundColor:'red'}}>
+                <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='md-person' type='Ionicons' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
-                    <Icon name='md-calendar' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+                  <Button>
+                    <Icon name='md-calendar' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
-                    <Badge style={{ backgroundColor: 'black' }}><Text style={{ color: 'white' }}>2</Text></Badge>
-                    <Icon name='list-box' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.assign_button')}</Text>
+                  <Button>
+                    <Icon name='ios-paper' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
-                    <Badge style={{ backgroundColor: 'black' }}><Text style={{ color: 'white' }}>7</Text></Badge>
-                    <Icon name='walk' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.available_button')}</Text>
+                  <Button>
+                    <Icon name='walk' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Passeios</Text>
                   </Button>
                 </FooterTab>
               </Footer>
@@ -150,7 +222,7 @@ class PasseiosClienteScreen extends Component {
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
-              <Header style={{ backgroundColor: 'red', marginTop: 22 }}>
+              <Header style={{ backgroundColor: 'red'}}>
                 <Left><Icon name='arrow-back' /></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Passeios Agendados</Title></Body>
 
@@ -183,25 +255,23 @@ class PasseiosClienteScreen extends Component {
                   </List>
                 </ScrollView>
               </Content>
-              <Footer style={{ backgroundColor: 'red' }}>
-                <FooterTab style={{ backgroundColor: 'red' }}>
+              <Footer style={{backgroundColor:'red'}}>
+                <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='md-person' type='Ionicons' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
-                    <Icon name='md-calendar' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+                  <Button>
+                    <Icon name='md-calendar' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
-                    <Badge style={{ backgroundColor: 'black' }}><Text style={{ color: 'white' }}>2</Text></Badge>
-                    <Icon name='list-box' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.assign_button')}</Text>
+                  <Button>
+                    <Icon name='ios-paper' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
-                    <Badge style={{ backgroundColor: 'black' }}><Text style={{ color: 'white' }}>7</Text></Badge>
-                    <Icon name='walk' style={{ color: 'white' }} />
-                    <Text style={{ color: 'white' }}>{strings('Footer.available_button')}</Text>
+                  <Button>
+                    <Icon name='walk' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Passeios</Text>
                   </Button>
                 </FooterTab>
               </Footer>

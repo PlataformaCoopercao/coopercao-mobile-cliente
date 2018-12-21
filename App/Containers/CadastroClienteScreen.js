@@ -61,13 +61,15 @@ class CadastroClienteScreen extends Component {
     } else {
       return(
         <Container>
-          <Header style={{backgroundColor:'red'}}>
+          <Header style={{ backgroundColor: 'red'}}>
             <Left>
-              <Icon name='arrow-back'/>
+              <Icon name='arrow-back' />
             </Left>
             <Body>
-              <Title>Cadastro do Cliente</Title>
+              <Title style={{color: Colors.snow}}>Cadastro</Title>
             </Body>
+            <Right>
+            </Right>
           </Header>
 
           <Content style={{alignContent:"stretch"}}>

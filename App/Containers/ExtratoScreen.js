@@ -117,13 +117,16 @@ class HistoricoClienteScreen extends Component {
       // </ScrollView>
       <Root>
           <Container style={{backgroundColor:'black'}}>
-          <Header style={{backgroundColor:'red', marginTop: 22}}>
-          <Left>
-            <Icon name='arrow-back'/>
-          </Left>
-          <Body style={{alignSelf:'center'}}>
-            <Title>{strings('ExtratoScreen.extract')}</Title>
-          </Body>
+          <Header style={{ backgroundColor: 'red'}}>
+            <Left>
+              <Icon name='arrow-back' />
+            </Left>
+            <Body>
+              <Title style={{color: Colors.snow}}>Extrato</Title>
+            </Body>
+            <Right>
+
+            </Right>
           </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
@@ -158,20 +161,20 @@ class HistoricoClienteScreen extends Component {
             <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                  <Button>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
+                    <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button onPress={() => navigate('ExtratoScreen')}>
+                  <Button>
                     <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.extract_button')}</Text>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
                   <Button>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.walks_button')}</Text>
+                    <Text style={{color:'white'}}>Passeios</Text>
                   </Button>
                 </FooterTab>
               </Footer>

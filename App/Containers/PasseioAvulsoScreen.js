@@ -97,10 +97,10 @@ class TelaPasseioAvulsoScreen extends Component {
       return (
         <Root>
           <Container>
-            <Header>
-              <Left><Icon name='arrow-back' /></Left>
-              <Body><Title dark  style = {{left : -100}}>{strings('PasseioAvulsoScreen.singleWalks')}</Title></Body>
-            </Header>
+          <Header style={{ backgroundColor: 'red'}}>
+          <Left><Icon name='arrow-back' /></Left>
+                <Body><Title style={{ left: -90, color: Colors.snow }}>Passeio Avulso</Title></Body>
+          </Header>
             <Content padder>
               <ScrollView style={styles.container}>
                 <KeyboardAvoidingView behavior='position'>
@@ -123,7 +123,7 @@ class TelaPasseioAvulsoScreen extends Component {
                         {this.state.chosenDate}
                       </Text>
                     </View>
-                  </View>>
+                  </View>
           <View style={styles.dropdowns}>
 
                     <Dropdown
@@ -175,22 +175,20 @@ class TelaPasseioAvulsoScreen extends Component {
             <Footer style={{backgroundColor:'red'}}>
                 <FooterTab style={{backgroundColor:'red'}}>
                   <Button>
-                    <Icon name='person' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
+                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Perfil</Text>
                   </Button>
-                  <Button onPress={() => navigate('HistoricoPasseadorScreen')}>
+                  <Button>
                     <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
+                    <Text style={{color:'white'}}>Histórico</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseadorPasseiosScreen')}>
-                    <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>2</Text></Badge>
-                    <Icon name='list-box' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.assign_button')}</Text>
+                  <Button>
+                    <Icon name='ios-paper' style={{color:'white'}}/>
+                    <Text style={{color:'white'}}>Extrato</Text>
                   </Button>
-                  <Button badge vertical onPress={() => navigate('PasseiosLivresScreen')}>
-                  <Badge style={{backgroundColor:'black'}}><Text style={{color:'white'}}>7</Text></Badge>
+                  <Button>
                     <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.available_button')}</Text>
+                    <Text style={{color:'white'}}>Passeios</Text>
                   </Button>
                 </FooterTab>
               </Footer>
