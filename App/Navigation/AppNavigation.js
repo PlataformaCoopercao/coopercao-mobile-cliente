@@ -16,6 +16,7 @@ import PacotesPasseioScreen from '../Containers/PacotesPasseioScreen.js'
 import MenuClienteScreen from '../Containers/MenuClienteScreen.js'
 import MenuPasseadorScreen from '../Containers/MenuPasseadorScreen.js'
 import PasseiosClienteScreen from '../Containers/PasseiosClienteScreen.js'
+import PerfilClienteScreen from '../Containers/PerfilClienteScreen.js'
 
 import styles from './Styles/NavigationStyles'
 
@@ -36,7 +37,8 @@ const PrimaryNav = createBottomTabNavigator({
   PacotesPasseioScreen: {screen: PacotesPasseioScreen},
   MenuClienteScreen: {screen: MenuClienteScreen},
   MenuPasseadorScreen: {screen: MenuPasseadorScreen},
-  PasseiosClienteScreen : { screen: PasseiosClienteScreen }
+  PasseiosClienteScreen : { screen: PasseiosClienteScreen },
+  PerfilClienteScreen : { screen: PerfilClienteScreen }
 
 }, {
   // Default config for all screens
