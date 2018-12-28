@@ -70,7 +70,7 @@ class MenuClienteScreen extends Component {
             <List>
               <ListItem style={{ alignSelf: 'center', alignContent: 'center', flexDirection: 'column' }}>
                 <Thumbnail style={{ height: 120, width: 120 }} large source={{ uri: uri }} />
-                <Text>Bem-Vindo Alex Cimo</Text>
+                <Text>{"Bem-Vindo Alex Cimo"}</Text>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao}>

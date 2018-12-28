@@ -67,7 +67,7 @@ class CadastroDogScreen extends Component {
             <Icon name='arrow-back'/>
           </Left>
           <Body>
-            <Title style={{ color: Colors.snow, left: -90 }}>{strings('CadastroDogScreen.dogRegister')}</Title>
+            <Title style={{ color: Colors.snow}}>{strings('CadastroDogScreen.dogRegister')}</Title>
           </Body>
         </Header>
         <Content padder style={{backgroundColor: 'white', alignContent:"stretch"}}>
