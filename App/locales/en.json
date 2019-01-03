@@ -54,7 +54,7 @@
         "dogRegister": "Dog Registration",
         "placeHName": "Name",
         "placeHAge": "Age",
-        "placeHRace": "Race",
+        "placeHRace": "Breed",
         "size": "Size",
         "chooseOne": "Choose One",
         "mini": "Mini",
@@ -64,6 +64,11 @@
         "giant": "Giant",
         "register": "Register"
     },
+	"EditarDogScreen":{
+		"editDog": "Edit Dog",
+		"save": "Save",
+		"remove": "Remove"
+	},
     "PasseioAvulsoScreen":{
         "singleWalks": "One-Way Walks",
         "chooseDateTime": "Choose date and time",

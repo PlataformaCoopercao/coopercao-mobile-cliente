@@ -9,6 +9,7 @@ import CadastroClienteScreen from '../Containers/CadastroClienteScreen.js'
 import PacotesPasseioScreen from '../Containers/PacotesPasseioScreen.js'
 import MenuClienteScreen from '../Containers/MenuClienteScreen.js'
 import MeusCachorrosScreen from '../Containers/MeusCachorrosScreen.js'
+import EditarDogScreen from '../Containers/EditarDogScreen.js'
 
 import styles from './Styles/NavigationStyles'
 
@@ -23,8 +24,8 @@ const PrimaryNav = createBottomTabNavigator({
   CadastroClienteScreen: { screen: CadastroClienteScreen},
   PacotesPasseioScreen: {screen: PacotesPasseioScreen},
   MenuClienteScreen: {screen: MenuClienteScreen},
-  MeusCachorrosScreen: {screen: MeusCachorrosScreen}
-
+  MeusCachorrosScreen: {screen: MeusCachorrosScreen},
+  EditarDogScreen: { screen: EditarDogScreen }
 }, {
   // Default config for all screens
   headerMode: 'none',
