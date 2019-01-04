@@ -89,7 +89,7 @@ class LoginScreen extends Component {
               </InputGroup>
           </ListItem>
       </List>
-      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => navigate('HistoricoPasseadorScreen')}>
+      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => navigate('MenuClienteScreen')}>
       <Text>{strings('LoginScreen.enter')}</Text>   
       </Button>
       <Left>

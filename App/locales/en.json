@@ -100,5 +100,16 @@
         "onewayWalk": "One-Way Walks",
         "penalties": "Penalties",
         "total": "Total" 
+    },
+    "MenuClienteScreen":{
+        "menu": "Menu",
+        "welcome": "Welcome, Alex Cimo",
+        "scheduledWalks": "Scheduled Walks",
+        "askWalk": "Ask for Walk",
+        "myDogs": "My Dogs",
+        "walksHistory": "Walks History",
+        "profile": "Profile",
+        "invoice": "Invoice",
+        "logoff": "Logoff"
     }
   }

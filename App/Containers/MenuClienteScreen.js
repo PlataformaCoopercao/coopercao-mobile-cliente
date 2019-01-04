@@ -42,6 +42,7 @@ class MenuClienteScreen extends Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     const uri = "https://pbs.twimg.com/media/DahEyvzVQAAizMF.jpg";
     if (this.state.fontLoading) {
       return (
@@ -60,7 +61,7 @@ class MenuClienteScreen extends Component {
               <Icon name='arrow-back' />
             </Left>
             <Body>
-              <Title style={{color: Colors.snow}}>{"Menu"}</Title>
+              <Title style={{color: Colors.snow}}>{strings('MenuClienteScreen.menu')}</Title>
             </Body>
             <Right>
 
@@ -70,40 +71,41 @@ class MenuClienteScreen extends Component {
             <List>
               <ListItem style={{ alignSelf: 'center', alignContent: 'center', flexDirection: 'column' }}>
                 <Thumbnail style={{ height: 120, width: 120 }} large source={{ uri: uri }} />
-                <Text>{"Bem-Vindo Alex Cimo"}</Text>
+                <Text>{strings('MenuClienteScreen.welcome')}</Text>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao}>
-                  <Text>{"Passeios Agendados"}</Text>
-                </Button>          </ListItem>
-              <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
-                  <Text>{"Marcar Passeios"}</Text>
+                  <Text>{strings('MenuClienteScreen.scheduledWalks')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao}>
-                  <Text>{"Meus Cachorros"}</Text>
+                  <Text>{strings('MenuClienteScreen.askWalk')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao}>
-                  <Text>{'Histórico de passeios'}</Text>
+                  <Text>{strings('MenuClienteScreen.myDogs')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao}>
-                  <Text>{'Perfil'}</Text>
+                  <Text>{strings('MenuClienteScreen.walksHistory')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao}>
-                  <Text>{'Fatura'}</Text>
+                  <Text>{strings('MenuClienteScreen.profile')}</Text>
+                </Button>
+              </ListItem>
+              <ListItem style={{ alignSelf: 'center' }}>
+                <Button style={styles.botao}>
+                  <Text>{strings('MenuClienteScreen.invoice')}</Text>
                 </Button>
               </ListItem>
             </List>
             <Button style={styles.botao}>
-              <Text>{"Deslogar"}</Text>
+              <Text>{strings('MenuClienteScreen.logoff')}</Text>
             </Button>
           </Content>
           <Footer style={{ backgroundColor: 'red' }}>

@@ -95,5 +95,16 @@
       "onewayWalk": "Passeios Avulso",
       "penalties": "Multas",
       "total": "Total" 
-  }
+  },
+  "MenuClienteScreen":{
+    "menu": "Menu",
+    "welcome": "Bem-vindo, Alex Cimo",
+    "scheduledWalks": "Passeios Agendados",
+    "askWalk": "Marcar Passeio",
+    "myDogs": "Meus Cachorros",
+    "walksHistory": "Histórico de Passeios",
+    "profile": "Perfil",
+    "invoice": "Fatura",
+    "logoff": "Deslogar"
+}
 }
