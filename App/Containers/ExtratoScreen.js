@@ -122,7 +122,7 @@ class HistoricoClienteScreen extends Component {
               <Icon name='arrow-back' />
             </Left>
             <Body>
-              <Title style={{color: Colors.snow}}>Extrato</Title>
+              <Title style={{color: Colors.snow}}>{strings('ExtratoScreen.extract')}</Title>
             </Body>
             <Right>
 

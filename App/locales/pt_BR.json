@@ -46,65 +46,80 @@
       "enter": "Entrar",
       "firstAccess": "Primeiro acesso",
       "forgotPassword": "Esqueci minha senha" 
-  },
-  "HistoricoPasseadorScreen":{
-      "walkHistory": "Walk History"
-  },
-  "CadastroDogScreen":{
-      "dogRegister": "Cadastro de Cachorro",
-      "placeHName": "Nome",
-      "placeHAge": "Idade",
-      "placeHRace": "Raça",
-      "size": "Porte",
-      "chooseOne": "Escolha um",
-      "mini": "Mini",
-      "little": "Pequeno",
-      "medium": "Médio",
-      "big": "Grande",
-      "giant": "Gigante",
-      "register": "Cadastrar"
-  },
-  "PasseioAvulsoScreen":{
-      "singleWalks": "Passeios Avulso",
-      "chooseDateTime": "Escolha data e hora",
-      "singleWalkQuestion": "Selecione o cachorro que irá passear:",
-      "enableAddress": "Habilitar outro endereço?"
-  },
-  "PasseioScreen":{
-      "date": "Data",
-      "time": "Hora",
-      "address": "Endereço",
-      "start": "Inicio",
-      "end": "Fim",
-      "begin": "Iniciar",
-      "finalize": "Finalizar",
-      "doFeedback": "Realizar feedback"
-  },
-  "PasseiosLivresScreen":{
-      "assignWalk": "Atribuir Passeio",
-      "availableTitle": "Passeios Livres"
-  },
-  "HistoricoClienteScreen":{
-      "search": "Buscar"
-  },
-  "ExtratoScreen":{
-      "extract": "Extrato",
-      "extractOf": "Extrato de",
-      "expenses": "Gastos",
-      "plannedWalks": "Passeios de Plano",
-      "onewayWalk": "Passeios Avulso",
-      "penalties": "Multas",
-      "total": "Total" 
-  },
-  "MenuClienteScreen":{
-    "menu": "Menu",
-    "welcome": "Bem-vindo, Alex Cimo",
-    "scheduledWalks": "Passeios Agendados",
-    "askWalk": "Marcar Passeio",
-    "myDogs": "Meus Cachorros",
-    "walksHistory": "Histórico de Passeios",
-    "profile": "Perfil",
-    "invoice": "Fatura",
-    "logoff": "Deslogar"
-}
+    },
+    "HistoricoPasseadorScreen":{
+        "walkHistory": "Walk History"
+    },
+    "CadastroDogScreen":{
+        "dogRegister": "Cadastro de Cachorro",
+        "placeHName": "Nome",
+        "placeHAge": "Idade",
+        "placeHRace": "Raça",
+        "size": "Porte",
+        "chooseOne": "Escolha um",
+        "mini": "Mini",
+        "little": "Pequeno",
+        "medium": "Médio",
+        "big": "Grande",
+        "giant": "Gigante",
+        "register": "Cadastrar"
+    },
+    "PasseioAvulsoScreen":{
+        "singleWalks": "Passeios Avulso",
+        "chooseDateTime": "Escolha data e hora",
+        "singleWalkQuestion": "Selecione o cachorro que irá passear:",
+        "enableAddress": "Habilitar outro endereço?"
+    },
+    "PasseioScreen":{
+        "date": "Data",
+        "time": "Hora",
+        "address": "Endereço",
+        "start": "Inicio",
+        "end": "Fim",
+        "begin": "Iniciar",
+        "finalize": "Finalizar",
+        "doFeedback": "Realizar feedback"
+    },
+    "PasseiosLivresScreen":{
+        "assignWalk": "Atribuir Passeio",
+        "availableTitle": "Passeios Livres"
+    },
+    "HistoricoClienteScreen":{
+        "search": "Buscar"
+    },
+    "ExtratoScreen":{
+        "extract": "Extrato",
+        "extractOf": "Extrato de",
+        "expenses": "Gastos",
+        "plannedWalks": "Passeios de Plano",
+        "onewayWalk": "Passeios Avulso",
+        "penalties": "Multas",
+        "total": "Total" 
+    },
+    "MenuClienteScreen":{
+        "menu": "Menu",
+        "welcome": "Bem-vindo, ",
+        "scheduledWalks": "Passeios Agendados",
+        "askWalk": "Marcar Passeio",
+        "myDogs": "Meus Cachorros",
+        "walksHistory": "Histórico de Passeios",
+        "profile": "Perfil",
+        "invoice": "Fatura",
+        "logoff": "Deslogar"
+    },
+    "EditarClienteScreen":{
+        "edit": "Editar Perfil",
+        "name": "Nome: ",
+        "email": "Email: ",
+        "password": "Nova senha: ",
+        "passwordTwo": "Confirmação da senha: ",
+        "CEP": "CEP: ",
+        "street": "Rua: ",
+        "number": "Número: ",
+        "neighborhood": "Bairro: ",
+        "complement": "Complemento: ",
+        "phone": "Telefone: ",
+        "cancel": "Cancelar",
+        "save": "Salvar"
+    }
 }

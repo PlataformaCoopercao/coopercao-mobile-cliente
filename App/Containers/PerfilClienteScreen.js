@@ -42,6 +42,7 @@ class  PerfilClienteScreen extends Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     const uri = "https://pbs.twimg.com/media/DahEyvzVQAAizMF.jpg";
     if (this.state.fontLoading) {
       return (

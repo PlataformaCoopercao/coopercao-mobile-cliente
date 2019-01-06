@@ -49,6 +49,7 @@ class CadastroDogScreen extends Component {
   }
 
   render () {
+    const {navigate} = this.props.navigation;
     const uri = "https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg";
     if (this.state.fontLoading) {
       return (

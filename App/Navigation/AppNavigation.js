@@ -10,6 +10,10 @@ import PacotesPasseioScreen from '../Containers/PacotesPasseioScreen.js'
 import MenuClienteScreen from '../Containers/MenuClienteScreen.js'
 import MeusCachorrosScreen from '../Containers/MeusCachorrosScreen.js'
 import EditarDogScreen from '../Containers/EditarDogScreen.js'
+import EditarClienteScreen from '../Containers/EditarClienteScreen.js'
+// divisória
+import PasseiosClienteScreen from '../Containers/PasseiosClienteScreen.js'
+import PerfilClienteScreen from '../Containers/PerfilClienteScreen.js'
 
 import styles from './Styles/NavigationStyles'
 
@@ -25,7 +29,10 @@ const PrimaryNav = createBottomTabNavigator({
   PacotesPasseioScreen: {screen: PacotesPasseioScreen},
   MenuClienteScreen: {screen: MenuClienteScreen},
   MeusCachorrosScreen: {screen: MeusCachorrosScreen},
-  EditarDogScreen: { screen: EditarDogScreen }
+  EditarDogScreen: { screen: EditarDogScreen },
+  EditarClienteScreen: { screen: EditarClienteScreen},
+  PasseiosClienteScreen: { screen: PasseiosClienteScreen},
+  PerfilClienteScreen: { screen: PerfilClienteScreen}
 }, {
   // Default config for all screens
   headerMode: 'none',
