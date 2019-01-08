@@ -23,8 +23,15 @@ class  PerfilClienteScreen extends Component {
     super(props);
     this.state = {
       fontLoading: true, // to load font in expo
+      nome: 'Alex Cimo',
+      email: 'cimo.ygo@gmail.com',
+      endereco: 'Rua dos Bobos, nº 0',
+      telefone: '91234-5678',
+      registrado: '20/4/2018'
     };
   }
+
+
 
   onValueChange(value: string) {
     this.setState({
@@ -71,37 +78,37 @@ class  PerfilClienteScreen extends Component {
             <List>
               <ListItem style={{ alignSelf: 'center', alignContent: 'center', flexDirection: 'column' }}>
                 <Thumbnail style={{ height: 120, width: 120 }} large source={{ uri: uri }} />
-                <Text>Alex Cimo</Text>
+                <Text>{this.state.nome}</Text>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
 
-                  <Text>{"cimo.ygo@gmail.com"}</Text>
+                  <Text>{this.state.email}</Text>
                 </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
 
-                  <Text>{"Rua dos Bobos, nº 0"}</Text>
+                  <Text>{this.state.endereco}</Text>
 
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
 
-                  <Text>{"Telefone Residencial: 91234-5678"}</Text>
+                  <Text>Telefone Residencial: {this.state.telefone}</Text>
 
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
 
-                  <Text>{'Registrado desde: 20/4/2018'}</Text>
+                  <Text>Registrado desde: {this.state.registrado}</Text>
 
               </ListItem>
             </List>
             <Text>{""}</Text>
-            <Button style={styles.botao}>
+            <Button style={styles.botao} onPress={() => navigate('EditarClienteScreen')}>
               <Text>{"Editar"}</Text>
             </Button>
           </Content>
           <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button>
-                <Icon name='person' style={{ color: 'white' }} />
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
                 <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
@@ -112,7 +119,7 @@ class  PerfilClienteScreen extends Component {
                 <Icon name='ios-paper' style={{ color: 'white' }} />
                 <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
               </Button>
-              <Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
                 <Icon name='walk' style={{ color: 'white' }} />
                 <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
               </Button>
