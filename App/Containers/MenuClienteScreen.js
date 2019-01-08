@@ -74,43 +74,43 @@ class MenuClienteScreen extends Component {
                 <Text>{strings('MenuClienteScreen.welcome')}Alex Cimo</Text>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
+                <Button style={styles.botao} onPress={() => navigate('PasseiosClienteScreen')}>
                   <Text>{strings('MenuClienteScreen.scheduledWalks')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
+                <Button style={styles.botao} onPress={() => navigate('PasseioAvulsoScreen')}>
                   <Text>{strings('MenuClienteScreen.askWalk')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
+                <Button style={styles.botao} onPress={() => navigate('MeusCachorrosScreen')}>
                   <Text>{strings('MenuClienteScreen.myDogs')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
+                <Button style={styles.botao} onPress={() => navigate('HistoruciClienteScreen')}>
                   <Text>{strings('MenuClienteScreen.walksHistory')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
+                <Button style={styles.botao} onPress={() => navigate('PerfilClienteScreen')}>
                   <Text>{strings('MenuClienteScreen.profile')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao}>
+                <Button style={styles.botao} onPress={() => navigate('ExtratoScreen')}>
                   <Text>{strings('MenuClienteScreen.invoice')}</Text>
                 </Button>
               </ListItem>
             </List>
-            <Button style={styles.botao}>
+            <Button style={styles.botao} onPress={() => navigate('LoginScreen')}>
               <Text>{strings('MenuClienteScreen.logoff')}</Text>
             </Button>
           </Content>
           <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
                 <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
               </Button>
@@ -122,7 +122,7 @@ class MenuClienteScreen extends Component {
                 <Icon name='ios-paper' style={{ color: 'white' }} />
                 <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
               </Button>
-              <Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
                 <Icon name='walk' style={{ color: 'white' }} />
                 <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
               </Button>
