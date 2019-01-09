@@ -48,6 +48,7 @@ class CadastroClienteScreen extends Component {
   }
 
   render () {
+    const {navigate} = this.props.navigation;
     const uri = "https://cdn0.iconfinder.com/data/icons/user-interface-vol-3-12/66/68-512.png";
     if (this.state.fontLoading) {
       return(
@@ -126,6 +127,9 @@ class CadastroClienteScreen extends Component {
 
           <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
           <Text>Cadastrar</Text>
+          </Button>
+          <Button onPress={() => navigate('LoginScreen')} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
+          <Text>Cancelar</Text>
           </Button>
           </Content>
         </Container>

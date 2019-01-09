@@ -63,6 +63,7 @@ class TelaPasseioAvulsoScreen extends Component {
   }
 
   render() {
+    const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
         <AppLoading />
@@ -164,7 +165,7 @@ class TelaPasseioAvulsoScreen extends Component {
                     <TouchableOpacity style={styles.btnEntrar} >
                       <Text style={styles.textEntrar}>{strings('General.confirm_button')}</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnVoltar} >
+                    <TouchableOpacity onPress={() => navigate('MenuClienteScreen')} style={styles.btnVoltar} >
                       <Text style={styles.textEntrar}>{strings('General.back_button')}</Text>
                     </TouchableOpacity>
                   </View>
@@ -172,26 +173,26 @@ class TelaPasseioAvulsoScreen extends Component {
                 </KeyboardAvoidingView>
               </ScrollView>
             </Content>
-            <Footer style={{backgroundColor:'red'}}>
-                <FooterTab style={{backgroundColor:'red'}}>
-                  <Button>
-                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
-                  </Button>
-                </FooterTab>
-              </Footer>
+            <Footer style={{ backgroundColor: 'red' }}>
+            <FooterTab style={{ backgroundColor: 'red' }}>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Icon name='md-calendar' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('ExtratoScreen')}>
+                <Icon name='ios-paper' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
+                <Icon name='walk' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
           </Container>
         </Root>
       )

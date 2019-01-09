@@ -89,7 +89,7 @@ class MenuClienteScreen extends Component {
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
-                <Button style={styles.botao} onPress={() => navigate('HistoruciClienteScreen')}>
+                <Button style={styles.botao} onPress={() => navigate('HistoricoClienteScreen')}>
                   <Text>{strings('MenuClienteScreen.walksHistory')}</Text>
                 </Button>
               </ListItem>

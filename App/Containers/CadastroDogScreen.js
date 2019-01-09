@@ -49,6 +49,7 @@ class CadastroDogScreen extends Component {
   }
 
   render () {
+    const {navigate} = this.props.navigation;
     const uri = "https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg";
     if (this.state.fontLoading) {
       return (
@@ -109,26 +110,26 @@ class CadastroDogScreen extends Component {
       <Text>{strings('CadastroDogScreen.register')}</Text>   
       </Button>
         </Content>
-        <Footer style={{backgroundColor:'red'}}>
-                <FooterTab style={{backgroundColor:'red'}}>
-                  <Button>
-                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.profile_button')}</Text>
-                  </Button>
-                  <Button onPress={() => navigate('HistoricoClienteScreen')}>
-                    <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.history_button')}</Text>
-                  </Button>
-                  <Button onPress={() => navigate('ExtratoScreen')}>
-                    <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.extract_button')}</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>{strings('Footer.walks_button')}</Text>
-                  </Button>
-                </FooterTab>
-              </Footer>
+        <Footer style={{ backgroundColor: 'red' }}>
+            <FooterTab style={{ backgroundColor: 'red' }}>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Icon name='md-calendar' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('ExtratoScreen')}>
+                <Icon name='ios-paper' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
+                <Icon name='walk' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
       </Container>
     )
     }

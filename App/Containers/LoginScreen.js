@@ -93,7 +93,7 @@ class LoginScreen extends Component {
       <Text>{strings('LoginScreen.enter')}</Text>   
       </Button>
       <Left>
-      <Button style={{ marginTop: 5, marginBottom: 5, backgroundColor:'gray' }}>
+      <Button onPress={() => navigate('CadastroClienteScreen')} style={{ marginTop: 5, marginBottom: 5, backgroundColor:'gray' }}>
       <Text>{strings('LoginScreen.firstAccess')}</Text>
       </Button>
       </Left>

@@ -141,26 +141,26 @@ class PasseiosClienteScreen extends Component {
                   </View>
                 </ScrollView>
               </Content>
-              <Footer style={{backgroundColor:'red'}}>
-                <FooterTab style={{backgroundColor:'red'}}>
-                  <Button>
-                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
-                  </Button>
-                </FooterTab>
-              </Footer>
+              <Footer style={{ backgroundColor: 'red' }}>
+            <FooterTab style={{ backgroundColor: 'red' }}>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Icon name='md-calendar' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('ExtratoScreen')}>
+                <Icon name='ios-paper' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
+                <Icon name='walk' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
             </Container>
           </Root>
         )
@@ -194,26 +194,26 @@ class PasseiosClienteScreen extends Component {
                   </View>
                 </ScrollView>
               </Content>
-              <Footer style={{backgroundColor:'red'}}>
-                <FooterTab style={{backgroundColor:'red'}}>
-                  <Button>
-                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
-                  </Button>
-                </FooterTab>
-              </Footer>
+              <Footer style={{ backgroundColor: 'red' }}>
+            <FooterTab style={{ backgroundColor: 'red' }}>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Icon name='md-calendar' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('ExtratoScreen')}>
+                <Icon name='ios-paper' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
+                <Icon name='walk' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
             </Container>
           </Root>
         )
@@ -255,26 +255,26 @@ class PasseiosClienteScreen extends Component {
                   </List>
                 </ScrollView>
               </Content>
-              <Footer style={{backgroundColor:'red'}}>
-                <FooterTab style={{backgroundColor:'red'}}>
-                  <Button>
-                    <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Perfil</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='md-calendar' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Histórico</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='ios-paper' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Extrato</Text>
-                  </Button>
-                  <Button>
-                    <Icon name='walk' style={{color:'white'}}/>
-                    <Text style={{color:'white'}}>Passeios</Text>
-                  </Button>
-                </FooterTab>
-              </Footer>
+              <Footer style={{ backgroundColor: 'red' }}>
+            <FooterTab style={{ backgroundColor: 'red' }}>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Icon name='md-calendar' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('ExtratoScreen')}>
+                <Icon name='ios-paper' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
+                <Icon name='walk' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
             </Container>
           </Root>
         )

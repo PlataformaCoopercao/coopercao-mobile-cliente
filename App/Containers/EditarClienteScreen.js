@@ -140,7 +140,7 @@ class EditarClienteScreen extends Component {
           </List>
           
           <ListItem>
-            <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
+            <Button onPress={() => navigate('PerfilClienteScreen')} style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
               <Text>{strings('EditarClienteScreen.cancel')}</Text>
             </Button>
             <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
@@ -148,6 +148,26 @@ class EditarClienteScreen extends Component {
             </Button>
           </ListItem>
           </Content>
+          <Footer style={{ backgroundColor: 'red' }}>
+            <FooterTab style={{ backgroundColor: 'red' }}>
+              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
+                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Icon name='md-calendar' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('ExtratoScreen')}>
+                <Icon name='ios-paper' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.extract_button')}</Text>
+              </Button>
+              <Button onPress={() => navigate('PasseiosClienteScreen')}>
+                <Icon name='walk' style={{ color: 'white' }} />
+                <Text style={{ color: 'white' }}>{strings('Footer.walks_button')}</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
         </Container>
       );
     }
