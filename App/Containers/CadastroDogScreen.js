@@ -65,10 +65,10 @@ class CadastroDogScreen extends Component {
       <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
           <Left>
-            <Icon name='arrow-back'/>
+            <Icon name='arrow-back' style={{width: 40}} onPress={() => navigate('MeusCachorrosScreen')}/>
           </Left>
           <Body>
-            <Title style={{ color: Colors.snow}}>{strings('CadastroDogScreen.dogRegister')}</Title>
+            <Title style={{ left: -90, color: Colors.snow }}>{strings('CadastroDogScreen.dogRegister')}</Title>
           </Body>
         </Header>
         <Content padder style={{backgroundColor: 'white', alignContent:"stretch"}}>
@@ -106,7 +106,8 @@ class CadastroDogScreen extends Component {
               </Picker>
           </ListItem>
       </List>
-      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
+      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} 
+      onPress={() => navigate('MeusCachorrosScreen')}>
       <Text>{strings('CadastroDogScreen.register')}</Text>   
       </Button>
         </Content>

@@ -65,7 +65,7 @@ class  PerfilClienteScreen extends Component {
         <Container style={{ backgroundColor: 'red' }}>
           <Header style={{ backgroundColor: 'red', marginTop: 15 }}>
             <Left>
-              <Icon name='arrow-back' />
+              <Icon name='arrow-back' style={{width: 40}} onPress={() => navigate('MenuClienteScreen')}/>
             </Left>
             <Body>
               <Title style={{color: Colors.snow}}>{"Perfil"}</Title>

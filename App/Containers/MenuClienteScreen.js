@@ -58,7 +58,7 @@ class MenuClienteScreen extends Component {
         <Container style={{ backgroundColor: 'red' }}>
           <Header style={{ backgroundColor: 'red'}}>
             <Left>
-              <Icon name='arrow-back' />
+              
             </Left>
             <Body>
               <Title style={{color: Colors.snow}}>{strings('MenuClienteScreen.menu')}</Title>

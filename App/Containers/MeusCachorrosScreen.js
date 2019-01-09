@@ -110,13 +110,9 @@ class HistoricoClienteScreen extends Component {
           <Container style={{backgroundColor:'red'}}>
           <Header style={{ backgroundColor: 'red'}}>
             <Left>
-              <Icon name='arrow-back' />
+              <Icon name='arrow-back' style={{width: 40}} onPress={() => navigate('MenuClienteScreen')}/>
             </Left>
-            <Body>
-              <Title style={{color: Colors.snow}}>{"Meus Cachorros"}</Title>
-            </Body>
-            <Right>
-            </Right>
+            <Body><Title style={{ left: -90, color: Colors.snow }}>Meus Cachorros</Title></Body>
           </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
