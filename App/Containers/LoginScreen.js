@@ -8,7 +8,6 @@ import {Container, Header, Title, Content, Body, Text, Icon,
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
 import { StackNavigator, NavigationActions } from "react-navigation"
-import AuthService from '../../src/services/Auth'
 import firebase from 'firebase'
 import {  FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN,FIREBASE_DATABASE_URL,FIREBASE_PROJECT_ID,FIREBASE_STORAGE_BUCKET,FIREBASE_MESSENGER_SENDER_ID}
  from 'react-native-dotenv';
@@ -58,20 +57,6 @@ class LoginScreen extends Component {
 
   async componentDidMount() {
     AuthService.subscribeAuthChange(user => this.setState({ user }));
-  }
-
-  onLoginPress() {
-    this.setState({error: '', logando: true});
-
-    const{email, password} = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(() =>{
-      this.setState({error: '', logando: false});
-      this.state.logado = true;
-    })
-    .catch(() => {
-      this.setState({error: 'Falha na Autenticação', logando: false});
-    })
   }
 
   renderButtonOrLogando() {
@@ -153,16 +138,14 @@ class LoginScreen extends Component {
               </InputGroup>
           </ListItem>
       </List>
-      {this.renderButtonOrLogando()}
+      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => }>
+      <Text>{strings('LoginScreen.enter')}</Text>   
+      </Button>
       <Button onPress={() => navigate('CadastroClienteScreen')} style={{marginBottom: 20 ,alignSelf: 'center', backgroundColor:'gray' }}>
       <Text>{strings('LoginScreen.firstAccess')}</Text>
       </Button>
       <Button style={{ alignSelf: 'center', backgroundColor:'gray' }}>
       <Text>{strings('LoginScreen.forgotPassword')}</Text>
-      </Button>
-      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'blue' }} onPress={() => AuthService.loginWithFacebook}>
-      <Text>Entrar com o Facebook</Text>   
-      </Button>
         </Content>
         </Container>
         
