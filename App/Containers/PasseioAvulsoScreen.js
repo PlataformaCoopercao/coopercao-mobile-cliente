@@ -99,7 +99,7 @@ class TelaPasseioAvulsoScreen extends Component {
         <Root>
           <Container>
           <Header style={{ backgroundColor: 'red'}}>
-          <Left><Icon name='arrow-back' /></Left>
+          <Left><Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')}/></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Passeio Avulso</Title></Body>
           </Header>
             <Content padder>

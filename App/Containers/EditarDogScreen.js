@@ -65,7 +65,7 @@ class CadastroDogScreen extends Component {
       <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}}>
           <Left>
-            <Icon name='arrow-back'/>
+            <Icon name='arrow-back' onPress={() => navigate('MeusCachorrosScreen')}/>
           </Left>
           <Body>
             <Title style={{ color: Colors.snow}}>{strings('EditarDogScreen.editDog')}</Title>
@@ -106,10 +106,10 @@ class CadastroDogScreen extends Component {
               </Picker>
           </ListItem>
           <ListItem>
-      <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
+      <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
       <Text>{strings('EditarDogScreen.remove')}</Text>   
       </Button>
-      <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
+      <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
       <Text>{strings('EditarDogScreen.save')}</Text>   
       </Button>
       </ListItem>

@@ -64,7 +64,7 @@ class CadastroClienteScreen extends Component {
         <Container>
           <Header style={{ backgroundColor: 'red'}}>
             <Left>
-              <Icon name='arrow-back' />
+              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')} />
             </Left>
             <Body>
               <Title style={{color: Colors.snow}}>Cadastro</Title>

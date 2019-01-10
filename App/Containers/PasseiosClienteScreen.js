@@ -99,7 +99,7 @@ class PasseiosClienteScreen extends Component {
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
               <Header style={{ backgroundColor: 'red'}}>
-                <Left><Icon name='arrow-back' /></Left>
+                <Left><Icon name='arrow-back' onPress={() => this.setState({ clicked: "9" })} /></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Remarcar Passeio</Title></Body>
 
               </Header>
@@ -170,7 +170,7 @@ class PasseiosClienteScreen extends Component {
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
               <Header style={{ backgroundColor: 'red'}}>
-                <Left><Icon name='arrow-back' /></Left>
+                <Left><Icon name='arrow-back' onPress={() => this.setState({ clicked: "9" })}/> </Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Cancelar Passeio</Title></Body>
 
               </Header>
@@ -223,7 +223,7 @@ class PasseiosClienteScreen extends Component {
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
               <Header style={{ backgroundColor: 'red'}}>
-                <Left><Icon name='arrow-back' /></Left>
+                <Left><Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')}/></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Passeios Agendados</Title></Body>
 
               </Header>

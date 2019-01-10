@@ -42,7 +42,7 @@ class AvaliacaoScreen extends Component {
     if (this.state.fontLoading) {
       return (
         <Container style={{backgroundColor:'black'}}>
-          <Header style={{backgroundColor:'red', marginTop: 22}}/>
+          <Header style={{backgroundColor:'red', marginTop: 22}} />
         <Content>
           <Spinner color='red' />
         </Content>
@@ -53,7 +53,7 @@ class AvaliacaoScreen extends Component {
         <Root>
           <Container style={{backgroundColor:'black'}}>
           <Header style={{ backgroundColor: 'red'}}>
-          <Left><Icon name='arrow-back' /></Left>
+          <Left><Icon name='arrow-back' onPress={() => navigate('HistoricoClienteScreen')} /></Left>
                 <Body><Title style={{ left: -90, color: Colors.snow }}>Avalie o Passeador</Title></Body>
           </Header>
             <Content padder style={{backgroundColor: 'white'}}>

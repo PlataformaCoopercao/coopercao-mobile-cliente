@@ -113,6 +113,9 @@ class HistoricoClienteScreen extends Component {
       <Root>
           <Container style={{backgroundColor:'red'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}} searchBar rounded>
+          <Left>
+              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')} />
+            </Left>
             <Item>
               <Icon name="ios-search" />
               <Input placeholder={strings('HistoricoClienteScreen.search')}/>

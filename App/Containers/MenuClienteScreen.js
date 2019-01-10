@@ -84,6 +84,11 @@ class MenuClienteScreen extends Component {
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
+                <Button style={styles.botao} onPress={() => navigate('PacotesPasseioScreen')}>
+                  <Text>{'Agendar Pacotes'}</Text>
+                </Button>
+              </ListItem>
+              <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao} onPress={() => navigate('MeusCachorrosScreen')}>
                   <Text>{strings('MenuClienteScreen.myDogs')}</Text>
                 </Button>

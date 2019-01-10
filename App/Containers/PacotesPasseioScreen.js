@@ -8,6 +8,7 @@ import {Container, Header, Title, Content, Body, Text, Icon, CheckBox, Textarea,
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { StackNavigator } from "react-navigation"
+import { strings } from '../locales/i18n';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -70,6 +71,7 @@ class PacotesPasseioScreen extends Component {
     this.setState({ fontLoading: false });
   }
   render () {
+    const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
         <Container>
@@ -84,7 +86,7 @@ class PacotesPasseioScreen extends Component {
         <Container>
           <Header style={{backgroundColor:'red'}}>
             <Left>
-              <Icon name='arrow-back'/>
+              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')}/>
             </Left>
             <Body>
               <Title style={{color: Colors.snow, left: -90}}>Agendar Pacote</Title>

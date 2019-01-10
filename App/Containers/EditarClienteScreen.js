@@ -65,7 +65,7 @@ class EditarClienteScreen extends Component {
         <Container>
           <Header style={{ backgroundColor: 'red'}}>
             <Left>
-              <Icon name='arrow-back' />
+              <Icon name='arrow-back' onPress={() => navigate('PerfilClienteScreen')}/>
             </Left>
             <Body>
               <Title style={{color: Colors.snow}}>{strings('EditarClienteScreen.edit')}</Title>
@@ -143,7 +143,7 @@ class EditarClienteScreen extends Component {
             <Button onPress={() => navigate('PerfilClienteScreen')} style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
               <Text>{strings('EditarClienteScreen.cancel')}</Text>
             </Button>
-            <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
+            <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('PerfilClienteScreen')}>
               <Text>{strings('EditarClienteScreen.save')}</Text>
             </Button>
           </ListItem>
