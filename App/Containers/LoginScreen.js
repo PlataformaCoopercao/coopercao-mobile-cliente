@@ -8,6 +8,9 @@ import {Container, Header, Title, Content, Body, Text, Icon,
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
 import { StackNavigator, NavigationActions } from "react-navigation"
+import AuthService from '../../src/services/Auth'
+import firebase from 'firebase'
+
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
@@ -20,7 +23,8 @@ class LoginScreen extends Component {
     this.state = {
       fontLoading: true, // to load font in expo
       clicked: '',
-      edited: ''
+      edited: '',
+      user: firebase.user | null
     };
   }
 
@@ -33,6 +37,11 @@ class LoginScreen extends Component {
     });
     this.setState({ fontLoading: false });
   }
+
+  async componentDidMount() {
+    AuthService.subscribeAuthChange(user => this.setState({ user }));
+  }
+
   render () {
     const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
@@ -44,7 +53,16 @@ class LoginScreen extends Component {
         </Content>
       </Container>
       );
-    } else {
+    }
+    else if (this.state.user) {
+      return (
+        <View style={styles.container}>
+          <Text>You are logged in!</Text>
+          <Button onPress={AuthService.logout} title='Logout' />
+        </View>
+      );
+    }
+     else {
     return (
         // <KeyboardAvoidingView behavior='position'>
         //   <View style={styles.logoContainer} >
@@ -103,6 +121,9 @@ class LoginScreen extends Component {
       <Text>{strings('LoginScreen.forgotPassword')}</Text>
       </Button>
       </Right>
+      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'blue' }} onPress={() => AuthService.loginWithFacebook}>
+      <Text>Entrar com o Facebook</Text>   
+      </Button>
         </Content>
         </Container>
         
