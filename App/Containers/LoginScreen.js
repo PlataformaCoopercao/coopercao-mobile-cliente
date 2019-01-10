@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ScrollView, KeyboardAvoidingView, View } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Title, Content, Body, Text, Icon,
   Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
@@ -10,12 +10,25 @@ import { Colors } from '../Themes/'
 import { StackNavigator, NavigationActions } from "react-navigation"
 import AuthService from '../../src/services/Auth'
 import firebase from 'firebase'
+import {  FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN,FIREBASE_DATABASE_URL,FIREBASE_PROJECT_ID,FIREBASE_STORAGE_BUCKET,FIREBASE_MESSENGER_SENDER_ID}
+ from 'react-native-dotenv';
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 // Styles
 import styles from './Styles/LoginScreenStyle'
+
+
+firebase.initializeApp({
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  databaseURL: FIREBASE_DATABASE_URL,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSENGER_SENDER_ID
+});
+
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -24,7 +37,12 @@ class LoginScreen extends Component {
       fontLoading: true, // to load font in expo
       clicked: '',
       edited: '',
-      user: firebase.user | null
+      user: firebase.user | null,
+      email: '',
+      password: '',
+      error: '',
+      logando: false,
+      logado: false
     };
   }
 
@@ -42,6 +60,32 @@ class LoginScreen extends Component {
     AuthService.subscribeAuthChange(user => this.setState({ user }));
   }
 
+  onLoginPress() {
+    this.setState({error: '', logando: true});
+
+    const{email, password} = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(() =>{
+      this.setState({error: '', logando: false});
+      this.state.logado = true;
+    })
+    .catch(() => {
+      this.setState({error: 'Falha na Autenticação', logando: false});
+    })
+  }
+
+  renderButtonOrLogando() {
+    if (this.state.logando) {
+      return <Text> Entrando... </Text>
+    }
+    return <View>
+      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => this.onLoginPress()}>
+      <Text>{strings('LoginScreen.enter')}</Text>   
+      </Button>
+    </View>
+  }
+
+
   render () {
     const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
@@ -54,12 +98,14 @@ class LoginScreen extends Component {
       </Container>
       );
     }
-    else if (this.state.user) {
+    //else if (this.state.user) {
+    //  return (
+    //    navigate('MenuClienteScreen')
+    //  );
+    //}
+    else if (this.state.logado) {
       return (
-        <View style={styles.container}>
-          <Text>You are logged in!</Text>
-          <Button onPress={AuthService.logout} title='Logout' />
-        </View>
+        navigate('MenuClienteScreen')
       );
     }
      else {
@@ -98,29 +144,22 @@ class LoginScreen extends Component {
         <List>
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('LoginScreen.email')} />
+                  <Input placeholder={strings('LoginScreen.email')} onChangeText={email => this.state.email = email}/>
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('LoginScreen.password')} secureTextEntry={true} />
+                  <Input placeholder={strings('LoginScreen.password')} secureTextEntry={true} onChangeText={pass => this.state.password = pass}/>
               </InputGroup>
           </ListItem>
       </List>
-      <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }} onPress={() => navigate('MenuClienteScreen')}>
-      <Text>{strings('LoginScreen.enter')}</Text>   
-      </Button>
-      <Left>
-      <Button onPress={() => navigate('CadastroClienteScreen')} style={{ marginTop: 5, marginBottom: 5, backgroundColor:'gray' }}>
+      {this.renderButtonOrLogando()}
+      <Button onPress={() => navigate('CadastroClienteScreen')} style={{marginBottom: 20 ,alignSelf: 'center', backgroundColor:'gray' }}>
       <Text>{strings('LoginScreen.firstAccess')}</Text>
       </Button>
-      </Left>
-      <Body/>
-      <Right>
-      <Button style={{ marginTop: 5, marginBottom: 5, backgroundColor:'gray' }}>
+      <Button style={{ alignSelf: 'center', backgroundColor:'gray' }}>
       <Text>{strings('LoginScreen.forgotPassword')}</Text>
       </Button>
-      </Right>
       <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'blue' }} onPress={() => AuthService.loginWithFacebook}>
       <Text>Entrar com o Facebook</Text>   
       </Button>
