@@ -26,9 +26,17 @@ class CadastroClienteScreen extends Component {
       results: {
           items: [],
       },
+      nome: '',
       email: '',
       senha: '',
-      senhaConfirmacao: ''
+      senhaConfirmacao: '',
+      CEP: '',
+      rua: '',
+      numero: '',
+      bairro: '',
+      complemento: '',
+      telefone: ''
+
     };
   }
   //onValueChange(value: string) {
@@ -51,7 +59,29 @@ class CadastroClienteScreen extends Component {
     });
   }
 
-  
+  submit() {
+
+    //FALTA CPF, BIRTH_DATE E PHOTOURL ?
+    let address= {}
+    address.area = this.state.bairro,
+    address.CEP = this.state.CEP,
+    address.compl = this.state.complemento,
+    address.num = this.state.numero,
+    address.street = this.state.rua;
+    let collection ={}
+    collection.name = this.state.nome,
+    collection.email = this.state.email,
+    collection.address = address,
+    collection.phoneNumber = this.state.telefone,
+    collection.key = 
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/registerClient';
+    fetch(url,{
+      method: 'POST',
+      body: JSON.stringify(collection),
+      
+    })
+  }
+
   // required to load native-base font in expo
   async componentWillMount() {
     await Font.loadAsync({
@@ -93,7 +123,7 @@ class CadastroClienteScreen extends Component {
           <List>
             <ListItem>
               <InputGroup>
-                <Input placeholder="Nome"/>
+                <Input placeholder="Nome" onChangeText={(text) => {this.setState({nome: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
@@ -116,28 +146,28 @@ class CadastroClienteScreen extends Component {
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder="CEP"/>
+                <Input placeholder="CEP" onChangeText={(text) => {this.setState({CEP: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder="Rua"/>
+                <Input placeholder="Rua" onChangeText={(text) => {this.setState({rua: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder="Nº"/>
-                <Input placeholder="Bairro"/>
+                <Input placeholder="Nº" onChangeText={(text) => {this.setState({numero: text})}}/>
+                <Input placeholder="Bairro" onChangeText={(text) => {this.setState({bairro: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder="Complemento"/>
+                <Input placeholder="Complemento" onChangeText={(text) => {this.setState({complemento: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder="Telefone para contato"/>
+                <Input placeholder="Telefone para contato" onChangeText={(text) => {this.setState({telefone: text})}}/>
               </InputGroup>
             </ListItem>
           </List>
