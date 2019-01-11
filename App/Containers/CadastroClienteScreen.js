@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Title, Content, Body, Text, Icon,
   Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
@@ -8,9 +8,7 @@ import {Container, Header, Title, Content, Body, Text, Icon,
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { StackNavigator } from "react-navigation"
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
-
+import * as firebase from 'firebase';
 // Styles
 import { Images, Colors } from '../Themes';
 import { TextInput } from 'react-native-gesture-handler';
@@ -23,16 +21,33 @@ class CadastroClienteScreen extends Component {
       fontLoading: true, // to load font in expo
       clicked: '',
       edited: '',
-      selectedItem: undefined,
-      selected: 'key0',
+      //selectedItem: undefined,
+      //selected: 'key0',
       results: {
           items: [],
       },
+      email: '',
+      senha: '',
+      senhaConfirmacao: ''
     };
   }
-  onValueChange(value: string) {
-    this.setState({
-      selected: value
+  //onValueChange(value: string) {
+   // this.setState({
+  //    selected: value
+  //  });
+  //}
+
+  onCadastrarPress = () => {
+    if (this.state.senha !== this.state.senhaConfirmacao) {
+      Alert.alert("Senhas não estão iguais");
+      return;
+    }
+
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.senha)
+    .then(() => {
+
+    }, (error) => {
+      Alert.alert(error.message);
     });
   }
 
@@ -83,17 +98,20 @@ class CadastroClienteScreen extends Component {
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder="Email"/>
+                <Input placeholder="Email" keyboardType='email-address' autoCapitalize='none' autoCorrect={false}
+                 onChangeText={(text) => {this.setState({email: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input secureTextEntry={true} placeholder="Senha"/>
+                <Input secureTextEntry={true} autoCapitalize='none' autoCorrect={false}
+                 placeholder="Senha" onChangeText={(text) => {this.setState({senha: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input secureTextEntry={true} placeholder="Confirmação de senha"/>
+                <Input secureTextEntry={true} autoCapitalize='none' autoCorrect={false}
+                 placeholder="Confirmação de senha" onChangeText={(text) => {this.setState({senhaConfirmacao: text})}}/>
               </InputGroup>
             </ListItem>
             <ListItem>
@@ -125,7 +143,7 @@ class CadastroClienteScreen extends Component {
           </List>
           
 
-          <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
+          <Button onPress={this.onCadastrarPress} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>
           <Text>Cadastrar</Text>
           </Button>
           <Button onPress={() => navigate('LoginScreen')} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor:'red' }}>

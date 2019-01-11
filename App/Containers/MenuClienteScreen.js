@@ -17,6 +17,7 @@ import { Images, Colors } from '../Themes';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './Styles/MenuClienteScreenStyle.js';
 import { Dropdown } from 'react-native-material-dropdown';
+import * as firebase from 'firebase';
 
 class MenuClienteScreen extends Component {
   constructor(props) {
@@ -31,6 +32,12 @@ class MenuClienteScreen extends Component {
       selected: value
     });
   }
+
+  onLogoffPress = () => {
+    firebase.auth().signOut();
+    this.props.navigation.navigate('LoginScreen');
+  }
+
   // required to load native-base font in expo
   async componentWillMount() {
     await Font.loadAsync({
@@ -109,7 +116,7 @@ class MenuClienteScreen extends Component {
                 </Button>
               </ListItem>
             </List>
-            <Button style={styles.botao} onPress={() => navigate('LoginScreen')}>
+            <Button style={styles.botao} onPress={this.onLogoffPress}>
               <Text>{strings('MenuClienteScreen.logoff')}</Text>
             </Button>
           </Content>
