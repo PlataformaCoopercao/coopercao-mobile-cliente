@@ -25,6 +25,7 @@
   "dependencies": {
     "@expo/vector-icons": "^8.0.0",
     "apisauce": "^0.14.3",
+    "axios": "^0.18.0",
     "expo": "^30.0.0",
     "firebase": "^5.7.2",
     "format-json": "^1.0.3",
