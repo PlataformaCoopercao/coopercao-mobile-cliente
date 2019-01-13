@@ -22,8 +22,8 @@ class MenuClienteScreen extends Component {
     this.state = {
       uid: firebase.auth().currentUser.uid,
       fontLoading: true, // to load font in expo
-      nome: " ",
-      uri: " "
+      nome: '',
+      uri: ''
     };
   }
 
@@ -40,10 +40,17 @@ class MenuClienteScreen extends Component {
 
   getClientData () {
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
-    .then(response => this.setState({nome: response.data.name, uri: response.data.photoUrl})).catch((error) => {Alert.alert(error.message)});
-    this.forceUpdate()    
+    .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL})).catch((error) => {Alert.alert(error.message)});
+    this.update()
   }
   
+  update () {
+    if(this.state.uri == null || this.state.uri == ' '){
+      this.setState({uri: 'https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'})
+    }
+    this.forceUpdate()
+  }
+
   // required to load native-base font in expo
   async componentDidMount(){
     this.getClientData();
@@ -62,7 +69,7 @@ class MenuClienteScreen extends Component {
     if (this.state.fontLoading) {
       return (
         <Container>
-          <Header style={{ backgroundColor: 'red'}}/>
+          <Header style={{ backgroundColor: 'red', marginTop: 15 }}/>
           <Content>
             <Spinner color='red' />
           </Content>

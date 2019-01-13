@@ -1,25 +1,19 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import { Alert } from 'react-native'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-  CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
-  Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup
+  Left, Button, List, Footer, FooterTab, Item, Input,
+  Picker, Spinner, Thumbnail, ListItem, InputGroup
 } from 'native-base'
-import { Font, AppLoading, Expo } from "expo"
-import { StackNavigator } from "react-navigation"
+import { Font } from "expo"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 import axios from 'axios';
 import * as firebase from 'firebase';
 // Styles
-import { Images, Colors } from '../Themes';
-import { TextInput } from 'react-native-gesture-handler';
-import styles from './Styles/CadastroDogScreenStyles';
-import { Dropdown } from 'react-native-material-dropdown';
+import { Colors } from '../Themes';
 
 class CadastroDogScreen extends Component {
   constructor(props) {

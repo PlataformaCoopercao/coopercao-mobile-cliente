@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import { connect } from 'react-redux'
-import {Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-   CardItem, List, Footer, FooterTab, Badge, Spinner, Form, Item, Label, Input, ListItem, Thumbnail, InputGroup
+import {Container, Header, Content, Body, Text, Left, Right,
+  Button, List, Spinner, Input, ListItem, Thumbnail, InputGroup
 } from 'native-base'
-import { Font, AppLoading, Expo } from "expo"
-import { Colors } from '../Themes/'
-import { StackNavigator, NavigationActions } from "react-navigation"
+import { Font } from "expo"
 import { strings } from '../locales/i18n';
 import * as firebase from 'firebase';
 // Styles
@@ -49,7 +46,7 @@ class LoginScreen extends Component {
     if (this.state.fontLoading) {
       return (
         <Container>
-        <Header />
+        <Header style={{ backgroundColor: 'red', marginTop: 15 }}/>
         <Content>
           <Spinner color='red' />
         </Content>

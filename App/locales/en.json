@@ -105,12 +105,19 @@
         "menu": "Menu",
         "welcome": "Welcome, ",
         "scheduledWalks": "Scheduled Walks",
+        "schedulePackages": "Schedule Packages",
         "askWalk": "Ask for Walk",
         "myDogs": "My Dogs",
         "walksHistory": "Walks History",
         "profile": "Profile",
         "invoice": "Invoice",
         "logoff": "Logoff"
+    },
+    "PerfilClienteScreen":{
+        "homePhone": "Home Phone: ",
+        "birthDate": "Birth Date: ",
+        "address": "Address: ",
+        "email": "Email: "
     },
     "EditarClienteScreen":{
         "edit": "Edit Profile",
