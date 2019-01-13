@@ -1,29 +1,29 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-  CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
-  Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup
+  Left, Right, Button, List, Footer, FooterTab, Spinner,
+  Thumbnail, ListItem
 } from 'native-base'
-import { Font, AppLoading, Expo } from "expo"
-import { StackNavigator } from "react-navigation"
+import { Font} from "expo"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 // Styles
-import { Images, Colors } from '../Themes';
-import { TextInput } from 'react-native-gesture-handler';
+import { Colors } from '../Themes';
 import styles from './Styles/MenuClienteScreenStyle.js';
-import { Dropdown } from 'react-native-material-dropdown';
+import axios from 'axios';
 import * as firebase from 'firebase';
 
 class MenuClienteScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: firebase.auth().currentUser.uid,
       fontLoading: true, // to load font in expo
+      nome: " ",
+      uri: " "
     };
   }
 
@@ -38,23 +38,31 @@ class MenuClienteScreen extends Component {
     this.props.navigation.navigate('LoginScreen');
   }
 
+  getClientData () {
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
+    .then(response => this.setState({nome: response.data.name, uri: response.data.photoUrl})).catch((error) => {Alert.alert(error.message)});
+    this.forceUpdate()    
+  }
+  
   // required to load native-base font in expo
-  async componentWillMount() {
+  async componentDidMount(){
+    this.getClientData();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
-    this.setState({ fontLoading: false });
+    this.setState({ fontLoading: false});
   }
+
+  
 
   render() {
     const {navigate} = this.props.navigation;
-    const uri = "https://pbs.twimg.com/media/DahEyvzVQAAizMF.jpg";
     if (this.state.fontLoading) {
       return (
         <Container>
-          <Header />
+          <Header style={{ backgroundColor: 'red'}}/>
           <Content>
             <Spinner color='red' />
           </Content>
@@ -77,8 +85,8 @@ class MenuClienteScreen extends Component {
           <Content padder style={{ backgroundColor: 'white', alignContent: "stretch" }}>
             <List>
               <ListItem style={{ alignSelf: 'center', alignContent: 'center', flexDirection: 'column' }}>
-                <Thumbnail style={{ height: 120, width: 120 }} large source={{ uri: uri }} />
-                <Text>{strings('MenuClienteScreen.welcome')}Alex Cimo</Text>
+                <Thumbnail style={{ height: 120, width: 120 }} large source={{ uri: this.state.uri }} />
+                <Text>{strings('MenuClienteScreen.welcome')}{this.state.nome}</Text>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao} onPress={() => navigate('PasseiosClienteScreen')}>
