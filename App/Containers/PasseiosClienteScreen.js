@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView, View, TouchableOpacity } from 'react-native'
+import { ScrollView, Alert, View, FlatList} from 'react-native'
 import { connect } from 'react-redux'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import moment from 'moment'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Form, Textarea, Root, Button, ActionSheet, Subtitle, Card, CardItem, List, Footer, FooterTab, Badge, Spinner
+  Left, Form, Textarea, Root, Button, ActionSheet, Card,
+  CardItem, List, Footer, FooterTab, Spinner, ListItem
 } from 'native-base'
-import { Font, AppLoading, Expo } from "expo"
+import { Font } from "expo"
 import { Colors } from '../Themes/'
 import { strings } from '../locales/i18n';
+import axios from 'axios';
+import * as firebase from 'firebase';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 
@@ -19,19 +22,10 @@ import styles from './Styles/PasseiosClienteScreenStyle'
 var BUTTONS = ["Remarcar Passeio", "Cancelar Passeio", "Voltar"];
 var DESTRUCTIVE_INDEX = 1;
 var CANCEL_INDEX = 2;
-const dataArrayPasseios = [
-  'Data: 12/12/2018    Horário: 10:00\nCão: Barghest\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Garmr\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Will\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: CuSith\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Fenrir\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Inugami\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0',
-  'Data: 12/12/2018    Horário: 10:00\nCão: Anubis\nCusto: R$20,00\nPasseador: Amon\nRua dos Bobos, nº 0'
-];
-var tam = dataArrayPasseios.length
+var passeiosAlocados = [];
+var passeiosAbertos = [];
 
 class PasseiosClienteScreen extends Component {
-
 
   constructor(props) {
     super(props);
@@ -40,8 +34,30 @@ class PasseiosClienteScreen extends Component {
       clicked: 9,
       edited: '',
       chosenDate: '',
-      isVisible: false
+      isVisible: false,
+      dataArrayPasseios: []
     };
+  }
+
+  getPasseiosAgendados(){
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getPasseiosAgendados', {ownerKey: firebase.auth().currentUser.uid})
+    .then((response) => {
+      if(response.data != null){
+
+        for(x = 0; x < response.data.length; x++){
+          for(y = 0; y < response.data[x].length; y++){
+            this.state.dataArrayPasseios[y] =
+            'Cachorro: '+ response.data[x][y].dog.name + 
+            '\nData: '+ response.data[x][y].date + '  Horário: '+ response.data[x][y].time
+            
+          }
+        }
+        this.forceUpdate()
+      }else{
+        console.log("Não tem passeios")
+      }
+    }
+    ).catch((error) => {Alert.alert(error.message)});
   }
 
   handlePicker = (datetime) => {
@@ -68,7 +84,8 @@ class PasseiosClienteScreen extends Component {
   }
 
   // required to load native-base font in expo
-  async componentWillMount() {
+  async componentDidMount() {
+    this.getPasseiosAgendados();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -77,15 +94,24 @@ class PasseiosClienteScreen extends Component {
     this.setState({ fontLoading: false });
   }
 
-  componentWillUpdate() {
-
+  renderRow ({ item }) {
+    return (
+      <ListItem
+        avatar={<Avatar
+                  rounded
+                  source={item.dog.photoUrl && {uri: item.dog.photoUrl}}
+                  title={item.key}
+                />}
+        title={item.dog.name}
+      />
+    )
   }
 
   render() {
     const { navigate } = this.props.navigation;
     if (this.state.fontLoading) {
       return (
-        <Container style={{ backgroundColor: 'red' }}>
+        <Container>
           <Header style={{ backgroundColor: 'red', marginTop: 22 }} />
           <Content>
             <Spinner color='red' />
@@ -98,9 +124,9 @@ class PasseiosClienteScreen extends Component {
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
-              <Header style={{ backgroundColor: 'red'}}>
-                <Left><Icon name='arrow-back' onPress={() => this.setState({ clicked: "9" })} /></Left>
-                <Body><Title style={{ left: -90, color: Colors.snow }}>Remarcar Passeio</Title></Body>
+            <Header style={{ backgroundColor: 'red', marginTop: 25}}>
+                <Left><Icon style={{ marginHorizontal: 10}} name='arrow-back' onPress={() => this.setState({ clicked: "9" })} /></Left>
+                <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('PasseiosClienteScreen.rescheduleWalk')}</Title></Body>
 
               </Header>
               <Content padder style={{ backgroundColor: 'white' }}>
@@ -115,7 +141,7 @@ class PasseiosClienteScreen extends Component {
                     />
                   </View>
                   <View style={styles.inputContainer}>
-                    <Text style={styles.inputText}>Escolha data e hora:</Text>
+                    <Text style={styles.inputText}>{strings('PasseiosClienteScreen.chooseDateTime')}</Text>
                     <View style={styles.flexContainer}>
                       <Text onPress={this.showPicker}
                         style={styles.input} editable={false} selectTextOnFocus={false}>
@@ -124,7 +150,7 @@ class PasseiosClienteScreen extends Component {
                     </View>
                   </View>
                   <View style={{ paddingTop: 10, paddingBottom: 10 }}>
-                    <Text style={styles.inputText}>Justificativa: </Text>
+                    <Text style={styles.inputText}>{strings('PasseiosClienteScreen.justification')}</Text>
                     <Form>
                       <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Terei que remarcar o passeio pois...' />
                     </Form>
@@ -133,10 +159,10 @@ class PasseiosClienteScreen extends Component {
                     <Button style={styles.botaoCancela} onPress={() => {
                                   this.setState({ clicked: "9" });
                                 }}>
-                      <Text style={{ color: 'white', fontSize: 16 }}>Voltar</Text>
+                      <Text style={{ color: 'white', fontSize: 16 }}>{strings('PasseiosClienteScreen.back')}</Text>
                     </Button>
                     <Button style={styles.botaoConfirma}>
-                      <Text style={{ color: 'white', fontSize: 16 }}>Remarcar</Text>
+                      <Text style={{ color: 'white', fontSize: 12 }}>{strings('PasseiosClienteScreen.reschedule')}</Text>
                     </Button>
                   </View>
                 </ScrollView>
@@ -169,27 +195,24 @@ class PasseiosClienteScreen extends Component {
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
-              <Header style={{ backgroundColor: 'red'}}>
-                <Left><Icon name='arrow-back' onPress={() => this.setState({ clicked: "9" })}/> </Left>
-                <Body><Title style={{ left: -90, color: Colors.snow }}>Cancelar Passeio</Title></Body>
-
+            <Header style={{ backgroundColor: 'red', marginTop: 25}}>
+                <Left><Icon style={{ marginHorizontal: 10}} name='arrow-back' onPress={() => this.setState({ clicked: "9" })}/> </Left>
+                <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('PasseiosClienteScreen.cancelWalk')}</Title></Body>
               </Header>
               <Content padder style={{ backgroundColor: 'white' }}>
                 <ScrollView>
                   <View style={{ paddingTop: 10, paddingBottom: 10 }}>
-                    <Text style={styles.inputText}>Justificativa: </Text>
+                    <Text style={styles.inputText}>{strings('PasseiosClienteScreen.justification')}</Text>
                     <Form>
-                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Estou cancelando o passeio porque...' />
+                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Estou cancelando o passeio porque...'/>
                     </Form>
                   </View>
                   <View style={styles.espalhar}>
-                    <Button style={styles.botaoCancela} onPress={() => {
-                                  this.setState({ clicked: "9" });
-                                }}>
-                      <Text style={{ color: 'white', fontSize: 16 }}>Voltar</Text>
+                    <Button style={styles.botaoCancela} onPress={() => {this.setState({ clicked: "9" })}}>
+                      <Text style={{ color: 'white', fontSize: 16 }}>{strings('PasseiosClienteScreen.back')}</Text>
                     </Button>
                     <Button style={styles.botaoConfirma}>
-                      <Text style={{ color: 'white', fontSize: 16 }}>Cancelar</Text>
+                      <Text style={{ color: 'white', fontSize: 16 }}>{strings('PasseiosClienteScreen.cancel')}</Text>
                     </Button>
                   </View>
                 </ScrollView>
@@ -217,19 +240,17 @@ class PasseiosClienteScreen extends Component {
             </Container>
           </Root>
         )
-        // -------------------------- FIM DA TELA DE CANCELAR PASSEIO
       } else {
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
-              <Header style={{ backgroundColor: 'red'}}>
-                <Left><Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')}/></Left>
-                <Body><Title style={{ left: -90, color: Colors.snow }}>Passeios Agendados</Title></Body>
-
+              <Header style={{ backgroundColor: 'red', marginTop: 25}}>
+                <Left><Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')}/></Left>
+                <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('PasseiosClienteScreen.scheduledWalks')}</Title></Body>
               </Header>
               <Content padder style={{ backgroundColor: 'white' }}>
                 <ScrollView>
-                  <List dataArray={dataArrayPasseios}
+                  <List dataArray={this.state.dataArrayPasseios}
                     renderRow={(item) =>
                       <Card>
                         <CardItem style={{ justifyContent: 'space-between' }}>

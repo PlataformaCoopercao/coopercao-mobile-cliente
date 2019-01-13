@@ -18,7 +18,7 @@ import PerfilClienteScreen from '../Containers/PerfilClienteScreen.js'
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
-const PrimaryNav = createBottomTabNavigator({
+const PrimaryNav = createStackNavigator({
   LoginScreen: { screen: LoginScreen },
   CadastroDogScreen: { screen: CadastroDogScreen},
   HistoricoClienteScreen: { screen: HistoricoClienteScreen},

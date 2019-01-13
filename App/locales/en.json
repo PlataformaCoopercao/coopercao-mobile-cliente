@@ -133,5 +133,15 @@
         "phone": "Phone: ",
         "cancel": "Cancel",
         "save": "Save"
+    },
+    "PasseiosClienteScreen":{
+        "rescheduleWalk": "Reschedule Walk",
+        "chooseDateTime": "Choose Date and Time: ",
+        "justification": "Justification: ",
+        "reschedule": "Reschedule",
+        "back": "Back",
+        "cancel": "Cancel",
+        "scheduledWalks": "Scheduled Walks",
+        "cancelWalk": "Cancel Walk"
     }
   }

@@ -107,7 +107,7 @@ class MenuClienteScreen extends Component {
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao} onPress={() => navigate('PacotesPasseioScreen')}>
-                  <Text>{'Agendar Pacotes'}</Text>
+                  <Text>{strings('MenuClienteScreen.schedulePackages')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>

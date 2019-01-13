@@ -56,7 +56,7 @@ class LoginScreen extends Component {
     return (
         <Container>
           <Content style={{alignContent:"stretch"}}>
-          <Thumbnail style={{alignSelf:'center', height: 250, width: 250}} source={require('../Images/logoCoopercao.png')}/>
+          <Thumbnail style={{alignSelf:'center', height: 250, width: 250, marginVertical: 15}} source={require('../Images/logoCoopercao.png')}/>
         <List>
           <ListItem>
               <InputGroup>
