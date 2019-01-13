@@ -1,12 +1,22 @@
 import '../Config';
 import DebugConfig from '../Config/DebugConfig';
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React, {
+  Component
+} from 'react';
+import {
+  Provider
+} from 'react-redux';
 import RootContainer from './RootContainer';
 import createStore from '../Redux';
 import * as firebase from 'firebase';
-import {  FIREBASE_API_KEY, FIREBASE_AUTH_DOMAIN,FIREBASE_DATABASE_URL,FIREBASE_PROJECT_ID,FIREBASE_STORAGE_BUCKET,FIREBASE_MESSENGER_SENDER_ID}
- from 'react-native-dotenv';
+import {
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_DATABASE_URL,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSENGER_SENDER_ID
+} from 'react-native-dotenv';
 
 // create our store
 const store = createStore()
@@ -28,7 +38,7 @@ class App extends Component {
       isAuthenticated: false,
     };
 
-    if(!firebase.apps.length) {
+    if (!firebase.apps.length) {
       firebase.initializeApp({
         apiKey: FIREBASE_API_KEY,
         authDomain: FIREBASE_AUTH_DOMAIN,
@@ -42,20 +52,28 @@ class App extends Component {
   }
 
   onAuthStateChanged = (user) => {
-    this.setState({isAuthenticationReady: true});
-    this.setState({isAuthenticated: !!user});
+    this.setState({
+      isAuthenticationReady: true
+    });
+    this.setState({
+      isAuthenticated: !!user
+    });
   }
 
-  render () {
-    return (
-      <Provider store={store}>
-        <RootContainer />
-      </Provider>
+  render() {
+    return ( <
+      Provider store = {
+        store
+      } >
+      <
+      RootContainer / >
+      <
+      /Provider>
     )
   }
 }
 
 // allow reactotron overlay for fast design in dev mode
-export default DebugConfig.useReactotron
-  ? console.tron.overlay(App)
-  : App
+export default DebugConfig.useReactotron ?
+  console.tron.overlay(App) :
+  App
