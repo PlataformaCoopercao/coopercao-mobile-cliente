@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 6520,
+  "packagerPid": 19908,
   "devToolsPort": 19002,
-  "expoServerNgrokUrl": "https://dz-zfh.anonymous.coopercao-mobile-cliente.exp.direct",
-  "packagerNgrokUrl": "https://packager.dz-zfh.anonymous.coopercao-mobile-cliente.exp.direct",
-  "ngrokPid": 8144
+  "expoServerNgrokUrl": "https://dz-zfh.anonymous.coopercao-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.dz-zfh.anonymous.coopercao-mobile.exp.direct",
+  "ngrokPid": 19048
 }
