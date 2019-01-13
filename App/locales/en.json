@@ -94,12 +94,24 @@
     },
     "ExtratoScreen":{
         "extract": "Extract",
-        "extractOf": "Extract of",
+        "extractOf": "Extract of Month",
         "expenses": "Expenses",
         "plannedWalks": "Planned Walks",
         "onewayWalk": "One-Way Walks",
         "penalties": "Penalties",
-        "total": "Total" 
+        "total": "Total",
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
     },
     "MenuClienteScreen":{
         "menu": "Menu",

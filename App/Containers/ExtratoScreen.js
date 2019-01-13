@@ -1,64 +1,64 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ScrollView} from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet,
-  Subtitle, Card, CardItem, List, Footer, FooterTab,
-  Badge, Spinner, Thumbnail, ListItem, Label, Item, Input
+  Left, Right, Root, Button, Card, CardItem, List, Footer,
+  FooterTab, Spinner, Label
 } from 'native-base'
-import { Font, AppLoading, Expo } from "expo"
+import { Font} from "expo"
 import { Colors } from '../Themes/'
-import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
-const uri = "https://randomuser.me/api/portraits/women/89.jpg";
-const feed = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.'
+import axios from 'axios';
+import * as firebase from 'firebase';
 
-// const Header = (props) => (
-//   <View style={styles.container}>
-//     <TextInput
-//       style={styles.input}
-//       placeholder="Procurar..."
-//       onChangeText={(text) => console.log('searching for ', text)}
-//     />
-//   </View>
-// );
+var data = new Date();
 
-// const Footer = (props) => (
-//   <View style={styles.container}>
-//    <TouchableOpacity style ={styles.btnEntrar} >
-//             <Text style={styles.textEntrar}>Voltar</Text>
-//     </TouchableOpacity>
-//   </View>
-// );
-
-const meses = [
-  'Janeiro',
-  'Fevereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novembro',
-  'Dezembro',
-]
 class HistoricoClienteScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       fontLoading: true, // to load font in expo
       clicked: '',
-      edited: ''
+      edited: '',
+      uri: "https://randomuser.me/api/portraits/women/89.jpg",
+      valorAvulso: '',
+      valorPlano: '',
+      valorTotal: '',
+      mesAtual: data.getMonth(),
+      anoAtual: data.getFullYear()
     };
   }
+
+  getMes(mes){
+    switch(mes){
+      case 0: nomeDoMes = 'January'
+      case 1: nomeDoMes = 'February'
+      case 2: nomeDoMes = 'March'
+      case 3: nomeDoMes = 'April'
+      case 4: nomeDoMes = 'May'
+      case 5: nomeDoMes = 'June'
+      case 6: nomeDoMes = 'July'
+      case 7: nomeDoMes = 'August'
+      case 8: nomeDoMes = 'September'
+      case 9: nomeDoMes = 'October'
+      case 10: nomeDoMes = 'November'
+      case 11: nomeDoMes = 'December'
+    }
+
+  }
+
+  getExtrato(){
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getFaturaMensalCliente', {ownerKey: firebase.auth().currentUser.uid, mes: this.state.mesAtual+1, ano: this.state.anoAtual})
+    .then(response => this.setState({valorAvulso: response.data.pagamentosAvulsos, valorPlano: response.data.pagamentosPlano, valorTotal: response.data.pagamentosAvulsos + response.data.pagamentosPlano})).catch((error) => {Alert.alert(error.message)});
+    this.forceUpdate()
+  }
+
   // required to load native-base font in expo
-  async componentWillMount() {
+  async componentDidMount() {
+    this.getExtrato();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -66,18 +66,6 @@ class HistoricoClienteScreen extends Component {
     });
     this.setState({ fontLoading: false });
   }
-  
-  // alertItemName = (item) => {
-  //   Alert.alert(
-  //     'Feedback do Passeio',
-  //     item.feedback,
-  //     [
-  //       {text: 'OK', onPress: () => console.log('OK Pressed')},
-  //     ],
-  //     { cancelable: false }
-  //   )
-    
-  // }
   
   render() {
     const {navigate} = this.props.navigation;
@@ -92,70 +80,36 @@ class HistoricoClienteScreen extends Component {
       );
     } else {
     return (
-      // <ScrollView style={styles.scrollViewContainer}>
-      //   <Header></Header>
-      // <View>
-      //   {
-      //     this.state.names.map((item, index) => (
-      //       <TouchableOpacity
-      //         key={item.id}
-      //         style={styles.listContainer}
-      //         onPress={() => this.alertItemName(item)}>
-      //         <Text style={styles.text}>
-      //           {item.name}
-      //           {item.datetime}
-      //           {item.dono}
-      //           {item.duration}
-      //           {item.valor}
-      //         </Text>
-      //       </TouchableOpacity>
-      //     ))
-      //   }
-      // </View>
-      // <Text></Text>
-      // <Footer></Footer>
-      // </ScrollView>
       <Root>
-          <Container style={{backgroundColor:'black'}}>
-          <Header style={{ backgroundColor: 'red'}}>
-            <Left>
-              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')} />
-            </Left>
+          <Container style={{backgroundColor:'red'}}>
+          <Header style={{ backgroundColor: 'red', marginTop: 25}}>
+          <Left><Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')}/></Left>
             <Body>
-              <Title style={{color: Colors.snow}}>{strings('ExtratoScreen.extract')}</Title>
+              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('ExtratoScreen.extract')}</Title>
             </Body>
             <Right>
-
             </Right>
           </Header>
             <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView>
-                <List dataArray={meses}
-                  renderRow={(item) =>
-                    <Card> 
-                      <CardItem>
-                      <Left><Text>{strings('ExtratoScreen.extractOf')} {item}</Text></Left>
-                        <Right><Label>{strings('ExtratoScreen.expenses')}</Label></Right>
-                      </CardItem>
-                      <CardItem>
-                        <Left><Label>{strings('ExtratoScreen.plannedWalks')}</Label></Left>
-                        <Right><Label style={{color: 'red'}}>365,00 $</Label></Right>
-                      </CardItem>
-                      <CardItem>
-                        <Left><Label>{strings('ExtratoScreen.onewayWalk')}</Label></Left>
-                        <Right><Label style={{color: 'red'}}>150,00 $</Label></Right>
-                      </CardItem>
-                      <CardItem>
-                        <Left><Label>{strings('ExtratoScreen.penalties')}</Label></Left>
-                        <Right><Label style={{color: 'red'}}>35,00 $</Label></Right>
-                      </CardItem>
-                      <CardItem>
-                        <Left><Label>{strings('ExtratoScreen.total')}</Label></Left>
-                        <Right><Label style={{color: 'red'}}>550,00 $</Label></Right>
-                      </CardItem>
-                    </Card>
-                  }>
-                </List>
+                <Card> 
+                  <CardItem>
+                  <Left><Label>{strings('ExtratoScreen.extractOf')}</Label></Left>
+                    <Right><Label>{strings('ExtratoScreen.expenses')}</Label></Right>
+                  </CardItem>
+                  <CardItem>
+                    <Left><Label>{strings('ExtratoScreen.plannedWalks')}</Label></Left>
+                    <Right><Label style={{color: 'red'}}>{this.state.valorPlano} $</Label></Right>
+                  </CardItem>
+                  <CardItem>
+                    <Left><Label>{strings('ExtratoScreen.onewayWalk')}</Label></Left>
+                    <Right><Label style={{color: 'red'}}>{this.state.valorAvulso} $</Label></Right>
+                  </CardItem>
+                  <CardItem>
+                    <Left><Label>{strings('ExtratoScreen.total')}</Label></Left>
+                    <Right><Label style={{color: 'red'}}>{this.state.valorTotal} $</Label></Right>
+                  </CardItem>
+                </Card>
               </ScrollView>
             </Content>
             <Footer style={{ backgroundColor: 'red' }}>
