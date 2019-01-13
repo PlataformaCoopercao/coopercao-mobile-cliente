@@ -27,11 +27,11 @@ class MenuClienteScreen extends Component {
     };
   }
 
-  onValueChange(value: string) {
-    this.setState({
-      selected: value
-    });
-  }
+  //onValueChange(value: string) {
+  //  this.setState({
+  //    selected: value
+  //  });
+  //}
 
   onLogoffPress = () => {
     firebase.auth().signOut();

@@ -30,14 +30,15 @@ class CadastroDogScreen extends Component {
       obs: '0',
       owner: '0',
       photoUrl: '0',
-      port: 'key0',
+      port: 'mini',
+      portLabel: 'não definido',
       race: '0',
       vet_name: '0',
       vet_phone: '0',
       clicked: '',
       edited: '',
       selectedItem: undefined,
-      selected: 'key0',
+      selected: 'mini',
       results: {
         items: [],
       },
@@ -144,13 +145,13 @@ class CadastroDogScreen extends Component {
                   selectedValue={this.state.port}
                   onValueChange={(value) => {
                     //this.onValueChange.bind(this);
-                    this.setState({ port: value });
+                    this.setState({ port: value, portLabel: value.label });
                     }} >
-                  <Item label={strings('CadastroDogScreen.mini')} value="key0" />
-                  <Item label={strings('CadastroDogScreen.little')} value="key1" />
-                  <Item label={strings('CadastroDogScreen.medium')} value="key2" />
-                  <Item label={strings('CadastroDogScreen.big')} value="key3" />
-                  <Item label={strings('CadastroDogScreen.giant')} value="key4" />
+                  <Item label={strings('CadastroDogScreen.mini')} value="mini" />
+                  <Item label={strings('CadastroDogScreen.little')} value="little" />
+                  <Item label={strings('CadastroDogScreen.medium')} value="medium" />
+                  <Item label={strings('CadastroDogScreen.big')} value="big" />
+                  <Item label={strings('CadastroDogScreen.giant')} value="giant" />
                 </Picker>
               </ListItem>
             </List>
