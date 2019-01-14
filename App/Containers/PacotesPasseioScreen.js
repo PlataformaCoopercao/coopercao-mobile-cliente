@@ -100,7 +100,26 @@ class PacotesPasseioScreen extends Component {
       });
   }
 
-  postarPasseio(data,){
+  postarPasseio(data, temp){
+    var url =  'https://us-central1-coopercao-backend.cloudfunctions.net/newWalk';
+    console.log('{"walk": { "address": '+this.state.address+', "dog": '+this.state.dog+',"date": '+data+', "time": '+temp+', "value": '+'20'+', "walk_type":'+'Pacote A } }');
+    axios.post(url, {
+      walk: {
+        address: this.state.address,
+        dog : this.state.dog,
+        date : data,
+        time : temp,
+        value : '20',
+        walk_type : 'Pacote A'
+      }
+    })
+    .then(() => {
+      Alert.alert('Passeios agendados!');
+      this.props.navigation.navigate('MenuClienteScreen');
+    })
+    .catch((error) => {
+      Alert.alert(error.message);
+    });
 
   }
 
@@ -114,25 +133,81 @@ class PacotesPasseioScreen extends Component {
       for(j=0, k = weekday; j < 7; j++, k++){
         
          if(k==0 && this.state.sunday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaSun);
          }
          else if(k==1 && this.state.monday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaMon);
          }
          else if(k==2 && this.state.tuesday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaTue);
          }
          else if(k==3 && this.state.wednesday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaWed);
          }
          else if(k==4 && this.state.thursday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaThu);
          }
          else if(k==5 && this.state.friday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaFri);
          }
          else if(k==6 && this.state.saturday){
-
+          var day=data.getDate();
+          var month=data.getMonth();
+          month=month+1;
+          if((String(day)).length==1)
+          day='0'+day;
+          if((String(month)).length==1)
+          month='0'+month;
+          dateT=day+ '.' + month + '.' + data.getFullYear();
+          this.postarPasseio(dateT, this.state.horaSat);
          }
 
          data.setDate(data.getDate()+1);        
@@ -350,7 +425,8 @@ class PacotesPasseioScreen extends Component {
             <Form>
               <Textarea style={{ backgroundColor: 'lightgrey', borderColor: 'black' }} rowSpan={5} bordered dark placeholder="Deixe seus comentários aqui" />
             </Form>
-            <Button style={{ alignSelf: "center", marginTop: 20, marginBottom: 20, backgroundColor: 'red' }}>
+            <Button style={{ alignSelf: "center", marginTop: 20, marginBottom: 20, backgroundColor: 'red' }}
+            onPress={() => this.agendarPacote()}>
               <Text>Pedir pacote</Text>
             </Button>
           </Content>
