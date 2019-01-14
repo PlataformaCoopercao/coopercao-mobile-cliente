@@ -33,7 +33,7 @@ class PacotesPasseioScreen extends Component {
       selectedItem: undefined,
       selected: 'key0',
       weekSelected: '1',
-      dogSelected: 'dog0',
+      dogSelected: {},
       dogs: [],
       dog: 'Nenhum',
       address: {},
@@ -106,11 +106,12 @@ class PacotesPasseioScreen extends Component {
     axios.post(url, {
       walk: {
         address: this.state.address,
-        dog : this.state.dog,
+        dog : this.state.dogSelected,
         date : data,
         time : temp,
         value : '20',
-        walk_type : 'Pacote A'
+        walk_type : 'Pacote A',
+        owner_month_year : this.state.dogSelected.owner + '_'+ this.state.chosenDate.getMonth()+1 + '_' + this.state.chosenDate.getFullYear()
       }
     })
     .then(() => {
@@ -123,7 +124,15 @@ class PacotesPasseioScreen extends Component {
 
   }
 
+
+
   agendarPacote() {
+
+    for(i=0;i<resposta.length;i++){
+      if(i==this.state.dog){
+        this.state.dogSelected = resposta[i];
+      }
+    }
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/newWalk';
     this.getOwnerAddress();
     var weekday = this.state.chosenDate.getDay();
