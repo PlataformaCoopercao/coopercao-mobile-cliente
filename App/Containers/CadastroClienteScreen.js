@@ -109,13 +109,13 @@ class CadastroClienteScreen extends Component {
       );
     } else {
       return (
-        <Container>
+        <Container style={{ backgroundColor: 'red'}}>
           <Header style={{ backgroundColor: 'red' }}>
             <Left>
-              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')} />
+              <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
             </Left>
             <Body>
-              <Title style={{ color: Colors.snow }}>Cadastro</Title>
+              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>Cadastro</Title>
             </Body>
             <Right>
             </Right>

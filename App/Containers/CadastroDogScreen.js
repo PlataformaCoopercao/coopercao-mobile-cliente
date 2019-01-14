@@ -111,10 +111,10 @@ class CadastroDogScreen extends Component {
         <Container style={{ backgroundColor: 'red' }}>
           <Header style={{ backgroundColor: 'red', marginTop: 22 }}>
             <Left>
-              <Icon name='arrow-back' style={{ width: 40 }} onPress={() => navigate('MeusCachorrosScreen')} />
+              <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MeusCachorrosScreen')} />
             </Left>
             <Body>
-              <Title style={{ left: -90, color: Colors.snow }}>{strings('CadastroDogScreen.dogRegister')}</Title>
+              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('CadastroDogScreen.dogRegister')}</Title>
             </Body>
           </Header>
           <Content padder style={{ backgroundColor: 'white', alignContent: "stretch" }}>
@@ -162,9 +162,9 @@ class CadastroDogScreen extends Component {
           </Content>
           <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
                 <Icon name='md-person' type='Ionicons' style={{ color: 'white' }} />
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />

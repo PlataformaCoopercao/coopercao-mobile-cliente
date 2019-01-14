@@ -83,17 +83,12 @@ class PacotesPasseioScreen extends Component {
       );
     } else {
       return (
-        <Container>
-          <Header style={{backgroundColor:'red'}}>
-            <Left>
-              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')}/>
-            </Left>
-            <Body>
-              <Title style={{color: Colors.snow, left: -90}}>Agendar Pacote</Title>
-            </Body>
+        <Container style={{ backgroundColor: 'red' }}>
+          <Header style={{backgroundColor:'red', marginTop: 25}}>
+            <Left><Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')}/></Left>
+            <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>Agendar Pacote</Title></Body>
           </Header>
-
-          <Content style={{alignContent:"stretch"}}>
+          <Content style={{backgroundColor: 'white',alignContent:"stretch"}}>
           <List>
             <ListItem>
               <InputGroup>
@@ -268,9 +263,9 @@ class PacotesPasseioScreen extends Component {
 
           <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />

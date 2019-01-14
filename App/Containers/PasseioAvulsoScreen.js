@@ -6,7 +6,7 @@ import moment from 'moment'
 import { Dropdown } from 'react-native-material-dropdown';
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card, CardItem, List, Footer, FooterTab, Badge
+  Left, Root, Button, Footer, FooterTab
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
@@ -15,6 +15,7 @@ import { strings } from '../locales/i18n';
 // Styles
 import CheckBox from 'react-native-check-box'
 import styles from './Styles/PasseioAvulsoScreenStyle'
+import styles2 from './Styles/MenuClienteScreenStyle.js'
 import { Images, Colors } from '../Themes'
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -93,16 +94,14 @@ class TelaPasseioAvulsoScreen extends Component {
         }, {
           value: 'Pluto',
         }];
-
-
       return (
         <Root>
-          <Container>
-          <Header style={{ backgroundColor: 'red'}}>
-          <Left><Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')}/></Left>
-                <Body><Title style={{ left: -90, color: Colors.snow }}>Passeio Avulso</Title></Body>
+          <Container style={{ backgroundColor: 'red'}}>
+          <Header style={{ backgroundColor: 'red', marginTop: 25}}>
+          <Left><Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')}/></Left>
+                <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>Passeio Avulso</Title></Body>
           </Header>
-            <Content padder>
+            <Content padder style={{backgroundColor: 'white'}}>
               <ScrollView style={styles.container}>
                 <KeyboardAvoidingView behavior='position'>
                   <Text></Text>
@@ -125,7 +124,7 @@ class TelaPasseioAvulsoScreen extends Component {
                       </Text>
                     </View>
                   </View>
-          <View style={styles.dropdowns}>
+                  <View style={styles.dropdowns}>
 
                     <Dropdown
                       label={strings('PasseioAvulsoScreen.singleWalkQuestion')}
@@ -175,9 +174,9 @@ class TelaPasseioAvulsoScreen extends Component {
             </Content>
             <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />

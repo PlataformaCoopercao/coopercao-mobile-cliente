@@ -169,9 +169,9 @@ class PasseiosClienteScreen extends Component {
               </Content>
               <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />
@@ -219,9 +219,9 @@ class PasseiosClienteScreen extends Component {
               </Content>
               <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />
@@ -278,9 +278,9 @@ class PasseiosClienteScreen extends Component {
               </Content>
               <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />

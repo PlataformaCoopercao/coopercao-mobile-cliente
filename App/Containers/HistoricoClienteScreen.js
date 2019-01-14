@@ -112,9 +112,9 @@ class HistoricoClienteScreen extends Component {
       // </ScrollView>
       <Root>
           <Container style={{backgroundColor:'red'}}>
-          <Header style={{backgroundColor:'red', marginTop: 22}} searchBar rounded>
+          <Header style={{backgroundColor:'red', marginTop: 25}} searchBar rounded>
           <Left>
-              <Icon name='arrow-back' onPress={() => navigate('MenuClienteScreen')} />
+              <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
             </Left>
             <Item>
               <Icon name="ios-search" />
@@ -151,9 +151,9 @@ class HistoricoClienteScreen extends Component {
             </Content>
             <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />

@@ -16,7 +16,7 @@
         "placeHComments": "Leave your comments here"
       },
       "Footer":{
-        "profile_button": "Profile",
+        "menu_button": "Menu",
         "history_button": "History",
         "extract_button": "Extract",
         "walks_button" : "Walks",

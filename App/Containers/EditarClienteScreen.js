@@ -62,13 +62,13 @@ class EditarClienteScreen extends Component {
       );
     } else {
       return (
-        <Container>
-          <Header style={{ backgroundColor: 'red'}}>
+        <Container style={{ backgroundColor: 'red'}}>
+          <Header style={{ backgroundColor: 'red', marginTop: 25}}>
             <Left>
-              <Icon name='arrow-back' onPress={() => navigate('PerfilClienteScreen')}/>
+              <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('PerfilClienteScreen')}/>
             </Left>
             <Body>
-              <Title style={{color: Colors.snow}}>{strings('EditarClienteScreen.edit')}</Title>
+              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('EditarClienteScreen.edit')}</Title>
             </Body>
             <Right>
             </Right>
@@ -143,16 +143,16 @@ class EditarClienteScreen extends Component {
             <Button onPress={() => navigate('PerfilClienteScreen')} style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }}>
               <Text>{strings('EditarClienteScreen.cancel')}</Text>
             </Button>
-            <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('PerfilClienteScreen')}>
+            <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MenuClienteScreen')}>
               <Text>{strings('EditarClienteScreen.save')}</Text>
             </Button>
           </ListItem>
           </Content>
           <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('PerfilClienteScreen')}>
+              <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.profile_button')}</Text>
+                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />
