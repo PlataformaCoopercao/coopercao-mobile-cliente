@@ -110,7 +110,7 @@ class CadastroClienteScreen extends Component {
     } else {
       return (
         <Container style={{ backgroundColor: 'red'}}>
-          <Header style={{ backgroundColor: 'red' }}>
+          <Header style={{ marginTop: 25, backgroundColor: 'red' }}>
             <Left>
               <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
             </Left>
@@ -121,7 +121,7 @@ class CadastroClienteScreen extends Component {
             </Right>
           </Header>
 
-          <Content style={{ alignContent: "stretch" }}>
+          <Content style={{ alignContent: "stretch", backgroundColor: "white" }}>
             <Thumbnail style={{ alignSelf: "center" }} large source={{ uri: uri }} />
             <List>
               <ListItem>
@@ -175,13 +175,14 @@ class CadastroClienteScreen extends Component {
               </ListItem>
             </List>
 
-
-            <Button onPress={this.onCadastrarPress} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor: 'red' }}>
-              <Text>Cadastrar</Text>
-            </Button>
-            <Button onPress={() => navigate('LoginScreen')} style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20, backgroundColor: 'red' }}>
+            <ListItem>
+            <Button onPress={() => navigate('LoginScreen')} style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, marginBottom: 20, backgroundColor: 'red' }}>
               <Text>Cancelar</Text>
             </Button>
+            <Button onPress={this.onCadastrarPress} style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, marginBottom: 20, backgroundColor: 'red' }}>
+              <Text>Cadastrar</Text>
+            </Button>
+            </ListItem>
           </Content>
         </Container>
       );

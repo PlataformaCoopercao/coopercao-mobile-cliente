@@ -13,7 +13,7 @@ import { Colors } from '../Themes';
 import axios from 'axios';
 import * as firebase from 'firebase';
 
-class CadastroDogScreen extends Component {
+class EditarDogScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,7 +78,8 @@ class CadastroDogScreen extends Component {
   }
   
   // required to load native-base font in expo
-  async componentWillMount() {
+  async componentDidMount() {
+    this.updateDog;
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -116,17 +117,17 @@ class CadastroDogScreen extends Component {
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input value ={this.state.dog.name} placeholder={strings('CadastroDogScreen.placeHName')} />
+                  <Input value={this.state.name} placeholder={strings('CadastroDogScreen.placeHName')} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input value={this.state.dog.age}placeholder={strings('CadastroDogScreen.placeHAge')} />
+                  <Input value={this.state.age}placeholder={strings('CadastroDogScreen.placeHAge')} />
               </InputGroup>
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input value={this.state.dog.race}placeholder={strings('CadastroDogScreen.placeHRace')}/>
+                  <Input value={this.state.race}placeholder={strings('CadastroDogScreen.placeHRace')}/>
               </InputGroup>
           </ListItem>
           <ListItem>
@@ -187,4 +188,4 @@ const mapDispatchToProps = (dispatch) => {
   return {
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CadastroDogScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(EditarDogScreen)
