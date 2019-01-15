@@ -27,6 +27,15 @@ class AvaliacaoScreen extends Component {
       edited: '',
     };
   }
+  
+  addAvaliacao(){
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateDog';
+    axios.post(url, { owner: firebase.auth().currentUser.uid })
+      .then((response) => {
+        resposta = response.data;
+
+      })
+  }
 
   async componentWillMount() {
     await Font.loadAsync({

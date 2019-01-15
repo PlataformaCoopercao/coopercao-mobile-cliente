@@ -12,8 +12,10 @@ import { Colors } from '../Themes/'
 import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
+import { Alert } from 'react-native'
+import axios from 'axios';
+import * as firebase from 'firebase';
 import { strings } from '../locales/i18n';
-const uri = "https://randomuser.me/api/portraits/women/89.jpg";
 const feed = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.'
 
 // const Header = (props) => (
@@ -34,26 +36,53 @@ const feed = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ege
 //   </View>
 // );
 
-const names = [
-  'Passeador: Biliana\nData: 12/09/2018\nHorário: 08:00 Duração: 1:00:00\nValor: R$: 15,00\nCão: Barghest\nRua dos Zubobos, nº 0',
-  'Passeador: Biliana\nData: 12/11/2018\nHorário: 07:30 Duração: 1:00:00\nValor: R$: 15,00\nCão: Garmr\nRua dos Bobos, nº 0',
-  'Passeador: Biliana\nData: 12/10/2018\nHorário: 11:00 Duração: 1:00:00\nValor: R$: 15,00\nCão: Will\nRua dos Bobos, nº 0',
-  'Passeador: Biliana\nData: 12/02/2018\nHorário: 10:00 Duração: 1:00:00\nValor: R$: 15,00\nCão: CuSith\nRua dos Bobos, nº 0',
-  'Passeador: Biliana\nData: 12/01/2018\nHorário: 15:20 Duração: 1:00:00\nValor: R$: 15,00\nCão: Fenrir\nRua dos Bobos, nº 0',
-  'Passeador: Biliana\nData: 12/06/2018\nHorário: 10:15 Duração: 1:00:00\nValor: R$: 15,00\nCão: Inugami\nRua dos Bobos, nº 0',
-  'Passeador: Biliana\nData: 12/04/2018\nHorário: 17:45 Duração: 1:00:00\nValor: R$: 15,00\nCão: Anubis\nRua dos Bobos, nº 0'
-]
 class HistoricoClienteScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       fontLoading: true, // to load font in expo
-      clicked: '',
-      edited: ''
+      clicked: 9,
+      isVisible: false,
+      dataArrayPasseios: [[], []],
+      remount: 1
     };
+  }
+
+  getHistoricoPasseios(){
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getHistoricoCliente', {ownerKey: firebase.auth().currentUser.uid})
+    .then((response) => {
+      if(response.data != null){
+        for(var x = 0; x < response.data.length; x++){
+            this.state.dataArrayPasseios[0][x] =
+            'Passeador: '+ response.data[x].walker.name + 
+            '\nData: '+ response.data[x].date + '\nHorário: '+ response.data[x].time +
+            '\nDuração: '+ response.data[x].walk_duration + '\nValor: '+ response.data[x].value +
+            '\nCão: '+ response.data[x].dog.name + '\nRua: '+ response.data[x].address.street;
+            this.state.dataArrayPasseios[1][x] = response.data[x].walker.photoUrl;
+            console.log(response.data[x].walker.name, response.data[x].date, response.data[x].time, response.data[x].value, response.data[x].dog.name, response.data[x].address.street);
+          
+        }
+        this.forceUpdate();
+      }else{
+        console.log("Não tem passeios");
+      }
+    }
+    ).catch((error) => {
+      Alert.alert(error.message);
+    });
+  }
+
+   
+  forceRemount() {
+    this.setState({
+      remount: this.state.remount + 1
+    });
+    this.componentWillMount();
+    this.render();
   }
   // required to load native-base font in expo
   async componentWillMount() {
+    this.getHistoricoPasseios();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -73,76 +102,46 @@ class HistoricoClienteScreen extends Component {
   //   )
     
   // }
+
   
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
     if (this.state.fontLoading) {
       return (
         <Container>
-        <Header />
-        <Content>
-          <Spinner color='red' />
-        </Content>
-      </Container>
+          <Header />
+          <Content>
+            <Spinner color='red' />
+          </Content>
+        </Container>
       );
     } else {
-    return (
-      // <ScrollView style={styles.scrollViewContainer}>
-      //   <Header></Header>
-      // <View>
-      //   {
-      //     this.state.names.map((item, index) => (
-      //       <TouchableOpacity
-      //         key={item.id}
-      //         style={styles.listContainer}
-      //         onPress={() => this.alertItemName(item)}>
-      //         <Text style={styles.text}>
-      //           {item.name}
-      //           {item.datetime}
-      //           {item.dono}
-      //           {item.duration}
-      //           {item.valor}
-      //         </Text>
-      //       </TouchableOpacity>
-      //     ))
-      //   }
-      // </View>
-      // <Text></Text>
-      // <Footer></Footer>
-      // </ScrollView>
-      <Root>
-          <Container style={{backgroundColor:'red'}}>
-          <Header style={{backgroundColor:'red', marginTop: 25}} searchBar rounded>
-          <Left>
-              <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
-            </Left>
-            <Item>
-              <Icon name="ios-search" />
-              <Input placeholder={strings('HistoricoClienteScreen.search')}/>
-            </Item>
-            <Right>
-            <Button transparent>
-              <Text>{strings('HistoricoClienteScreen.search')}</Text>
-            </Button>
-            </Right>
-          </Header>
-            <Content padder style={{backgroundColor: 'white'}}>
+      return (
+        <Root>
+          <Container style={{ backgroundColor: 'red' }}>
+            <Header style={{ backgroundColor: 'red', marginTop: 25}}>
+              <Left>
+                <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
+              </Left>
+              <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>Histórico de passeios</Title></Body>
+            </Header>
+            <Content padder style={{ backgroundColor: 'white' }}>
               <ScrollView>
-                <Card>
-                  <CardItem>
-                    <Left><Icon type='Ionicons' name='ios-card' /></Left>
-                    <Body><Label>855,00</Label></Body>
-                    <Right><Label>NOV</Label></Right>
-                  </CardItem>
-                </Card>
-                <List dataArray={names}
+                <List dataArray={this.state.dataArrayPasseios[0]}
                   renderRow={(item) =>
-                    <Card> 
-                      <CardItem style={{justifyContent: 'space-between'}}>
-                      <Left>
-                        <Thumbnail source={{uri: uri}}/>
-                      </Left>
-                      <Text>{item}</Text>
+                    <Card>
+                      <CardItem style={{}} >
+                        <Left>
+                        <Thumbnail source={{ uri:this.state.dataArrayPasseios[1][this.state.dataArrayPasseios[0].indexOf(item)]}} />
+                        </Left>
+                        <Body>
+                          <Text style={{}}>{item}</Text>
+                        </Body>
+                        <Right>
+                          <Button onPress={() => navigate('AvaliacaoScreen', {passeio: this.state.dataArrayPasseios[0][this.state.dataArrayPasseios[0].indexOf(item)]})} trasparent style={{ backgroundColor: 'white', marginTop: 10 }}>
+                          <Icon name='ios-medal' type='Ionicons' style={{color:'black'}}/>
+                        </Button>
+                        </Right>
                       </CardItem>
                     </Card>
                   }>
@@ -151,9 +150,9 @@ class HistoricoClienteScreen extends Component {
             </Content>
             <Footer style={{ backgroundColor: 'red' }}>
             <FooterTab style={{ backgroundColor: 'red' }}>
-              <Button onPress={() => navigate('MenuClienteScreen')}>
+            <Button onPress={() => navigate('MenuClienteScreen')}>
               <Icon name='md-person' type='Ionicons' style={{color:'white'}}/>
-                <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
+              <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
               </Button>
               <Button onPress={() => navigate('HistoricoClienteScreen')}>
                 <Icon name='md-calendar' style={{ color: 'white' }} />
