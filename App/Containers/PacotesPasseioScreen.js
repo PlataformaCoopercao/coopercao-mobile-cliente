@@ -37,6 +37,7 @@ class PacotesPasseioScreen extends Component {
       dogs: [],
       dog: 'Nenhum',
       address: {},
+      obs: '',
       chosenDate: new Date(),
       monday: false,
       tuesday: false,
@@ -85,7 +86,6 @@ class PacotesPasseioScreen extends Component {
       .catch((error) => {
         Alert.alert(error.message);
       });
-    // this.setState({ dogs: ['Gucci', 'Supreme'] });
   }
 
   getOwnerAddress() {
@@ -102,7 +102,7 @@ class PacotesPasseioScreen extends Component {
 
   postarPasseio(data, temp){
     var url =  'https://us-central1-coopercao-backend.cloudfunctions.net/newWalk';
-    console.log('{"walk": { "address": '+this.state.address+', "dog": '+this.state.dog+',"date": '+data+', "time": '+temp+', "value": '+'20'+', "walk_type":'+'Pacote A } }');
+    //console.log('{"walk": { "address": '+this.state.address+', "dog": '+this.state.dog+',"date": '+data+', "time": '+temp+', "value": '+'20'+', "walk_type":'+'Pacote A } }');
     axios.post(url, {
       walk: {
         address: this.state.address,
@@ -111,7 +111,8 @@ class PacotesPasseioScreen extends Component {
         time : temp,
         value : '20',
         walk_type : 'Pacote A',
-        owner_month_year : this.state.dogSelected.owner + '_'+ this.state.chosenDate.getMonth()+1 + '_' + this.state.chosenDate.getFullYear()
+        owner_month_year : this.state.dogSelected.owner + '_'+ this.state.chosenDate.getMonth()+1 + '_' + this.state.chosenDate.getFullYear(),
+        obs_client: this.state.obs
       }
     })
     .then(() => {
@@ -432,7 +433,8 @@ class PacotesPasseioScreen extends Component {
               </Item>
             </Body>
             <Form>
-              <Textarea style={{ backgroundColor: 'lightgrey', borderColor: 'black' }} rowSpan={5} bordered dark placeholder="Deixe seus comentários aqui" />
+              <Textarea style={{ backgroundColor: 'lightgrey', borderColor: 'black' }} rowSpan={5} bordered dark placeholder="Deixe seus comentários aqui"
+              onChangeText={(text) => { this.setState({ obs: text }) }} />
             </Form>
             <Button style={{ alignSelf: "center", marginTop: 20, marginBottom: 20, backgroundColor: 'red' }}
             onPress={() => this.agendarPacote()}>

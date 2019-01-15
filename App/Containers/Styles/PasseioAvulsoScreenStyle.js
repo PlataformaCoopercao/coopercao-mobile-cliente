@@ -26,6 +26,7 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   inputEndereco: {
+    marginTop: 15,
     width: WIDTH - 55,
     height: 45,
     borderRadius: 10,
