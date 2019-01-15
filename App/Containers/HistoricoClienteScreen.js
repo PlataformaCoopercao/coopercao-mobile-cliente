@@ -138,7 +138,7 @@ class HistoricoClienteScreen extends Component {
                           <Text style={{}}>{item}</Text>
                         </Body>
                         <Right>
-                          <Button onPress={() => navigate('AvaliacaoScreen', {passeio: this.state.dataArrayPasseios[0][this.state.dataArrayPasseios[0].indexOf(item)]})} trasparent style={{ backgroundColor: 'white', marginTop: 10 }}>
+                          <Button onPress={() => navigate('AvaliacaoScreen', {passeio: this.state.dataArrayPasseios[0][this.state.dataArrayPasseios[0].indexOf(item)],})} trasparent style={{ backgroundColor: 'white', marginTop: 10 }}>
                           <Icon name='ios-medal' type='Ionicons' style={{color:'black'}}/>
                         </Button>
                         </Right>
