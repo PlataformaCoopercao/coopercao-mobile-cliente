@@ -10,40 +10,16 @@ import {
 import { Font, AppLoading, Expo } from "expo"
 import { Alert } from 'react-native'
 import { Colors } from '../Themes/'
-import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 import axios from 'axios';
 import * as firebase from 'firebase';
-const uri = "https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg";
-const feed = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla at risus. Quisque purus magna, auctor et, sagittis ac, posuere eu, lectus. Nam mattis, felis ut adipiscing.'
 
-// const Header = (props) => (
-//   <View style={styles.container}>
-//     <TextInput
-//       style={styles.input}
-//       placeholder="Procurar..."
-//       onChangeText={(text) => console.log('searching for ', text)}
-//     />
-//   </View>
-// );
-
-// const Footer = (props) => (
-//   <View style={styles.container}>
-//    <TouchableOpacity style ={styles.btnEntrar} >
-//             <Text style={styles.textEntrar}>Voltar</Text>
-//     </TouchableOpacity>
-//   </View>
-// );
-
-const names = [
-  'Nome: Terry  Idade: 2anos\nRaça: Husky  Porte: Grande',
-  'Nome: Andy  Idade: 2anos\nRaça: Husky  Porte: Grande',
-  'Nome: Joe  Idade: 2anos\nRaça: Husky  Porte: Grande',
-];
-const resposta = [];
-class HistoricoClienteScreen extends Component {
+var BUTTONS = ["Editar Cachorro", "Deletar Cachorro" , "Voltar"];
+var DESTRUCTIVE_INDEX = 2;
+var CANCEL_INDEX = 3;
+class MeusCachorrosScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,6 +42,7 @@ class HistoricoClienteScreen extends Component {
     this.setState({ fontLoading: false });
   }
 
+  
   getDogs() {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/getListDog';
     axios.post(url, { owner: firebase.auth().currentUser.uid })
@@ -93,18 +70,6 @@ class HistoricoClienteScreen extends Component {
     this.render();
   }
 
-  // alertItemName = (item) => {
-  //   Alert.alert(
-  //     'Feedback do Passeio',
-  //     item.feedback,
-  //     [
-  //       {text: 'OK', onPress: () => console.log('OK Pressed')},
-  //     ],
-  //     { cancelable: false }
-  //   )
-
-  // }
-
   render() {
     const { navigate } = this.props.navigation;
     if (this.state.fontLoading) {
@@ -131,11 +96,16 @@ class HistoricoClienteScreen extends Component {
                 <List dataArray={this.state.dogs[0]}
                   renderRow={(item) =>
                     <Card>
-                      <CardItem style={{}} >
+                      <CardItem style={{ justifyContent: 'space-between' }}>
                         <Left>
                           <Thumbnail source={{ uri: this.state.dogs[1][this.state.dogs[0].indexOf(item)] }} />
-                        </Left><Body>
-                          <Text style={{}}>{item}</Text>
+                        </Left>
+                        <Body>
+                          <Text>{item}</Text>
+                          <Button
+                            onPress={() => navigate('EditarDogScreen')}>
+                            <Icon type='Ionicons' name='ios-paw'/>
+                          </Button>
                         </Body>
                       </CardItem>
                     </Card>
@@ -157,7 +127,7 @@ class HistoricoClienteScreen extends Component {
                   <Icon name='md-person' type='Ionicons' style={{ color: 'white' }} />
                   <Text style={{ color: 'white' }}>{strings('Footer.menu_button')}</Text>
                 </Button>
-                <Button onPress={() => navigate('HistoricoClienteScreen')}>
+                <Button onPress={() => navigate('MeusCachorrosScreen')}>
                   <Icon name='md-calendar' style={{ color: 'white' }} />
                   <Text style={{ color: 'white' }}>{strings('Footer.history_button')}</Text>
                 </Button>
@@ -190,5 +160,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HistoricoClienteScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(MeusCachorrosScreen)
 

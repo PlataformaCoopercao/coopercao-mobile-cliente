@@ -27,12 +27,6 @@ class MenuClienteScreen extends Component {
     };
   }
 
-  //onValueChange(value: string) {
-  //  this.setState({
-  //    selected: value
-  //  });
-  //}
-
   onLogoffPress = () => {
     firebase.auth().signOut();
     this.props.navigation.navigate('LoginScreen');
@@ -41,13 +35,6 @@ class MenuClienteScreen extends Component {
   getClientData () {
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
     .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL})).catch((error) => {Alert.alert(error.message)});
-    this.update()
-  }
-  
-  update () {
-    if(this.state.uri == null || this.state.uri == ' '){
-      this.setState({uri: 'https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'})
-    }
     this.forceUpdate()
   }
 

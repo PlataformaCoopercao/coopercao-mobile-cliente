@@ -1,27 +1,38 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-   CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
-   Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup
+  Left, Button, List, Footer, FooterTab, Item, Input,
+   Picker, Spinner, Thumbnail, ListItem, InputGroup
 } from 'native-base'
-import { Font, AppLoading, Expo } from "expo"
-import { StackNavigator } from "react-navigation"
+import { Font } from "expo"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 // Styles
-import { Images, Colors } from '../Themes';
-import { TextInput } from 'react-native-gesture-handler';
-import styles from './Styles/CadastroDogScreenStyles';
-import { Dropdown } from 'react-native-material-dropdown';
+import { Colors } from '../Themes';
+import axios from 'axios';
+import * as firebase from 'firebase';
 
 class CadastroDogScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       fontLoading: true, // to load font in expo
+      age: '0',
+      gender: '0',
+      habits: '0',
+      interaction_dogs: '0',
+      interaction_external: '0',
+      interaction_people: '0',
+      name: '0',
+      obs: '0',
+      owner: '0',
+      photoUrl: '0',
+      port: '',
+      portLabel: '',
+      race: '0',
+      vet_name: '0',
+      vet_phone: '0',
       clicked: '',
       edited: '',
       selectedItem: undefined,
@@ -29,6 +40,7 @@ class CadastroDogScreen extends Component {
       results: {
           items: [],
       },
+      uri: 'https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg'
     };
   }
   onValueChange(value: string) {
@@ -37,6 +49,33 @@ class CadastroDogScreen extends Component {
     });
   }
 
+  updateDog(){
+    let dog = {}
+      dog.dogKey = 
+      dog.age = this.state.age,
+      dog.gender = 'M',
+      dog.habits = 'Normal',
+      dog.interaction_dogs = 'normal',
+      dog.interaction_external = 'normal',
+      dog.interaction_people = 'normal',
+      dog.name = this.state.name,
+      dog.obs = 'normal',
+      dog.owner = firebase.auth().currentUser.uid,
+      dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
+      dog.port = this.state.port,
+      dog.race = this.state.race,
+      dog.vet_name = 'João Carlos',
+      dog.vet_phone = '+558166666666';
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateDog';
+    axios.post(url, dog)
+      .then(() => {
+        Alert.alert('Cão atualizado com sucesso!');
+        this.props.navigation.navigate('MeusCachorrosScreen');
+      })
+      .catch((error) => {
+        Alert.alert(error.message);
+      }); 
+  }
   
   // required to load native-base font in expo
   async componentWillMount() {
@@ -50,7 +89,6 @@ class CadastroDogScreen extends Component {
 
   render () {
     const {navigate} = this.props.navigation;
-    const uri = "https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg";
     if (this.state.fontLoading) {
       return (
       <Container>
@@ -74,21 +112,21 @@ class CadastroDogScreen extends Component {
         <Content padder style={{backgroundColor: 'white', alignContent:"stretch"}}>
         <List>
           <ListItem style={{alignSelf:'center'}}>
-            <Thumbnail large source={{uri: uri}}/>
+            <Thumbnail large source={{uri: this.state.uri}}/>
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('CadastroDogScreen.placeHName')} />
+                  <Input value ={this.state.dog.name} placeholder={strings('CadastroDogScreen.placeHName')} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('CadastroDogScreen.placeHAge')} />
+                  <Input value={this.state.dog.age}placeholder={strings('CadastroDogScreen.placeHAge')} />
               </InputGroup>
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('CadastroDogScreen.placeHRace')}/>
+                  <Input value={this.state.dog.race}placeholder={strings('CadastroDogScreen.placeHRace')}/>
               </InputGroup>
           </ListItem>
           <ListItem>
@@ -107,7 +145,7 @@ class CadastroDogScreen extends Component {
           </ListItem>
           <ListItem>
       <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
-      <Text>{strings('EditarDogScreen.remove')}</Text>   
+      <Text>{strings('EditarDogScreen.remove')}</Text>
       </Button>
       <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
       <Text>{strings('EditarDogScreen.save')}</Text>   
