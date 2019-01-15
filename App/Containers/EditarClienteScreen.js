@@ -28,8 +28,6 @@ class EditarClienteScreen extends Component {
       fontLoading: true, // to load font in expo
       nome: '',
       email: '',
-      senha: '',
-      senhaConfirmacao: '',
       cpf: '',
       dataNascimento: '',
       cep: '',
@@ -46,7 +44,7 @@ class EditarClienteScreen extends Component {
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
     .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL, email: response.data.email,
             cpf: response.data.cpf, dataNascimento: response.data.birth_date, cep: response.data.address.cep, rua: response.data.address.street,
-            numero: response.data.address.num, bairro: response.data.address.area, complemento: response.data.address.compl,
+            numero: response.data.address.num, bairro: response.data.address.district, complemento: response.data.address.compl,
             telefone: response.data.phoneNumber})).catch((error) => {Alert.alert(error.message)});
     this.update()
   }
@@ -76,15 +74,17 @@ class EditarClienteScreen extends Component {
       address.num = this.state.numero,
       address.compl = this.state.complemento,
       address.area = this.state.bairro;
+    let client = {}
+      client.name = this.state.nome,
+      client.birth_date = this.state.dataNascimento,
+      client.cpf = this.state.CPF,
+      client.phoneNumber = this.state.telefone,
+      client.photoUrl = this.state.uri,
+      client.email = this.state.email,
+      client.address = address;
     let collection = {}
-      collection.name = this.state.nome,
-      collection.birth_date = this.state.dataNascimento,
-      collection.cpf = this.state.CPF,
-      collection.phoneNumber = this.state.telefone,
-      collection.photoUrl = this.state.uri,
-      collection.email = this.state.email,
-      collection.pass = this.state.senha,
-      collection.address = address;
+      collection.uid = firebase.auth().currentUser.uid,
+      collection.client = client;
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateClient';
     axios.post(url, collection)
       .then(() => {
@@ -158,18 +158,6 @@ class EditarClienteScreen extends Component {
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder={strings('EditarClienteScreen.password')} secureTextEntry={true} autoCapitalize='none' autoCorrect={false}
-                onChangeText={(text) => { this.setState({ senha: text }) }}/>
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Input placeholder={strings('EditarClienteScreen.passwordTwo')} secureTextEntry={true} autoCapitalize='none' autoCorrect={false}
-                onChangeText={(text) => { this.setState({ senhaConfirmacao: text }) }}/>
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
                 <Input placeholder={strings('EditarClienteScreen.cpf')} onChangeText={(text) => { this.setState({ cpf: text }) }}>
                 {this.state.cpf}</Input>
               </InputGroup>
@@ -200,7 +188,7 @@ class EditarClienteScreen extends Component {
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Input placeholder={strings('EditarClienteScreen.area')} onChangeText={(text) => { this.setState({ bairro: text }) }}>
+                <Input placeholder={strings('EditarClienteScreen.district')} onChangeText={(text) => { this.setState({ bairro: text }) }}>
                 {this.state.bairro}</Input>
               </InputGroup>
             </ListItem>
