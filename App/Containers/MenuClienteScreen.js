@@ -47,6 +47,7 @@ class MenuClienteScreen extends Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
     this.setState({ fontLoading: false});
+    this.forceUpdate()
   }
 
   

@@ -27,6 +27,7 @@ class MeusCachorrosScreen extends Component {
       clicked: '',
       edited: '',
       dogs: [[], []],
+      key:'',
       remount: 1
     };
   }
@@ -49,6 +50,7 @@ class MeusCachorrosScreen extends Component {
       .then((response) => {
         resposta = response.data;
         //console.warn(resposta);
+        this.state.key = resposta.dogKey;
         for (i = 0; i < response.data.length; i++) {
           this.state.dogs[0][i] =
             'Nome: ' + response.data[i].name + '\nIdade: ' + response.data[i].age +
@@ -102,8 +104,8 @@ class MeusCachorrosScreen extends Component {
                         </Left>
                         <Body>
                           <Text>{item}</Text>
-                          <Button
-                            onPress={() => navigate('EditarDogScreen')}>
+                          <Button transparent dark
+                            onPress={() => navigate('EditarDogScreen', {dogObj: this.state.key,})}>
                             <Icon type='Ionicons' name='ios-paw'/>
                           </Button>
                         </Body>

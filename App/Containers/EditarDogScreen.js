@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Title, Content, Body, Text, Icon,
   Left, Button, List, Footer, FooterTab, Item, Input,
@@ -18,6 +19,7 @@ class EditarDogScreen extends Component {
     super(props);
     this.state = {
       fontLoading: true, // to load font in expo
+      key: this.props.navigation.state.params.dogObj,
       age: '0',
       gender: '0',
       habits: '0',
@@ -38,7 +40,7 @@ class EditarDogScreen extends Component {
       selectedItem: undefined,
       selected: 'key0',
       results: {
-          items: [],
+        items: [],
       },
       uri: 'https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg'
     };
@@ -48,10 +50,11 @@ class EditarDogScreen extends Component {
       selected: value
     });
   }
-
+  
   updateDog(){
+    console.warn(this.props.navigation.state.params.dogObj)
     let dog = {}
-      dog.dogKey = 
+      dog.dogKey = this.state.key,
       dog.age = this.state.age,
       dog.gender = 'M',
       dog.habits = 'Normal',
@@ -74,12 +77,19 @@ class EditarDogScreen extends Component {
       })
       .catch((error) => {
         Alert.alert(error.message);
-      }); 
+      });
   }
   
+  getDogInfo(){
+    this.state.age = this.state.dogObj.age
+    this.state.name = this.state.dogObj.name
+    this.state.race = this.state.dogObj.race
+    this.state.key = this.state.dogObj.key
+  }
+
   // required to load native-base font in expo
   async componentDidMount() {
-    this.updateDog;
+    dogObj = this.props.navigation.getParam('dog', '0')
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -117,17 +127,17 @@ class EditarDogScreen extends Component {
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input value={this.state.name} placeholder={strings('CadastroDogScreen.placeHName')} />
+                  <Input placeholder={strings('CadastroDogScreen.placeHName')} onChangeText={(text) => { this.setState({name: text }) }} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input value={this.state.age}placeholder={strings('CadastroDogScreen.placeHAge')} />
+                  <Input placeholder={strings('CadastroDogScreen.placeHAge')} onChangeText={(text) => { this.setState({age: text }) }}/>
               </InputGroup>
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input value={this.state.race}placeholder={strings('CadastroDogScreen.placeHRace')}/>
+                  <Input placeholder={strings('CadastroDogScreen.placeHRace')} onChangeText={(text) => { this.setState({race: text }) }}/>
               </InputGroup>
           </ListItem>
           <ListItem>
@@ -148,7 +158,7 @@ class EditarDogScreen extends Component {
       <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
       <Text>{strings('EditarDogScreen.remove')}</Text>
       </Button>
-      <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
+      <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => this.updateDog()}>
       <Text>{strings('EditarDogScreen.save')}</Text>   
       </Button>
       </ListItem>
