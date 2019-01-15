@@ -104,7 +104,7 @@
         "myDogs": "Meus Cachorros",
         "walksHistory": "Histórico de Passeios",
         "profile": "Perfil",
-        "invoice": "Fatura",
+        "extract": "Fatura",
         "logoff": "Deslogar"
     },
     "EditarClienteScreen":{

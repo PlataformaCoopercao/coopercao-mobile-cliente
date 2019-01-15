@@ -113,7 +113,7 @@ class MenuClienteScreen extends Component {
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao} onPress={() => navigate('ExtratoScreen')}>
-                  <Text>{strings('MenuClienteScreen.invoice')}</Text>
+                  <Text>{strings('MenuClienteScreen.extract')}</Text>
                 </Button>
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
