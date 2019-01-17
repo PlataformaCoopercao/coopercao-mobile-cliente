@@ -116,7 +116,7 @@ class PacotesPasseioScreen extends Component {
       }
     })
     .then(() => {
-      Alert.alert('Passeios agendados!');
+      Alert.alert(strings("PacotesPasseioScreen.scheduledWalks"));
       this.props.navigation.navigate('MenuClienteScreen');
     })
     .catch((error) => {
@@ -257,13 +257,13 @@ class PacotesPasseioScreen extends Component {
       );
     } else {
       return (
-        <Container>
-          <Header style={{ backgroundColor: 'red' }}>
+        <Container style={{ backgroundColor: 'red' }}>
+          <Header style={{ backgroundColor: 'red', marginTop: 22 }}>
             <Left>
               <Icon name='arrow-back' style={{ width: 40 }} onPress={() => navigate('MenuClienteScreen')} />
             </Left>
             <Body>
-              <Title style={{ color: Colors.snow, left: -90 }}>Agendar Pacote</Title>
+              <Title style={{ color: Colors.snow, left: -90 }}>{strings('PacotesPasseioScreen.schedulePackage')}</Title>
             </Body>
           </Header>
 
@@ -280,7 +280,7 @@ class PacotesPasseioScreen extends Component {
                     modalTransparent={false}
                     animationType={"fade"}
                     androidMode={"default"}
-                    placeHolderText="Selecione a data inicial 📅"
+                    placeHolderText={strings("PacotesPasseioScreen.chooseDateTime")}
                     textStyle={{ color: "black" }}
                     placeHolderTextStyle={{ color: "grey" }}
                     onDateChange={this.setDate}
@@ -289,7 +289,7 @@ class PacotesPasseioScreen extends Component {
               </ListItem>
               <ListItem>
                 <Form>
-                  <Text>Quantidade de semanas</Text>
+                  <Text>{strings("PacotesPasseioScreen.weeksQuantity")}</Text>
                   <Picker
                     mode="dropdown"
                     selectedValue={this.state.weekSelected}
@@ -309,7 +309,7 @@ class PacotesPasseioScreen extends Component {
                 </Form>
               </ListItem>
               <ListItem>
-                <Text>Dias e horários:</Text>
+                <Text>{strings('PacotesPasseioScreen.dateTime')}</Text>
               </ListItem>
               <ListItem>
                 <CheckBox
@@ -318,10 +318,10 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Segunda-feira</Text>
+                  <Text>{strings("PacotesPasseioScreen.monday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaMon: text }) }}/>
                 </InputGroup>
               </ListItem>
@@ -332,10 +332,10 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Terça-feira</Text>
+                  <Text>{strings("PacotesPasseioScreen.tuesday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaTue: text }) }} />
                 </InputGroup>
               </ListItem>
@@ -346,10 +346,10 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Quarta-feira</Text>
+                  <Text>{strings("PacotesPasseioScreen.wednesday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaWed: text }) }}/>
                 </InputGroup>
               </ListItem>
@@ -360,10 +360,10 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Quinta-feira</Text>
+                  <Text>{strings("PacotesPasseioScreen.thursday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaThu: text }) }}/>
                 </InputGroup>
               </ListItem>
@@ -374,10 +374,10 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Sexta-feira</Text>
+                  <Text>{strings("PacotesPasseioScreen.friday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaFri: text }) }}/>
                 </InputGroup>
               </ListItem>
@@ -388,10 +388,10 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Sábado</Text>
+                  <Text>{strings("PacotesPasseioScreen.saturday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaSat: text }) }}/>
                 </InputGroup>
               </ListItem>
@@ -402,17 +402,17 @@ class PacotesPasseioScreen extends Component {
                   color="red"
                 />
                 <Body>
-                  <Text>Domingo</Text>
+                  <Text>{strings("PacotesPasseioScreen.sunday")}</Text>
                 </Body>
                 <InputGroup>
-                  <Text>Hora: </Text>
+                  <Text>{strings("PacotesPasseioScreen.hour")} </Text>
                   <Input placeholder='hh:mm; hh:mm;' onChangeText={(text) => { this.setState({ horaSun: text }) }}/>
                 </InputGroup>
               </ListItem>
               {/* A HORA DEVE SER SELECIONADA POR UM TIMEPICKER OU UTILIZANDO UMA MASK NO INPUT */}
               <ListItem>
                 <Form>
-                  <Text>Escolha seu cachorro</Text>
+                  <Text>{strings("PacotesPasseioScreen.chooseDog")}</Text>
                   <Picker
                     mode="dropdown"
                     selectedValue={this.state.dog}
@@ -429,16 +429,16 @@ class PacotesPasseioScreen extends Component {
             </List>
             <Body>
               <Item>
-                <Label customLabel>Observações</Label>
+                <Label customLabel>{strings("PacotesPasseioScreen.comments")}</Label>
               </Item>
             </Body>
             <Form>
-              <Textarea style={{ backgroundColor: 'lightgrey', borderColor: 'black' }} rowSpan={5} bordered dark placeholder="Deixe seus comentários aqui"
+              <Textarea style={{ backgroundColor: 'lightgrey', borderColor: 'black' }} rowSpan={5} bordered dark placeholder={strings("PacotesPasseioScreen.leaveComments")}
               onChangeText={(text) => { this.setState({ obs: text }) }} />
             </Form>
             <Button style={{ alignSelf: "center", marginTop: 20, marginBottom: 20, backgroundColor: 'red' }}
             onPress={() => this.agendarPacote()}>
-              <Text>Pedir pacote</Text>
+              <Text>{strings("PacotesPasseioScreen.askPackage")}</Text>
             </Button>
           </Content>
 

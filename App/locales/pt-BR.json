@@ -117,7 +117,7 @@
         "myDogs": "Meus Cachorros",
         "walksHistory": "Histórico de Passeios",
         "profile": "Perfil",
-        "extract": "Fatura",
+        "extract": "Extrato",
         "logoff": "Deslogar"
     },
     "PerfilClienteScreen":{
@@ -150,5 +150,23 @@
         "cancel": "Cancelar",
         "scheduledWalks": "Passeios agendados",
         "cancelWalk": "Cancelar Passeio"
+    },
+    "PacotesPasseioScreen":{
+        "schedulePackage": "Agendar Pacote",
+        "chooseDateTime": "Selecione a data inicial: 📅",
+        "chooseDog": "Escolha o cachorro: ",
+        "hour": "Hora: ",
+        "askPackage": "Pedir Pacote",
+        "scheduledWalks": "Passeios agendados",
+        "dateTime": "Data e Hora: ",
+        "monday": "Segunda-feira",
+        "tuesday": "Terça-feira",
+        "wednesday": "Quarta-feira",
+        "thursday": "Quinta-feira",
+        "friday": "Sexta-feira",
+        "saturday": "Sábado",
+        "sunday": "Domingo",
+        "comments": "Observações",
+        "leaveComments": "Deixe os comentários aqui"
     }
 }
