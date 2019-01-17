@@ -120,7 +120,7 @@ class PasseiosClienteScreen extends Component {
       );
     }
     else {
-      if (this.state.clicked == "Remarcar Passeio") { // ------------TELA REMARCAR PASSEIO
+      if (this.state.clicked == strings('PasseiosClienteScreen.rescheduleWalk')) { // ------------TELA REMARCAR PASSEIO
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
@@ -191,7 +191,7 @@ class PasseiosClienteScreen extends Component {
           </Root>
         )
         // ----------------FIM DA TELA DE REMARCAR  PASSEIO
-      } else if (this.state.clicked == "Cancelar Passeio") {  //-------------------- TELA CANCELAR PASSEIO
+      } else if (this.state.clicked == strings('PasseiosClienteScreen.cancelWalk')) {  //-------------------- TELA CANCELAR PASSEIO
         return (
           <Root>
             <Container style={{ backgroundColor: 'red' }}>
@@ -261,7 +261,7 @@ class PasseiosClienteScreen extends Component {
                                 {
                                   options: BUTTONS,
                                   cancelButtonIndex: CANCEL_INDEX,
-                                  title: "Passeios Agendados"
+                                  title: strings('PasseiosClienteScreen.scheduledWalks')
                                 },
                                 buttonIndex => {
                                   this.setState({ clicked: BUTTONS[buttonIndex] });

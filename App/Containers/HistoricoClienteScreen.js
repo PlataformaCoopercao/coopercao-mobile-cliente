@@ -44,6 +44,7 @@ class HistoricoClienteScreen extends Component {
       clicked: 9,
       isVisible: false,
       dataArrayPasseios: [[], []],
+      walkerKeys: [],
       remount: 1
     };
   }
@@ -53,6 +54,7 @@ class HistoricoClienteScreen extends Component {
     .then((response) => {
       if(response.data != null){
         for(var x = 0; x < response.data.length; x++){
+            this.state.walkerKeys[x] = response.data[x].walker.key;
             this.state.dataArrayPasseios[0][x] =
             'Passeador: '+ response.data[x].walker.name + 
             '\nData: '+ response.data[x].date + '\nHorário: '+ response.data[x].time +
@@ -138,7 +140,7 @@ class HistoricoClienteScreen extends Component {
                           <Text style={{}}>{item}</Text>
                         </Body>
                         <Right>
-                          <Button onPress={() => navigate('AvaliacaoScreen', {passeio: this.state.dataArrayPasseios[0][this.state.dataArrayPasseios[0].indexOf(item)],})} trasparent style={{ backgroundColor: 'white', marginTop: 10 }}>
+                          <Button onPress={() => navigate('AvaliacaoScreen', {walkerKey: this.state.walkerKeys[this.state.dataArrayPasseios[0].indexOf(item)],})} trasparent style={{ backgroundColor: 'white', marginTop: 10 }}>
                           <Icon name='ios-medal' type='Ionicons' style={{color:'black'}}/>
                         </Button>
                         </Right>

@@ -34,18 +34,18 @@ class HistoricoClienteScreen extends Component {
 
   getMes(mes){
     switch(mes){
-      case 0: nomeDoMes = 'January'
-      case 1: nomeDoMes = 'February'
-      case 2: nomeDoMes = 'March'
-      case 3: nomeDoMes = 'April'
-      case 4: nomeDoMes = 'May'
-      case 5: nomeDoMes = 'June'
-      case 6: nomeDoMes = 'July'
-      case 7: nomeDoMes = 'August'
-      case 8: nomeDoMes = 'September'
-      case 9: nomeDoMes = 'October'
-      case 10: nomeDoMes = 'November'
-      case 11: nomeDoMes = 'December'
+      case 0: nomeDoMes = strings('ExtratoScreen.january')
+      case 1: nomeDoMes = strings('ExtratoScreen.february')
+      case 2: nomeDoMes = strings('ExtratoScreen.march')
+      case 3: nomeDoMes = strings('ExtratoScreen.april')
+      case 4: nomeDoMes = strings('ExtratoScreen.may')
+      case 5: nomeDoMes = strings('ExtratoScreen.june')
+      case 6: nomeDoMes = strings('ExtratoScreen.july')
+      case 7: nomeDoMes = strings('ExtratoScreen.august')
+      case 8: nomeDoMes = strings('ExtratoScreen.september')
+      case 9: nomeDoMes = strings('ExtratoScreen.october')
+      case 10: nomeDoMes = strings('ExtratoScreen.november')
+      case 11: nomeDoMes = strings('ExtratoScreen.december')
     }
 
   }

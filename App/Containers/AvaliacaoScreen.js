@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import StarRating from 'react-native-star-rating';
 import { strings } from '../locales/i18n';
 import { ScrollView, KeyboardAvoidingView, StyleSheet} from 'react-native'
 import { connect } from 'react-redux'
@@ -9,6 +10,9 @@ import {
   Badge, Spinner, Thumbnail, ListItem, Label
 } from 'native-base'
 import FeedbackNota from '../Components/FeedbackNota';
+import { Alert } from 'react-native'
+import axios from 'axios';
+import * as firebase from 'firebase';
 import { Font, AppLoading, Expo } from "expo"
 import { Images, Colors } from '../Themes';
 import { StackNavigator } from "react-navigation"
@@ -22,24 +26,35 @@ class AvaliacaoScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      passeio: this.props.navigation.state.params.passeio,
+      key: this.props.navigation.state.params.walkerKey,
       fontLoading: true, // to load font in expo
       clicked: '',
       edited: '',
+      starCount: 2.5
     };
   }
-  
-  addAvaliacao(){
-    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateDog';
-    axios.post(url, { owner: firebase.auth().currentUser.uid })
-      .then((response) => {
-        resposta = response.data;
 
-      })
+  onStarRatingPress(rating) {
+    this.setState({
+      starCount: rating
+    });
   }
+  
+  addAvaliacao(key, starCount){
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/walkerScore';
+    axios.post(url, { id: key, score: starCount })
+      .then(() => {
+        Alert.alert('Avaliação feita com sucesso!');
+        this.props.navigation.navigate('HistoricoClienteScreen');
+      })
+      .catch((error) => {
+        Alert.alert(error.message);
+      });
+  }
+  
 
   async componentWillMount() {
-    console.log(this.state.passeio);
+    console.log(this.state.key);
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -70,7 +85,17 @@ class AvaliacaoScreen extends Component {
             <Content padder style={{backgroundColor: 'white'}}>
             <KeyboardAvoidingView behavior='position'>
               <Body>
-              <FeedbackNota></FeedbackNota>
+              <StarRating
+                disabled={false}
+                emptyStar={'ios-star-outline'}
+                fullStar={'ios-star'}
+                halfStar={'ios-star-half'}
+                iconSet={'Ionicons'}
+                maxStars={10}
+                rating={this.state.starCount}
+                selectedStar={(rating) => this.onStarRatingPress(rating)}
+                fullStarColor={'red'}
+              />
                 <Item>
                   <Label customLabel>{strings('General.comments')}</Label>
                 </Item>
@@ -79,7 +104,7 @@ class AvaliacaoScreen extends Component {
                 <Textarea style={{backgroundColor:'lightgrey'}}rowSpan={5} bordered placeholder={strings('AvaliacaoScreen.placeHComments')} />
               </Form>
               <Body>
-              <Button style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
+              <Button onPress={() => this.addAvaliacao(this.state.key, this.state.starCount)} style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
                  <Text style={{color:'white', fontSize: 16}}>{strings('General.rate_button')}</Text>
               </Button>
               </Body>

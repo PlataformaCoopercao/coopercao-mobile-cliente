@@ -94,18 +94,37 @@
         "plannedWalks": "Passeios de Plano",
         "onewayWalk": "Passeios Avulso",
         "penalties": "Multas",
-        "total": "Total" 
+        "total": "Total",
+        "january": "Janeiro",
+        "february": "Fevereiro",
+        "march": "Março",
+        "april": "Abril",
+        "may": "Maio",
+        "june": "Junho",
+        "july": "Julho",
+        "august": "Agosto",
+        "september": "Setembro",
+        "october": "Outubro",
+        "november": "Novembro",
+        "december": "Dezembro" 
     },
     "MenuClienteScreen":{
         "menu": "Menu",
         "welcome": "Bem-vindo, ",
         "scheduledWalks": "Passeios Agendados",
+        "schedulePackages": "Agendar Pacotes",
         "askWalk": "Marcar Passeio",
         "myDogs": "Meus Cachorros",
         "walksHistory": "Histórico de Passeios",
         "profile": "Perfil",
         "extract": "Fatura",
         "logoff": "Deslogar"
+    },
+    "PerfilClienteScreen":{
+        "homePhone": "Telefone: ",
+        "birthDate": "Nascimento: ",
+        "address": "Endereço: ",
+        "email": "Email: "
     },
     "EditarClienteScreen":{
         "edit": "Editar Perfil",
@@ -121,5 +140,15 @@
         "phone": "Telefone",
         "cancel": "Cancelar",
         "save": "Salvar"
+    },
+    "PasseiosClienteScreen":{
+        "rescheduleWalk": "Reagendamr Passeio",
+        "chooseDateTime": "Escolha data e hora",
+        "justification": "Justificativa: ",
+        "reschedule": "Reagendar",
+        "back": "Voltar",
+        "cancel": "Cancelar",
+        "scheduledWalks": "Passeios agendados",
+        "cancelWalk": "Cancelar Passeio"
     }
 }

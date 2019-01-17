@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Content, Body, Text, Left, Right,
-  Button, List, Spinner, Input, ListItem, Thumbnail, InputGroup
+  Button, List, Spinner, Input, ListItem, Thumbnail, InputGroup, Footer, FooterTab
 } from 'native-base'
 import { Font } from "expo"
 import { strings } from '../locales/i18n';
+import I18n from 'react-native-i18n';
 import * as firebase from 'firebase';
 // Styles
 import styles from './Styles/LoginScreenStyle'
@@ -18,7 +19,8 @@ class LoginScreen extends Component {
       clicked: '',
       edited: '',
       email: '',
-      senha: ''
+      senha: '',
+      remount: 1
     };
   }
 
@@ -30,6 +32,26 @@ class LoginScreen extends Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
     this.setState({ fontLoading: false });
+  }
+
+  forceRemount() {
+    this.setState({
+      remount: this.state.remount + 1
+    });
+    this.componentWillMount();
+    this.render();
+  }
+
+  setLocalePT(){
+    I18n.locale = 'pt-BR';
+    this.forceRemount();
+    console.log(I18n.currentLocale())
+  }
+
+  setLocaleEN(){
+    I18n.locale = 'en';
+    this.forceRemount();
+    console.log(I18n.currentLocale())
   }
 
   onEntrarPress = () => {
@@ -55,6 +77,18 @@ class LoginScreen extends Component {
     } else {
     return (
         <Container>
+          <Header style={{ backgroundColor: 'white', marginTop: 22}}>
+          <Left>
+      <Button onPress={() => this.setLocalePT()} style={{ backgroundColor:'red' }}>
+      <Text>{'PT'}</Text>
+      </Button>
+      </Left>
+      <Right>
+      <Button onPress={() => this.setLocaleEN()} style={{ backgroundColor:'red' }}>
+      <Text>{'EN'}</Text>
+      </Button>
+      </Right>
+          </Header>
           <Content style={{alignContent:"stretch"}}>
           <Thumbnail style={{alignSelf:'center', height: 250, width: 250, marginVertical: 15}} source={require('../Images/logoCoopercao.png')}/>
         <List>
@@ -87,6 +121,7 @@ class LoginScreen extends Component {
       </Right>
         </Content>
         </Container>
+        
     )
     }
   }
