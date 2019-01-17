@@ -19,22 +19,7 @@ class EditarDogScreen extends Component {
     super(props);
     this.state = {
       fontLoading: true, // to load font in expo
-      key: this.props.navigation.state.params.dogObj,
-      age: '0',
-      gender: '0',
-      habits: '0',
-      interaction_dogs: '0',
-      interaction_external: '0',
-      interaction_people: '0',
-      name: '0',
-      obs: '0',
-      owner: '0',
-      photoUrl: '0',
-      port: '',
-      portLabel: '',
-      race: '0',
-      vet_name: '0',
-      vet_phone: '0',
+      dog: this.props.navigation.state.params.dogObj,
       clicked: '',
       edited: '',
       selectedItem: undefined,
@@ -52,25 +37,9 @@ class EditarDogScreen extends Component {
   }
   
   updateDog(){
-    console.warn(this.props.navigation.state.params.dogObj)
-    let dog = {}
-      dog.dogKey = this.state.key,
-      dog.age = this.state.age,
-      dog.gender = 'M',
-      dog.habits = 'Normal',
-      dog.interaction_dogs = 'normal',
-      dog.interaction_external = 'normal',
-      dog.interaction_people = 'normal',
-      dog.name = this.state.name,
-      dog.obs = 'normal',
-      dog.owner = firebase.auth().currentUser.uid,
-      dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
-      dog.port = this.state.port,
-      dog.race = this.state.race,
-      dog.vet_name = 'João Carlos',
-      dog.vet_phone = '+558166666666';
+    let dog = this.state.dog
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateDog';
-    axios.post(url, dog)
+    axios.post(url, {dog})
       .then(() => {
         Alert.alert('Cão atualizado com sucesso!');
         this.props.navigation.navigate('MeusCachorrosScreen');
@@ -80,16 +49,21 @@ class EditarDogScreen extends Component {
       });
   }
   
-  getDogInfo(){
-    this.state.age = this.state.dogObj.age
-    this.state.name = this.state.dogObj.name
-    this.state.race = this.state.dogObj.race
-    this.state.key = this.state.dogObj.key
+  deleteDog(){
+    let dog_id = this.state.dog.id
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/deleteDog';
+    axios.post(url, {dog_id})
+      .then(() => {
+        Alert.alert('Cão removido com sucesso!');
+        this.props.navigation.navigate('MeusCachorrosScreen');
+      })
+      .catch((error) => {
+        Alert.alert(error.message);
+      });
   }
 
   // required to load native-base font in expo
   async componentDidMount() {
-    dogObj = this.props.navigation.getParam('dog', '0')
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -127,17 +101,17 @@ class EditarDogScreen extends Component {
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('CadastroDogScreen.placeHName')} onChangeText={(text) => { this.setState({name: text }) }} />
+                  <Input placeholder={strings('CadastroDogScreen.placeHName')} onChangeText={(text) => { this.state.dog.name = text}} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('CadastroDogScreen.placeHAge')} onChangeText={(text) => { this.setState({age: text }) }}/>
+                  <Input placeholder={strings('CadastroDogScreen.placeHAge')} onChangeText={(text) => { this.state.dog.age = text }}/>
               </InputGroup>
           </ListItem>
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('CadastroDogScreen.placeHRace')} onChangeText={(text) => { this.setState({race: text }) }}/>
+                  <Input placeholder={strings('CadastroDogScreen.placeHRace')} onChangeText={(text) => { this.state.dog.race = text }}/>
               </InputGroup>
           </ListItem>
           <ListItem>
@@ -155,7 +129,7 @@ class EditarDogScreen extends Component {
               </Picker>
           </ListItem>
           <ListItem>
-      <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => navigate('MeusCachorrosScreen')}>
+      <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => this.deleteDog()}>
       <Text>{strings('EditarDogScreen.remove')}</Text>
       </Button>
       <Button style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => this.updateDog()}>

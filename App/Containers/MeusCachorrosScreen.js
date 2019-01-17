@@ -19,6 +19,7 @@ import * as firebase from 'firebase';
 var BUTTONS = ["Editar Cachorro", "Deletar Cachorro" , "Voltar"];
 var DESTRUCTIVE_INDEX = 2;
 var CANCEL_INDEX = 3;
+
 class MeusCachorrosScreen extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +28,7 @@ class MeusCachorrosScreen extends Component {
       clicked: '',
       edited: '',
       dogs: [[], []],
-      key:'',
+      dogObj: [],
       remount: 1
     };
   }
@@ -50,8 +51,9 @@ class MeusCachorrosScreen extends Component {
       .then((response) => {
         resposta = response.data;
         //console.warn(resposta);
-        this.state.key = resposta.dogKey;
         for (i = 0; i < response.data.length; i++) {
+          this.state.dogObj[i] = resposta[i];
+          console.warn(this.state.dogObj[i])
           this.state.dogs[0][i] =
             'Nome: ' + response.data[i].name + '\nIdade: ' + response.data[i].age +
             '\nRaça: ' + response.data[i].race + '\nPorte: ' + response.data[i].port;
@@ -105,7 +107,7 @@ class MeusCachorrosScreen extends Component {
                         <Body>
                           <Text>{item}</Text>
                           <Button transparent dark
-                            onPress={() => navigate('EditarDogScreen', {dogObj: this.state.key,})}>
+                            onPress={() => navigate('EditarDogScreen', {dogObj: this.state.dogObj[this.state.dogs[0].indexOf(item)],})}>
                             <Icon type='Ionicons' name='ios-paw'/>
                           </Button>
                         </Body>
