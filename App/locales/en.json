@@ -154,7 +154,9 @@
         "back": "Back",
         "cancel": "Cancel",
         "scheduledWalks": "Scheduled Walks",
-        "cancelWalk": "Cancel Walk"
+        "cancelWalk": "Cancel Walk",
+        "whyReschedule": "I need to reschedule the walk because...",
+        "whyCancel": "I'm canceling the walk because..."
     },
     "PacotesPasseioScreen":{
         "schedulePackage": "Schedule Package",

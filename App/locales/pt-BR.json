@@ -142,14 +142,16 @@
         "save": "Salvar"
     },
     "PasseiosClienteScreen":{
-        "rescheduleWalk": "Reagendamr Passeio",
+        "rescheduleWalk": "Reagendar Passeio",
         "chooseDateTime": "Escolha data e hora",
         "justification": "Justificativa: ",
         "reschedule": "Reagendar",
         "back": "Voltar",
         "cancel": "Cancelar",
         "scheduledWalks": "Passeios agendados",
-        "cancelWalk": "Cancelar Passeio"
+        "cancelWalk": "Cancelar Passeio",
+        "whyReschedule": "Terei que remarcar o passeio pois...",
+        "whyCancel": "Estou cancelando o passeio porque..."
     },
     "PacotesPasseioScreen":{
         "schedulePackage": "Agendar Pacote",

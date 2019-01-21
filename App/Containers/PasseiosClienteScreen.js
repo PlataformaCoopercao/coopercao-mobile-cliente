@@ -19,7 +19,7 @@ import * as firebase from 'firebase';
 // Styles
 import styles from './Styles/PasseiosClienteScreenStyle'
 
-var BUTTONS = ["Remarcar Passeio", "Cancelar Passeio", "Voltar"];
+var BUTTONS = [strings('PasseiosClienteScreen.rescheduleWalk'), strings('PasseiosClienteScreen.cancelWalk'), strings('PasseiosClienteScreen.back')];
 var DESTRUCTIVE_INDEX = 1;
 var CANCEL_INDEX = 2;
 var passeiosAlocados = [];
@@ -152,7 +152,7 @@ class PasseiosClienteScreen extends Component {
                   <View style={{ paddingTop: 10, paddingBottom: 10 }}>
                     <Text style={styles.inputText}>{strings('PasseiosClienteScreen.justification')}</Text>
                     <Form>
-                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Terei que remarcar o passeio pois...' />
+                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder={strings('PasseiosClienteScreen.whyReschedule')} />
                     </Form>
                   </View>
                   <View style={styles.espalhar}>
@@ -204,7 +204,7 @@ class PasseiosClienteScreen extends Component {
                   <View style={{ paddingTop: 10, paddingBottom: 10 }}>
                     <Text style={styles.inputText}>{strings('PasseiosClienteScreen.justification')}</Text>
                     <Form>
-                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder='Estou cancelando o passeio porque...'/>
+                      <Textarea style={styles.largeInput} rowSpan={5} bordered placeholder={strings('PasseiosClienteScreen.whyCancel')}/>
                     </Form>
                   </View>
                   <View style={styles.espalhar}>
@@ -255,7 +255,7 @@ class PasseiosClienteScreen extends Component {
                       <Card>
                         <CardItem style={{ justifyContent: 'space-between' }}>
                           <Text>{item}</Text>
-                          {<Button transparent dark
+                          {/*<Button transparent dark
                             onPress={() =>
                               ActionSheet.show(
                                 {
@@ -269,7 +269,7 @@ class PasseiosClienteScreen extends Component {
                               )}
                           >
                             <Icon type='Ionicons' name='ios-paw' />
-                          </Button>}
+                              </Button>*/}
                         </CardItem>
                       </Card>
                     }>
