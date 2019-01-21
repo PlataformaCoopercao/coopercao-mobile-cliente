@@ -27,7 +27,6 @@ class EditarClienteScreen extends Component {
       uid: firebase.auth().currentUser.uid,
       fontLoading: true, // to load font in expo
       nome: '',
-      email: '',
       cpf: '',
       dataNascimento: '',
       cep: '',
@@ -42,7 +41,7 @@ class EditarClienteScreen extends Component {
 
   getClientData () {
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
-    .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL, email: response.data.email,
+    .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL,
             cpf: response.data.cpf, dataNascimento: response.data.birth_date, cep: response.data.address.cep, rua: response.data.address.street,
             numero: response.data.address.num, bairro: response.data.address.district, complemento: response.data.address.compl,
             telefone: response.data.phoneNumber})).catch((error) => {Alert.alert(error.message)});
@@ -79,8 +78,7 @@ class EditarClienteScreen extends Component {
       client.birth_date = this.state.dataNascimento,
       client.cpf = this.state.CPF,
       client.phoneNumber = this.state.telefone,
-      client.photoUrl = this.state.uri,
-      client.email = this.state.email,
+      client.photoURL = this.state.uri,
       client.address = address;
     let collection = {}
       collection.uid = firebase.auth().currentUser.uid,
@@ -147,13 +145,6 @@ class EditarClienteScreen extends Component {
               <InputGroup>
                 <Input placeholder={strings('EditarClienteScreen.name')} onChangeText={(text) => { this.setState({ nome: text }) }}>
                 {this.state.nome}</Input>
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Input placeholder={strings('EditarClienteScreen.email')} keyboardType='email-address' autoCapitalize='none' autoCorrect={false}
-                onChangeText={(text) => { this.setState({ email: text }) }}>
-                {this.state.email}</Input>
               </InputGroup>
             </ListItem>
             <ListItem>
