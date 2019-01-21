@@ -16,7 +16,7 @@ import { strings } from '../locales/i18n';
 import axios from 'axios';
 import * as firebase from 'firebase';
 
-var BUTTONS = ["Editar Cachorro", "Deletar Cachorro" , "Voltar"];
+var BUTTONS = [strings("MeusCachorrosScreen.editDog"), strings("MeusCachorrosScreen.deleteDog") , strings("MeusCachorrosScreen.back")];
 var DESTRUCTIVE_INDEX = 2;
 var CANCEL_INDEX = 3;
 
@@ -55,8 +55,8 @@ class MeusCachorrosScreen extends Component {
           this.state.dogObj[i] = resposta[i];
           console.warn(this.state.dogObj[i])
           this.state.dogs[0][i] =
-            'Nome: ' + response.data[i].name + '\nIdade: ' + response.data[i].age +
-            '\nRaça: ' + response.data[i].race + '\nPorte: ' + response.data[i].port;
+          strings("MeusCachorrosScreen.name") + response.data[i].name + strings("MeusCachorrosScreen.age") + response.data[i].age +
+          strings("MeusCachorrosScreen.race") + response.data[i].race + strings("MeusCachorrosScreen.size") + response.data[i].port;
           this.state.dogs[1][i] = response.data[i].photoUrl;
         }
         this.forceUpdate();
@@ -93,7 +93,7 @@ class MeusCachorrosScreen extends Component {
               <Left>
                 <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
               </Left>
-              <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>Meus Cachorros</Title></Body>
+              <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings("MeusCachorrosScreen.myDogs")}</Title></Body>
             </Header>
             <Content padder style={{ backgroundColor: 'white' }}>
               <ScrollView>

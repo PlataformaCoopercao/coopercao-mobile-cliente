@@ -8,14 +8,6 @@
         "rate_button": "Rate"
 
     },
-    "FeedbackNota": {
-        "tell": "Tell us how you feel",
-        "worried_label": "Worried",
-        "sad_label": "Sad",
-        "satisfied_label": "Satisfied",
-        "happy_label": "Happy",
-        "surprised_label": "Surprised"
-    },
     "AvaliacaoScreen": {
         "rate": "Rate your dogwalker",
         "placeHComments": "Leave your comments here"
@@ -49,6 +41,21 @@
     },
     "HistoricoPasseadorScreen":{
         "walkHistory": "Walk History"
+    },
+    "CadastroClienteScreen":{
+        "successRegistration": "Registration Confirmed!",
+        "unmatchedPasswords": "Passwords must be equals.",
+        "registration": "Registration",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "zipCode": "ZIP-code",
+        "street": "Street",
+        "district":"District",
+        "complement": "Complement",
+        "contact": "Contact",
+        "cancel": "Cancel",
+        "name": "Name",
+        "register": "Register"
     },
     "CadastroDogScreen":{
         "dogRegister": "Dog Registration",
@@ -155,8 +162,9 @@
         "cancel": "Cancel",
         "scheduledWalks": "Scheduled Walks",
         "cancelWalk": "Cancel Walk",
-        "whyReschedule": "I need to reschedule the walk because...",
-        "whyCancel": "I'm canceling the walk because..."
+        "dog": "Dog: ",
+        "date": "\nDate: ",
+        "time": " Time: "
     },
     "PacotesPasseioScreen":{
         "schedulePackage": "Schedule Package",
@@ -175,5 +183,15 @@
         "sunday": "Sunday",
         "comments": "Comments",
         "leaveComments": "Leave comments here"
+    },
+    "MeusCachorrosScreen":{
+        "myDogs": "My Dogs",
+        "name": "Name: ",
+        "age": "\nAge: ",
+        "race": "\nBreed: ",
+        "size": "\nSize: ",
+        "editDog": "Edit Dog",
+        "deleteDog": "Delete Dog",
+        "back": "Back"
     }
   }

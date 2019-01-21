@@ -80,7 +80,7 @@ class AvaliacaoScreen extends Component {
           <Container style={{backgroundColor:'black'}}>
           <Header style={{ backgroundColor: 'red', marginTop: 25}}>
           <Left><Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('HistoricoClienteScreen')} /></Left>
-                <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>Avalie o Passeador</Title></Body>
+                <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('AvaliacaoScreen.rate')}</Title></Body>
           </Header>
             <Content padder style={{backgroundColor: 'white'}}>
             <KeyboardAvoidingView behavior='position'>
@@ -91,7 +91,7 @@ class AvaliacaoScreen extends Component {
                 fullStar={'ios-star'}
                 halfStar={'ios-star-half'}
                 iconSet={'Ionicons'}
-                maxStars={10}
+                maxStars={5}
                 rating={this.state.starCount}
                 selectedStar={(rating) => this.onStarRatingPress(rating)}
                 fullStarColor={'red'}
@@ -104,7 +104,7 @@ class AvaliacaoScreen extends Component {
                 <Textarea style={{backgroundColor:'lightgrey'}}rowSpan={5} bordered placeholder={strings('AvaliacaoScreen.placeHComments')} />
               </Form>
               <Body>
-              <Button onPress={() => this.addAvaliacao(this.state.key, this.state.starCount)} style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
+              <Button onPress={() => this.addAvaliacao(this.state.key, this.state.starCount*2)} style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
                  <Text style={{color:'white', fontSize: 16}}>{strings('General.rate_button')}</Text>
               </Button>
               </Body>

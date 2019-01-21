@@ -49,7 +49,7 @@ class CadastroClienteScreen extends Component {
 
   onCadastrarPress = () => {
     if (this.state.senha !== this.state.senhaConfirmacao) {
-      Alert.alert("Senhas não estão iguais");
+      Alert.alert(strings("CadastroClienteScreen.unmatchedPasswords"));
       return;
     }
 
@@ -77,7 +77,7 @@ class CadastroClienteScreen extends Component {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/registerClient';
     axios.post(url, collection)
       .then(() => {
-        Alert.alert('Cadastrado com sucesso!');
+        Alert.alert(strings("CadastroClienteScreen.successRegistration"));
         this.props.navigation.navigate('LoginScreen');
       })
       .catch((error) => {
@@ -115,7 +115,7 @@ class CadastroClienteScreen extends Component {
               <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('LoginScreen')} />
             </Left>
             <Body>
-              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>Cadastro</Title>
+              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings("CadastroClienteScreen.registration")}</Title>
             </Body>
             <Right>
             </Right>
@@ -126,7 +126,7 @@ class CadastroClienteScreen extends Component {
             <List>
               <ListItem>
                 <InputGroup>
-                  <Input placeholder="Nome" onChangeText={(text) => { this.setState({ nome: text }) }} />
+                  <Input placeholder={strings("CadastroClienteScreen.name")} onChangeText={(text) => { this.setState({ nome: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
@@ -138,49 +138,49 @@ class CadastroClienteScreen extends Component {
               <ListItem>
                 <InputGroup>
                   <Input secureTextEntry={true} autoCapitalize='none' autoCorrect={false}
-                    placeholder="Senha" onChangeText={(text) => { this.setState({ senha: text }) }} />
+                    placeholder={strings("CadastroClienteScreen.password")} onChangeText={(text) => { this.setState({ senha: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
                 <InputGroup>
                   <Input secureTextEntry={true} autoCapitalize='none' autoCorrect={false}
-                    placeholder="Confirmação de senha" onChangeText={(text) => { this.setState({ senhaConfirmacao: text }) }} />
+                    placeholder={strings("CadastroClienteScreen.confirmPassword")} onChangeText={(text) => { this.setState({ senhaConfirmacao: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
                 <InputGroup>
-                  <Input placeholder="CEP" onChangeText={(text) => { this.setState({ CEP: text }) }} />
+                  <Input placeholder={strings("CadastroClienteScreen.zipCode")} onChangeText={(text) => { this.setState({ CEP: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
                 <InputGroup>
-                  <Input placeholder="Rua" onChangeText={(text) => { this.setState({ rua: text }) }} />
+                  <Input placeholder={strings("CadastroClienteScreen.street")} onChangeText={(text) => { this.setState({ rua: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
                 <InputGroup>
                   <Input placeholder="Nº" onChangeText={(text) => { this.setState({ numero: text }) }} />
-                  <Input placeholder="Bairro" onChangeText={(text) => { this.setState({ bairro: text }) }} />
+                  <Input placeholder={strings("CadastroClienteScreen.district")} onChangeText={(text) => { this.setState({ bairro: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
                 <InputGroup>
-                  <Input placeholder="Complemento" onChangeText={(text) => { this.setState({ complemento: text }) }} />
+                  <Input placeholder={strings("CadastroClienteScreen.complement")} onChangeText={(text) => { this.setState({ complemento: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>
                 <InputGroup>
-                  <Input placeholder="Telefone para contato" onChangeText={(text) => { this.setState({ telefone: text }) }} />
+                  <Input placeholder={strings("CadastroClienteScreen.contact")} onChangeText={(text) => { this.setState({ telefone: text }) }} />
                 </InputGroup>
               </ListItem>
             </List>
 
             <ListItem>
             <Button onPress={() => navigate('LoginScreen')} style={{ alignSelf: 'flex-end', marginTop: 20, marginHorizontal: 40, marginBottom: 20, backgroundColor: 'red' }}>
-              <Text>Cancelar</Text>
+              <Text>{strings("CadastroClienteScreen.cancel")}</Text>
             </Button>
             <Button onPress={this.onCadastrarPress} style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, marginBottom: 20, backgroundColor: 'red' }}>
-              <Text>Cadastrar</Text>
+              <Text>{strings("CadastroClienteScreen.register")}</Text>
             </Button>
             </ListItem>
           </Content>

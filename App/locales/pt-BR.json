@@ -8,14 +8,6 @@
       "rate_button": "Avaliar"
 
   },
-  "FeedbackNota": {
-    "tell": "Conte-nos como se sente",
-    "worried_label": "Preocupado",
-    "sad_label": "Triste",
-    "satisfied_label": "Satisfeito",
-    "happy_label": "Feliz",
-    "surprised_label": "Surpreso"
-  },
   "AvaliacaoScreen": {
       "rate": "Avalie seu passeador",
       "placeHComments": "Deixe seus comentarios aqui"
@@ -170,5 +162,15 @@
         "sunday": "Domingo",
         "comments": "Observações",
         "leaveComments": "Deixe os comentários aqui"
+    },
+    "MeusCachorrosScreen":{
+        "myDogs": "Meus Cachorros",
+        "name": "Nome: ",
+        "age": "\nIdade: ",
+        "race": "\nRaça: ",
+        "size": "\nPorte: ",
+        "editDog": "Editar Cachorro",
+        "deleteDog": "Deletar Cachorro",
+        "back": "Voltar"
     }
 }
