@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Content, Body, Text, Left, Right,
-  Button, List, Spinner, Input, ListItem, Thumbnail, InputGroup, Footer, FooterTab
+  Button, List, Spinner, Input, ListItem, Thumbnail, InputGroup
 } from 'native-base'
 import { Font } from "expo"
 import { strings } from '../locales/i18n';
@@ -25,7 +25,7 @@ class LoginScreen extends Component {
   }
 
   // required to load native-base font in expo
-  async componentWillMount() {
+  async componentDidMount() {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -38,7 +38,7 @@ class LoginScreen extends Component {
     this.setState({
       remount: this.state.remount + 1
     });
-    this.componentWillMount();
+    this.componentDidMount();
     this.render();
   }
 
@@ -94,14 +94,14 @@ class LoginScreen extends Component {
         <List>
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('LoginScreen.email')} keyboardType='email-address' autoCorrect={false} 
-                  autoCapitalize='none' onChangeText={(text) => {this.setState({email: text})}} />
+                <Input placeholder={strings('LoginScreen.email')} keyboardType='email-address' autoCorrect={false} 
+                autoCapitalize='none' onChangeText={(text) => {this.setState({email: text})}} />
               </InputGroup>
           </ListItem> 
           <ListItem>
               <InputGroup>
-                  <Input placeholder={strings('LoginScreen.password')} autoCapitalize='none' autoCorrect={false}
-                   secureTextEntry={true} onChangeText={(text) => {this.setState({senha: text})}}/>
+                <Input placeholder={strings('LoginScreen.password')} autoCapitalize='none' autoCorrect={false}
+                  secureTextEntry={true} onChangeText={(text) => {this.setState({senha: text})}}/>
               </InputGroup>
           </ListItem>
       </List>

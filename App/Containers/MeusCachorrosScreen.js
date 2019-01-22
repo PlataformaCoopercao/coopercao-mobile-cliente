@@ -53,7 +53,6 @@ class MeusCachorrosScreen extends Component {
         //console.warn(resposta);
         for (i = 0; i < response.data.length; i++) {
           this.state.dogObj[i] = resposta[i];
-          console.warn(this.state.dogObj[i])
           this.state.dogs[0][i] =
           strings("MeusCachorrosScreen.name") + response.data[i].name + strings("MeusCachorrosScreen.age") + response.data[i].age +
           strings("MeusCachorrosScreen.race") + response.data[i].race + strings("MeusCachorrosScreen.size") + response.data[i].port;
@@ -102,12 +101,12 @@ class MeusCachorrosScreen extends Component {
                     <Card>
                       <CardItem style={{ justifyContent: 'space-between' }}>
                         <Left>
-                          <Thumbnail source={{ uri: this.state.dogs[1][this.state.dogs[0].indexOf(item)] }} />
+                          <Thumbnail source={{ uri: this.state.dogs[1][this.state.dogs[0].indexOf(item)] }}/>
                         </Left>
                         <Body>
                           <Text>{item}</Text>
                           <Button transparent dark
-                            onPress={() => navigate('EditarDogScreen', {dogObj: this.state.dogObj[this.state.dogs[0].indexOf(item)],})}>
+                            onPress={() => navigate('EditarDogScreen', {dogObj: this.state.dogObj[this.state.dogs[0].indexOf(item)]})}>
                             <Icon type='Ionicons' name='ios-paw'/>
                           </Button>
                         </Body>

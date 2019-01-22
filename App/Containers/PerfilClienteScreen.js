@@ -79,7 +79,7 @@ class  PerfilClienteScreen extends Component {
               <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')}/>
             </Left>
             <Body>
-              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>{"Perfil"}</Title>
+              <Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings('PerfilClienteScreen.profile')}</Title>
             </Body>
             <Right>
 
@@ -88,8 +88,10 @@ class  PerfilClienteScreen extends Component {
           <Content padder style={{ backgroundColor: 'white', alignContent: "stretch" }}>
             <List>
               <ListItem style={{ alignSelf: 'center', alignContent: 'center', flexDirection: 'column' }}>
+                
                 <Thumbnail style={{ height: 120, width: 120 }} large source={{ uri: this.state.uri }} />
                 <Text>{this.state.nome}</Text>
+
               </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
 

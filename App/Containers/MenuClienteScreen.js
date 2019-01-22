@@ -3,12 +3,9 @@ import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Button, List, Footer, FooterTab, Spinner,
-  Thumbnail, ListItem
+  Left, Right, Button, List, Footer, FooterTab, Spinner, Thumbnail, ListItem
 } from 'native-base'
 import { Font} from "expo"
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 // Styles
 import { Colors } from '../Themes';
