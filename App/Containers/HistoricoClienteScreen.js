@@ -56,17 +56,17 @@ class HistoricoClienteScreen extends Component {
         for(var x = 0; x < response.data.length; x++){
             this.state.walkerKeys[x] = response.data[x].walker.key;
             this.state.dataArrayPasseios[0][x] =
-            'Passeador: '+ response.data[x].walker.name + 
-            '\nData: '+ response.data[x].date + '\nHorário: '+ response.data[x].time +
-            '\nDuração: '+ response.data[x].walk_duration + '\nValor: '+ response.data[x].value +
-            '\nCão: '+ response.data[x].dog.name + '\nRua: '+ response.data[x].address.street;
+            strings("HistoricoClienteScreen.walker")+ response.data[x].walker.name + 
+            strings("HistoricoClienteScreen.date")+ response.data[x].date + strings("HistoricoClienteScreen.time")+ response.data[x].time +
+            strings("HistoricoClienteScreen.duration")+ response.data[x].walk_duration + strings("HistoricoClienteScreen.value")+ response.data[x].value +
+            strings("HistoricoClienteScreen.dog")+ response.data[x].dog.name + strings("HistoricoClienteScreen.street")+ response.data[x].address.street;
             this.state.dataArrayPasseios[1][x] = response.data[x].walker.photoUrl;
             console.log(response.data[x].walker.name, response.data[x].date, response.data[x].time, response.data[x].value, response.data[x].dog.name, response.data[x].address.street);
           
         }
         this.forceUpdate();
       }else{
-        console.log("Não tem passeios");
+        console.log(strings("HistoricoClienteScreen.noWalks"));
       }
     }
     ).catch((error) => {
@@ -125,7 +125,7 @@ class HistoricoClienteScreen extends Component {
               <Left>
                 <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('MenuClienteScreen')} />
               </Left>
-              <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>Histórico de passeios</Title></Body>
+              <Body><Title style={{ marginHorizontal: 10, color: Colors.snow }}>{strings("HistoricoClienteScreen.walkHistory")}</Title></Body>
             </Header>
             <Content padder style={{ backgroundColor: 'white' }}>
               <ScrollView>

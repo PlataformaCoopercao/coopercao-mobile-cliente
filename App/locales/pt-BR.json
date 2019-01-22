@@ -77,7 +77,16 @@
         "availableTitle": "Passeios Livres"
     },
     "HistoricoClienteScreen":{
-        "search": "Buscar"
+        "search": "Buscar",
+        "walkHistory": "Histórico de passeios",
+        "noWalks": "Não tem passeios.",
+        "walker": "Passeador: ",
+        "date": "\nData: ",
+        "time": "\nHorário: ",
+        "duration": "\nDuração: ",
+        "value": "\nValor: ",
+        "dog": "\nCão: ",
+        "street": "\nRua: "
     },
     "ExtratoScreen":{
         "extract": "Extrato",

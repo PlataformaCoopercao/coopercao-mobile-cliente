@@ -97,7 +97,16 @@
         "availableTitle": "Available Walks"
     },
     "HistoricoClienteScreen":{
-        "search": "Search"
+        "search": "Search",
+        "walkHistory": "Walk History",
+        "noWalks": "No walks registered.",
+        "walker": "Walker: ",
+        "date": "\nDate: ",
+        "time": "\nTime: ",
+        "duration": "\nDuration: ",
+        "value": "\nValue: ",
+        "dog": "\nDog: ",
+        "street": "\nStreet: "
     },
     "ExtratoScreen":{
         "extract": "Extract",
