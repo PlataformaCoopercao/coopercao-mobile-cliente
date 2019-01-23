@@ -56,13 +56,13 @@ class CadastroDogScreen extends Component {
 
   // required to load native-base font in expo
   async componentWillMount() {
+    this.getClientData ();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
     this.setState({ fontLoading: false });
-    getClientData ();
   }
   
   getClientData () {
