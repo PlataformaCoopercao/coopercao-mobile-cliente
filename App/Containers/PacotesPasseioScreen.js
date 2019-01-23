@@ -257,7 +257,7 @@ class PacotesPasseioScreen extends Component {
       );
     } else {
       return (
-        <Container style={{ backgroundColor: 'red' }}>
+        <Container style={{ backgroundColor: 'white' }}>
           <Header style={{ backgroundColor: 'red', marginTop: 22 }}>
             <Left>
               <Icon name='arrow-back' style={{ width: 40 }} onPress={() => navigate('MenuClienteScreen')} />

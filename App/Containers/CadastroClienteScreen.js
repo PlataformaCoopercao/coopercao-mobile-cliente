@@ -7,6 +7,7 @@ import {
   CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
   Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup
 } from 'native-base'
+import { strings } from '../locales/i18n';
 import { Font, AppLoading, Expo } from "expo"
 import { StackNavigator } from "react-navigation"
 import * as firebase from 'firebase';
@@ -69,7 +70,7 @@ class CadastroClienteScreen extends Component {
     collection.name = this.state.nome,
       collection.birth_date = '6.6.666',
       collection.cpf = '66666666666',
-      collection.phoneNumber = this.state.telefone,
+      collection.phoneNumber = '+55' + this.state.telefone,
       collection.photoUrl = 'https://i.pinimg.com/236x/c3/0a/c7/c30ac70d59b040b55dcd089a62bd69a6.jpg',
       collection.email = this.state.email,
       collection.pass = this.state.senha,

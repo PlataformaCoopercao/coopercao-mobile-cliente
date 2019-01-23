@@ -15,6 +15,7 @@ import * as firebase from 'firebase';
 // Styles
 import { Colors } from '../Themes';
 
+
 class CadastroDogScreen extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +30,7 @@ class CadastroDogScreen extends Component {
       name: '0',
       obs: '0',
       owner: '0',
-      ownerData: '0',
+      owner_data: '0',
       photoUrl: '0',
       port: 'mini',
       portLabel: 'não definido',
@@ -61,11 +62,12 @@ class CadastroDogScreen extends Component {
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
     });
     this.setState({ fontLoading: false });
+    getClientData ();
   }
-
+  
   getClientData () {
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
-    .then(response => this.setState({ownerData: response.data})).catch((error) => {Alert.alert(error.message)});
+    .then(response => this.setState({owner_data: response.data})).catch((error) => {Alert.alert(error.message)});
     this.forceUpdate()
   }
 
@@ -85,7 +87,7 @@ class CadastroDogScreen extends Component {
     dog.name = this.state.name,
     dog.obs = 'normal',
     dog.owner = firebase.auth().currentUser.uid,
-    dog.ownerData = this.state.ownerData,
+    dog.owner_data = this.state.owner_data,
     dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
     dog.port = this.state.port,
     dog.race = this.state.race,

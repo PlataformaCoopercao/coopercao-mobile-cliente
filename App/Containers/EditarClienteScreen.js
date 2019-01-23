@@ -126,7 +126,7 @@ class EditarClienteScreen extends Component {
       );
     } else {
       return (
-        <Container style={{ backgroundColor: 'red'}}>
+        <Container style={{ backgroundColor: 'white'}}>
           <Header style={{ backgroundColor: 'red', marginTop: 25}}>
             <Left>
               <Icon name='arrow-back' style={{ marginHorizontal: 10}} onPress={() => navigate('PerfilClienteScreen')}/>
