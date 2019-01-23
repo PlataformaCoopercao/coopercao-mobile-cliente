@@ -1,10 +1,7 @@
 {
-  "name": "Notificacao",
-  "displayName": "Notificacao",
   "expo": {
-    "name": "Notificacao",
-    "description": "No description",
-    "slug": "Notificacao",
+    "name": "CoopercaoApp",
+    "slug": "coopercao-app",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "version": "1.0.0",
@@ -21,8 +18,8 @@
         "ttf"
       ]
     },
-    "ios": {
-      "supportsTablet": true
+    "android":{
+      "package": "com.dreamteam.coopercaoapp"
     }
   }
 }
