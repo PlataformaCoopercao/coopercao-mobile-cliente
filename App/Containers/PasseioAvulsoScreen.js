@@ -83,8 +83,8 @@ class TelaPasseioAvulsoScreen extends Component {
   }
 
   carregarDogs() {
-    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/getListDog';
-    axios.post(url, { owner: firebase.auth().currentUser.uid })
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/clientDogs';
+    axios.post(url, { owner_id: firebase.auth().currentUser.uid })
       .then((response) => {
         for (i = 0; i < response.data.length; i++) {
           this.state.dogs[i] =
@@ -100,7 +100,7 @@ class TelaPasseioAvulsoScreen extends Component {
 
   async getOwnerAddress() {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/getClient';
-    await axios.post(url, { uid: firebase.auth().currentUser.uid })
+    await axios.post(url, { id: firebase.auth().currentUser.uid })
       .then((response) => {
         this.state.address = response.data.address;
       }

@@ -50,7 +50,7 @@ class HistoricoClienteScreen extends Component {
   }
 
   getHistoricoPasseios(){
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getHistoricoCliente', {ownerKey: firebase.auth().currentUser.uid})
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientWalkHistory', {owner_id: firebase.auth().currentUser.uid})
     .then((response) => {
       if(response.data != null){
         for(var x = 0; x < response.data.length; x++){

@@ -20,7 +20,7 @@ class  PerfilClienteScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      uid: firebase.auth().currentUser.uid,
+      id: firebase.auth().currentUser.uid,
       fontLoading: true, // to load font in expo
       nome: '',
       email: '',
@@ -32,7 +32,7 @@ class  PerfilClienteScreen extends Component {
   }
 
   getClientData () {
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {id: firebase.auth().currentUser.uid})
     .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL, email: response.data.email, endereco: response.data.address.street, telefone: response.data.phoneNumber, dataDeNasc: response.data.birth_date})).catch((error) => {Alert.alert(error.message)});
     this.update()
   }

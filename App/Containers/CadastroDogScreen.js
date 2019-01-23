@@ -66,7 +66,7 @@ class CadastroDogScreen extends Component {
   }
   
   getClientData () {
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {id: firebase.auth().currentUser.uid})
     .then(response => this.setState({owner_data: response.data})).catch((error) => {Alert.alert(error.message)});
     this.forceUpdate()
   }
@@ -86,7 +86,7 @@ class CadastroDogScreen extends Component {
     dog.interaction_people = 'normal',
     dog.name = this.state.name,
     dog.obs = 'normal',
-    dog.owner = firebase.auth().currentUser.uid,
+    dog.owner_id = firebase.auth().currentUser.uid,
     dog.owner_data = this.state.owner_data,
     dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
     dog.port = this.state.port,

@@ -73,8 +73,8 @@ class PacotesPasseioScreen extends Component {
   }
 
   carregarDogs() {
-    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/getListDog';
-    axios.post(url, { owner: firebase.auth().currentUser.uid })
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/clientDog';
+    axios.post(url, { owner_id: firebase.auth().currentUser.uid })
       .then((response) => {
         for (i = 0; i < response.data.length; i++) {
           this.state.dogs[i] =
@@ -90,7 +90,7 @@ class PacotesPasseioScreen extends Component {
 
   getOwnerAddress() {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/getClient';
-    axios.post(url, { uid: firebase.auth().currentUser.uid })
+    axios.post(url, { id: firebase.auth().currentUser.uid })
       .then((response) => {
           this.setState({ address: response.data.address })
         }

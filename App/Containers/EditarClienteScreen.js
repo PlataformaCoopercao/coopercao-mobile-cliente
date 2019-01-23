@@ -40,7 +40,7 @@ class EditarClienteScreen extends Component {
   }
 
   getClientData () {
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {id: firebase.auth().currentUser.uid})
     .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL,
             cpf: response.data.cpf, dataNascimento: response.data.birth_date, cep: response.data.address.cep, rua: response.data.address.street,
             numero: response.data.address.num, bairro: response.data.address.district, complemento: response.data.address.compl,
@@ -81,7 +81,7 @@ class EditarClienteScreen extends Component {
       client.photoURL = this.state.uri,
       client.address = address;
     let collection = {}
-      collection.uid = firebase.auth().currentUser.uid,
+      collection.id = firebase.auth().currentUser.uid,
       collection.client = client;
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateClient';
     axios.post(url, collection)

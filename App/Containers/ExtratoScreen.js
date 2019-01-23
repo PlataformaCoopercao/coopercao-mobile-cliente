@@ -51,7 +51,7 @@ class HistoricoClienteScreen extends Component {
   }
 
   getExtrato(){
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getFaturaMensalCliente', {ownerKey: firebase.auth().currentUser.uid, mes: this.state.mesAtual+1, ano: this.state.anoAtual})
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientBill', {owner_id: firebase.auth().currentUser.uid, month: this.state.mesAtual+1, year: this.state.anoAtual})
     .then(response => this.setState({valorAvulso: response.data.pagamentosAvulsos, valorPlano: response.data.pagamentosPlano, valorTotal: response.data.pagamentosAvulsos + response.data.pagamentosPlano})).catch((error) => {Alert.alert(error.message)});
     this.forceUpdate()
   }

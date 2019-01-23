@@ -46,8 +46,8 @@ class MeusCachorrosScreen extends Component {
 
   
   getDogs() {
-    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/getListDog';
-    axios.post(url, { owner: firebase.auth().currentUser.uid })
+    var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/clientDogs';
+    axios.post(url, { owner_id: firebase.auth().currentUser.uid })
       .then((response) => {
         resposta = response.data;
         //console.warn(resposta);

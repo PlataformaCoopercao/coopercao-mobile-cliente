@@ -51,9 +51,9 @@ class EditarDogScreen extends Component {
   }
   
   deleteDog(){
-    let dog_id = this.state.dog.id
+    let id = this.state.dog.id
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/deleteDog';
-    axios.post(url, {dog_id})
+    axios.post(url, {id})
       .then(() => {
         console.log(this.state.dog.id)
         Alert.alert('Cão removido com sucesso!');

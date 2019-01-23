@@ -40,7 +40,7 @@ class PasseiosClienteScreen extends Component {
   }
 
   getPasseiosAgendados(){
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getPasseiosAgendados', {ownerKey: firebase.auth().currentUser.uid})
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientScheduledWalks', {owner_id: firebase.auth().currentUser.uid})
     .then((response) => {
       if(response.data != null){
 
