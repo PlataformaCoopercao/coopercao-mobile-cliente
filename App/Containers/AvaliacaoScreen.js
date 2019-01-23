@@ -9,7 +9,6 @@ import {
   Subtitle, Card, CardItem, List, Footer, FooterTab,
   Badge, Spinner, Thumbnail, ListItem, Label
 } from 'native-base'
-import FeedbackNota from '../Components/FeedbackNota';
 import { Alert } from 'react-native'
 import axios from 'axios';
 import * as firebase from 'firebase';
