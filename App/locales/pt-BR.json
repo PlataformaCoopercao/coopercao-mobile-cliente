@@ -56,6 +56,11 @@
         "giant": "Gigante",
         "register": "Cadastrar"
     },
+    "EditarDogScreen":{
+		"editDog": "Editar Cachorro",
+		"save": "Salvar",
+		"remove": "Remover"
+	},
     "PasseioAvulsoScreen":{
         "singleWalks": "Passeios Avulso",
         "chooseDateTime": "Escolha data e hora",
