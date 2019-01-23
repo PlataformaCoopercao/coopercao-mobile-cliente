@@ -29,6 +29,7 @@ class CadastroDogScreen extends Component {
       name: '0',
       obs: '0',
       owner: '0',
+      ownerData: '0',
       photoUrl: '0',
       port: 'mini',
       portLabel: 'não definido',
@@ -62,27 +63,34 @@ class CadastroDogScreen extends Component {
     this.setState({ fontLoading: false });
   }
 
-  onCadastrarPress = () => {
+  getClientData () {
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {uid: firebase.auth().currentUser.uid})
+    .then(response => this.setState({ownerData: response.data})).catch((error) => {Alert.alert(error.message)});
+    this.forceUpdate()
+  }
 
+  onCadastrarPress = () => {
     this.submit();
   }
+
 //MUITOS PARAMETROS EM FALTA!
   submit() {
     let dog = {}
     dog.age = this.state.age,
-      dog.gender = 'M',
-      dog.habits = 'Normal',
-      dog.interaction_dogs = 'normal',
-      dog.interaction_external = 'normal',
-      dog.interaction_people = 'normal',
-      dog.name = this.state.name,
-      dog.obs = 'normal',
-      dog.owner = firebase.auth().currentUser.uid,
-      dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
-      dog.port = this.state.port,
-      dog.race = this.state.race,
-      dog.vet_name = 'João Carlos',
-      dog.vet_phone = '+558166666666';
+    dog.gender = 'M',
+    dog.habits = 'Normal',
+    dog.interaction_dogs = 'normal',
+    dog.interaction_external = 'normal',
+    dog.interaction_people = 'normal',
+    dog.name = this.state.name,
+    dog.obs = 'normal',
+    dog.owner = firebase.auth().currentUser.uid,
+    dog.ownerData = this.state.ownerData,
+    dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
+    dog.port = this.state.port,
+    dog.race = this.state.race,
+    dog.vet_name = 'João Carlos',
+    dog.vet_phone = '+558166666666';
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/addDog';
     axios.post(url, dog)
       .then(() => {
