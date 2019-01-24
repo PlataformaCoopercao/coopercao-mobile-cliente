@@ -43,6 +43,21 @@
     "HistoricoPasseadorScreen":{
         "walkHistory": "Walk History"
     },
+    "CadastroClienteScreen":{
+        "successRegistration": "Cadastro realizado com sucesso!",
+        "unmatchedPasswords": "Senhas devem ser iguais.",
+        "registration": "Cadastro",
+        "password": "Senha",
+        "confirmPassword": "Confirmar senha",
+        "zipCode": "CEP",
+        "street": "Rua",
+        "district":"Bairro",
+        "complement": "Complemento",
+        "contact": "Contato",
+        "cancel": "Cancelar",
+        "name": "Nome",
+        "register": "Cadastrar"
+    },
     "CadastroDogScreen":{
         "dogRegister": "Cadastro de Cachorro",
         "placeHName": "Nome",
@@ -143,7 +158,8 @@
         "homePhone": "Telefone: ",
         "birthDate": "Nascimento: ",
         "address": "Endereço: ",
-        "email": "Email: "
+        "email": "Email: ",
+        "profile":"Perfil"
     },
     "EditarClienteScreen":{
         "edit": "Editar Perfil",

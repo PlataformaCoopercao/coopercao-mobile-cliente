@@ -157,7 +157,8 @@
         "homePhone": "Home Phone: ",
         "birthDate": "Birth Date: ",
         "address": "Address: ",
-        "email": "Email: "
+        "email": "Email: ",
+        "profile": "Profile"
     },
     "EditarClienteScreen":{
         "edit": "Edit Profile",
