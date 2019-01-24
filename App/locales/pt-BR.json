@@ -10,7 +10,8 @@
   },
   "AvaliacaoScreen": {
       "rate": "Avalie seu passeador",
-      "placeHComments": "Deixe seus comentarios aqui"
+      "placeHComments": "Deixe seus comentarios aqui",
+      "confirmFeedback": "Avaliação feita com sucesso!"
     },
     "Footer":{
       "menu_button": "Menu",
@@ -59,13 +60,25 @@
     "EditarDogScreen":{
 		"editDog": "Editar Cachorro",
 		"save": "Salvar",
-		"remove": "Remover"
+        "remove": "Remover",
+        "updateDog": "Cão atualizado com sucesso!",
+        "removeDog": "Cão removido com sucesso!"
 	},
     "PasseioAvulsoScreen":{
         "singleWalks": "Passeios Avulso",
         "chooseDateTime": "Escolha data e hora",
         "singleWalkQuestion": "Selecione o cachorro que irá passear:",
-        "enableAddress": "Habilitar outro endereço?"
+        "enableAddress": "Habilitar outro endereço?",
+        "name": "Nome",
+        "email": "Email",
+        "birthDate": "Data de Nascimento",
+        "cep": "CEP",
+        "street": "Rua",
+        "number": "Numero",
+        "district": "Bairro",
+        "complement": "Complemento",
+        "success": "Passeio marcado com sucesso!",
+        "oneWayWalk": "Passeio Avulso"
     },
     "PasseioScreen":{
         "date": "Data",

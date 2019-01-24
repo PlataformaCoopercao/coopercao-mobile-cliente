@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "CoopercaoApp",
+    "name": "CoopercaoAppCliente",
     "slug": "coopercao-app",
     "privacy": "public",
     "sdkVersion": "30.0.0",

@@ -43,7 +43,7 @@ class AvaliacaoScreen extends Component {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/walkerScore';
     axios.post(url, { id: key, score: starCount })
       .then(() => {
-        Alert.alert('Avaliação feita com sucesso!');
+        Alert.alert(strings("AvaliacaoScreen.confirmFeedback"));
         this.props.navigation.navigate('HistoricoClienteScreen');
       })
       .catch((error) => {

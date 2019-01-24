@@ -10,7 +10,8 @@
     },
     "AvaliacaoScreen": {
         "rate": "Rate your dogwalker",
-        "placeHComments": "Leave your comments here"
+        "placeHComments": "Leave your comments here",
+        "confirmFeedback": "Feedback confirmed!"
       },
       "Footer":{
         "menu_button": "Menu",
@@ -74,13 +75,24 @@
 	"EditarDogScreen":{
 		"editDog": "Edit Dog",
 		"save": "Save",
-		"remove": "Remove"
+        "remove": "Remove",
+        "updateDog": "Dog updated with success!",
+        "removeDog": "Dog removed with success!"
 	},
     "PasseioAvulsoScreen":{
         "singleWalks": "One-Way Walks",
         "chooseDateTime": "Choose date and time",
         "singleWalkQuestion": "Select the dog that will walk:",
-        "enableAddress": "Enable another address?"
+        "enableAddress": "Enable another address?",
+        "name": "Name",
+        "email": "Email",
+        "cep": "CEP",
+        "street": "Street",
+        "number": "Number",
+        "district": "District",
+        "complement": "Complement",
+        "success": "Walk registered with success!",
+        "oneWayWalk": "One-Way Walk"
     },
     "PasseioScreen":{
         "date": "Date",

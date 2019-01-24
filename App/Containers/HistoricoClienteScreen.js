@@ -66,7 +66,6 @@ class HistoricoClienteScreen extends Component {
         }
         this.forceUpdate();
       }else{
-        console.log(strings("HistoricoClienteScreen.noWalks"));
       }
     }
     ).catch((error) => {

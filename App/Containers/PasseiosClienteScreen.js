@@ -47,14 +47,13 @@ class PasseiosClienteScreen extends Component {
         for(x = 0; x < response.data.length; x++){
           for(y = 0; y < response.data[x].length; y++){
             this.state.dataArrayPasseios[y] =
-            'Cachorro: '+ response.data[x][y].dog.name + 
-            '\nData: '+ response.data[x][y].date + '  Horário: '+ response.data[x][y].time
+            strings("PasseiosClienteScreen.dog")+ response.data[x][y].dog.name + 
+            strings("PasseiosClienteScreen.date")+ response.data[x][y].date + strings("PasseiosClienteScreen.time")+ response.data[x][y].time
             
           }
         }
         this.forceUpdate()
       }else{
-        console.log("Não tem passeios")
       }
     }
     ).catch((error) => {Alert.alert(error.message)});

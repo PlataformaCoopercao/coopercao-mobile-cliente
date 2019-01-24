@@ -42,7 +42,7 @@ class EditarDogScreen extends Component {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateDog';
     axios.post(url, {dog})
       .then(() => {
-        Alert.alert('Cão atualizado com sucesso!');
+        Alert.alert(strings("EditarDogScreen.updateDog"));
         this.props.navigation.navigate('MeusCachorrosScreen');
       })
       .catch((error) => {
@@ -55,8 +55,7 @@ class EditarDogScreen extends Component {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/deleteDog';
     axios.post(url, {id})
       .then(() => {
-        console.log(this.state.dog.id)
-        Alert.alert('Cão removido com sucesso!');
+        Alert.alert(strings("EditarDogScreen.removeDog"));
         this.props.navigation.navigate('MeusCachorrosScreen');
       })
       .catch((error) => {
@@ -66,7 +65,6 @@ class EditarDogScreen extends Component {
 
   // required to load native-base font in expo
   async componentDidMount() {
-    console.log(this.state.dog)
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),

@@ -133,7 +133,7 @@ class TelaPasseioAvulsoScreen extends Component {
       }
     })
       .then(() => {
-        Alert.alert('Passeio agendado!');
+        Alert.alert(strings('PasseioAvulsoScreen.success'));
         this.props.navigation.navigate('MenuClienteScreen');
       })
       .catch((error) => {
@@ -158,7 +158,7 @@ class TelaPasseioAvulsoScreen extends Component {
             <Header style={{ backgroundColor: 'red', marginTop: 25 }}>
               <Left><Icon name='arrow-back' style={{ width: 40 }}
                 onPress={() => navigate('MenuClienteScreen')} /></Left>
-              <Body><Title style={{ color: Colors.snow, left: -90 }}>Passeio Avulso</Title></Body>
+              <Body><Title style={{ color: Colors.snow, left: -90 }}>{strings('PasseioAvulsoScreen.oneWayWalk')}</Title></Body>
 
             </Header>
             <Content padder style={{ backgroundColor: 'white' }}>
@@ -206,19 +206,19 @@ class TelaPasseioAvulsoScreen extends Component {
                   />
 
                   <View style={styles.inputContainer}>
-                    <TextInput style={styles.inputEndereco} placeholder='CEP'
+                    <TextInput style={styles.inputEndereco} placeholder={strings('PasseioAvulsoScreen.cep')}
                       editable={this.state.isChecked}
                       onChangeText={(value) => { this.state.address.cep = value }} />
-                    <TextInput style={styles.inputEndereco} placeholder='Bairro'
+                    <TextInput style={styles.inputEndereco} placeholder={strings('PasseioAvulsoScreen.district')}
                       editable={this.state.isChecked}
                       onChangeText={(value) => { this.state.address.district = value }} />
-                    <TextInput style={styles.inputEndereco} placeholder='Rua'
+                    <TextInput style={styles.inputEndereco} placeholder={strings('PasseioAvulsoScreen.street')}
                       editable={this.state.isChecked}
                       onChangeText={(value) => { this.state.address.street = value }} />
-                    <TextInput style={styles.inputEndereco} placeholder='Numero'
+                    <TextInput style={styles.inputEndereco} placeholder={strings('PasseioAvulsoScreen.number')}
                       editable={this.state.isChecked}
                       onChangeText={(value) => { this.state.address.num = value }} />
-                    <TextInput style={styles.inputEndereco} placeholder='Complemento'
+                    <TextInput style={styles.inputEndereco} placeholder={strings('PasseioAvulsoScreen.complement')}
                       editable={this.state.isChecked}
                       onChangeText={(value) => { this.state.address.compl = value }} />
                   </View>
