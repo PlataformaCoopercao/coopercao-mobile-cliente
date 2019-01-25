@@ -3,7 +3,7 @@ import { ScrollView} from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Root, Button, Card, CardItem, List, Footer,
+  Left, Right, Root, Button, Card, CardItem, Footer,
   FooterTab, Spinner, Label
 } from 'native-base'
 import { Font} from "expo"

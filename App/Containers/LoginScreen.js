@@ -9,7 +9,6 @@ import { strings } from '../locales/i18n';
 import I18n from 'react-native-i18n';
 import * as firebase from 'firebase';
 // Styles
-import styles from './Styles/LoginScreenStyle'
 
 class LoginScreen extends Component {
   constructor(props) {

@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Alert } from 'react-native'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import {Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-   CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
-   Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup
+  Left, Right, Button,
+   List, Footer, FooterTab, Input,
+   Spinner, Thumbnail, ListItem, InputGroup
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { StackNavigator } from "react-navigation"
@@ -13,10 +12,7 @@ import { StackNavigator } from "react-navigation"
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 // Styles
-import { Images, Colors } from '../Themes';
-import { TextInput } from 'react-native-gesture-handler';
-import { Dropdown } from 'react-native-material-dropdown';
-import styles from './Styles/EditarClienteScreenStyle';
+import { Colors } from '../Themes';
 import axios from 'axios';
 import * as firebase from 'firebase';
 

@@ -67,8 +67,7 @@ class App extends Component {
       } >
       <
       RootContainer / >
-      <
-      /Provider>
+      </Provider>
     )
   }
 }

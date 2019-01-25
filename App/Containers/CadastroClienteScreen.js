@@ -3,19 +3,14 @@ import { Alert } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-  CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
-  Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup
+  Left, Right, Button, List, Input, Spinner, Thumbnail, ListItem, InputGroup
 } from 'native-base'
 import { strings } from '../locales/i18n';
 import { Font, AppLoading, Expo } from "expo"
-import { StackNavigator } from "react-navigation"
-import * as firebase from 'firebase';
 import axios from 'axios';
 // Styles
-import { Images, Colors } from '../Themes';
-import { TextInput } from 'react-native-gesture-handler';
-import { Dropdown } from 'react-native-material-dropdown';
+import { Colors } from '../Themes';
+
 
 class CadastroClienteScreen extends Component {
   constructor(props) {

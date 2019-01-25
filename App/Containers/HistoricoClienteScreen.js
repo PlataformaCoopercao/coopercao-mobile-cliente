@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
-import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { ScrollView} from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet,
-  Subtitle, Card, CardItem, List, Footer, FooterTab,
-  Badge, Spinner, Thumbnail, ListItem, Label, Item, Input
+  Left, Right, Root, Button, Card, CardItem, List, Footer, FooterTab,
+  Badge, Spinner, Thumbnail
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
 import { Colors } from '../Themes/'
-import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { Alert } from 'react-native'
