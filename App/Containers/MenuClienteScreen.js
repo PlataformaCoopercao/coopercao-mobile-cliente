@@ -95,11 +95,11 @@ class MenuClienteScreen extends Component {
                   <Text>{strings('MenuClienteScreen.askWalk')}</Text>
                 </Button>
               </ListItem>
-              {/* <ListItem style={{ alignSelf: 'center' }}>
+              <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao} onPress={() => navigate('PacotesPasseioScreen')}>
                   <Text>{strings('MenuClienteScreen.schedulePackages')}</Text>
                 </Button>
-              </ListItem> */}
+              </ListItem>
               <ListItem style={{ alignSelf: 'center' }}>
                 <Button style={styles.botao} onPress={() => navigate('MeusCachorrosScreen')}>
                   <Text>{strings('MenuClienteScreen.myDogs')}</Text>

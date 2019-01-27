@@ -6,7 +6,7 @@ import moment from 'moment'
 import { Dropdown } from 'react-native-material-dropdown';
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Root, Button, Footer, FooterTab
+  Left, Root, Button, Footer, FooterTab, Spinner
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo";
 import axios from 'axios';
@@ -41,6 +41,7 @@ class TelaPasseioAvulsoScreen extends Component {
       dog: 'Nenhum',
       dogSelected: {},
       obs: '',
+      loaded: false,
       address: { cep: '', compl: '', district: '', num: '', street: '' }
     }
   }
@@ -84,6 +85,7 @@ class TelaPasseioAvulsoScreen extends Component {
 
   carregarDogs() {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/clientDogs';
+    this.setState({loaded:false});
     axios.post(url, { owner_id: firebase.auth().currentUser.uid })
       .then((response) => {
         for (i = 0; i < response.data.length; i++) {
@@ -91,6 +93,7 @@ class TelaPasseioAvulsoScreen extends Component {
             response.data[i].name;
         }
         respostaDogs = response.data;
+        this.setState({loaded:true});
         this.forceUpdate();
       })
       .catch((error) => {
@@ -143,9 +146,14 @@ class TelaPasseioAvulsoScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
-        <AppLoading />
+        <Container>
+          <Header />
+          <Content>
+            <Spinner color='red' />
+          </Content>
+        </Container>
       );
     } else {
       let data = [];

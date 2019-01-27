@@ -27,13 +27,15 @@ class  PerfilClienteScreen extends Component {
       endereco: '',
       telefone: '',
       datadeNasc: '',
+      loaded: false,
       uri: 'https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
     };
   }
 
   getClientData () {
+    this.setState({loaded:false});
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {id: firebase.auth().currentUser.uid})
-    .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL, email: response.data.email, endereco: response.data.address.street, telefone: response.data.phoneNumber, dataDeNasc: response.data.birth_date})).catch((error) => {Alert.alert(error.message)});
+    .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL, email: response.data.email, endereco: response.data.address.street, telefone: response.data.phoneNumber, dataDeNasc: response.data.birth_date, loaded:true})).catch((error) => {Alert.alert(error.message)});
     this.update()
   }
 
@@ -62,7 +64,7 @@ class  PerfilClienteScreen extends Component {
 
   render() {
     const {navigate} = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header />

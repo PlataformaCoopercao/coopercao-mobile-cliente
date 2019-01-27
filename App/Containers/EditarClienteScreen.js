@@ -36,15 +36,17 @@ class EditarClienteScreen extends Component {
       complemento: '',
       telefone: '',
       uri: '',
+      loaded: false
     };
   }
 
   getClientData () {
+    this.setState({loaded:false});
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {id: firebase.auth().currentUser.uid})
     .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL,
             cpf: response.data.cpf, dataNascimento: response.data.birth_date, cep: response.data.address.cep, rua: response.data.address.street,
             numero: response.data.address.num, bairro: response.data.address.district, complemento: response.data.address.compl,
-            telefone: response.data.phoneNumber})).catch((error) => {Alert.alert(error.message)});
+            telefone: response.data.phoneNumber,loaded:true})).catch((error) => {Alert.alert(error.message)});
     this.update()
   }
 
@@ -115,7 +117,7 @@ class EditarClienteScreen extends Component {
   render () {
     const {navigate} = this.props.navigation;
     //const uri = "https://pbs.twimg.com/media/DahEyvzVQAAizMF.jpg";
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header />

@@ -35,11 +35,13 @@ class PasseiosClienteScreen extends Component {
       edited: '',
       chosenDate: '',
       isVisible: false,
+      loaded: false,
       dataArrayPasseios: []
     };
   }
 
   getPasseiosAgendados(){
+    this.setState({loaded:false});
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientScheduledWalks', {owner_id: firebase.auth().currentUser.uid})
     .then((response) => {
       if(response.data != null){
@@ -52,6 +54,7 @@ class PasseiosClienteScreen extends Component {
             
           }
         }
+        this.setState({loaded:true});
         this.forceUpdate()
       }else{
       }
@@ -108,7 +111,7 @@ class PasseiosClienteScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header style={{ backgroundColor: 'red', marginTop: 22 }} />

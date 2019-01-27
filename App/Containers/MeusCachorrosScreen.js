@@ -29,6 +29,7 @@ class MeusCachorrosScreen extends Component {
       edited: '',
       dogs: [[], []],
       dogObj: [],
+      loaded: false,
       remount: 1
     };
   }
@@ -47,6 +48,7 @@ class MeusCachorrosScreen extends Component {
   
   getDogs() {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/clientDogs';
+    this.setState({loaded:false});
     axios.post(url, { owner_id: firebase.auth().currentUser.uid })
       .then((response) => {
         resposta = response.data;
@@ -58,6 +60,7 @@ class MeusCachorrosScreen extends Component {
           strings("MeusCachorrosScreen.race") + response.data[i].race + strings("MeusCachorrosScreen.size") + response.data[i].port;
           this.state.dogs[1][i] = response.data[i].photoUrl;
         }
+        this.setState({loaded:true});
         this.forceUpdate();
       })
       .catch((error) => {
@@ -75,7 +78,7 @@ class MeusCachorrosScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header />

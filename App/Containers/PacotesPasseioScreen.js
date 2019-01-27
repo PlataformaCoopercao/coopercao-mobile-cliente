@@ -46,6 +46,7 @@ class PacotesPasseioScreen extends Component {
       friday: false,
       saturday: false,
       sunday: false,
+      loaded: false,
       horaMon: '',
       horaTue: '',
       horaWed: '',
@@ -74,6 +75,7 @@ class PacotesPasseioScreen extends Component {
 
   carregarDogs() {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/clientDog';
+    this.setState({loaded:false});
     axios.post(url, { owner_id: firebase.auth().currentUser.uid })
       .then((response) => {
         for (i = 0; i < response.data.length; i++) {
@@ -81,6 +83,7 @@ class PacotesPasseioScreen extends Component {
             response.data[i].name;
         }
         resposta = response.data;
+        this.setState({loaded:true});
         this.forceUpdate();
       })
       .catch((error) => {
@@ -246,7 +249,7 @@ class PacotesPasseioScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header />

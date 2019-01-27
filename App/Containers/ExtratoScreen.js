@@ -27,6 +27,7 @@ class HistoricoClienteScreen extends Component {
       valorAvulso: '',
       valorPlano: '',
       valorTotal: '',
+      loaded: false,
       mesAtual: data.getMonth(),
       anoAtual: data.getFullYear()
     };
@@ -51,8 +52,9 @@ class HistoricoClienteScreen extends Component {
   }
 
   getExtrato(){
+    this.setState({loaded:false});
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientBill', {owner_id: firebase.auth().currentUser.uid, month: this.state.mesAtual+1, year: this.state.anoAtual})
-    .then(response => this.setState({valorAvulso: response.data.pagamentosAvulsos, valorPlano: response.data.pagamentosPlano, valorTotal: response.data.pagamentosAvulsos + response.data.pagamentosPlano})).catch((error) => {Alert.alert(error.message)});
+    .then(response => this.setState({valorAvulso: response.data.pagamentosAvulsos, valorPlano: response.data.pagamentosPlano, valorTotal: response.data.pagamentosAvulsos + response.data.pagamentosPlano,loaded:true})).catch((error) => {Alert.alert(error.message)});
     this.forceUpdate()
   }
 
@@ -69,7 +71,7 @@ class HistoricoClienteScreen extends Component {
   
   render() {
     const {navigate} = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
         <Header />

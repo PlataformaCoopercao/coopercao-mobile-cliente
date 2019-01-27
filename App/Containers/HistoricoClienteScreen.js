@@ -45,15 +45,18 @@ class HistoricoClienteScreen extends Component {
       isVisible: false,
       dataArrayPasseios: [[], []],
       walkerKeys: [],
-      remount: 1
+      remount: 1,
+      loaded: false
     };
   }
 
   getHistoricoPasseios(){
+    this.setState({loaded:false});
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientWalkHistory', {owner_id: firebase.auth().currentUser.uid})
     .then((response) => {
       if(response.data != null){
         for(var x = 0; x < response.data.length; x++){
+          
             this.state.walkerKeys[x] = response.data[x].walker.key;
             this.state.dataArrayPasseios[0][x] =
             strings("HistoricoClienteScreen.walker")+ response.data[x].walker.name + 
@@ -64,6 +67,7 @@ class HistoricoClienteScreen extends Component {
             console.log(response.data[x].walker.name, response.data[x].date, response.data[x].time, response.data[x].value, response.data[x].dog.name, response.data[x].address.street);
           
         }
+        this.setState({loaded:true});
         this.forceUpdate();
       }else{
       }
@@ -107,7 +111,7 @@ class HistoricoClienteScreen extends Component {
   
   render() {
     const { navigate } = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header />
