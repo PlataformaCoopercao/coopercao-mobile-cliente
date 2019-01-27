@@ -20,7 +20,8 @@ class MenuClienteScreen extends Component {
       uid: firebase.auth().currentUser.uid,
       fontLoading: true, // to load font in expo
       nome: '',
-      uri: ''
+      uri: '',
+      loaded: false
     };
   }
 
@@ -30,14 +31,18 @@ class MenuClienteScreen extends Component {
   }
 
   getClientData () {
+    this.setState({loaded:false});
     axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/getClient', {id: firebase.auth().currentUser.uid})
-    .then(response => this.setState({nome: response.data.name, uri: response.data.photoURL})).catch((error) => {Alert.alert(error.message)});
+    .then((response) =>
+    this.setState({nome: response.data.name, uri: response.data.photoURL, loaded:true}))
+    .catch((error) =>
+    {Alert.alert(error.message)});
     this.forceUpdate()
   }
 
   // required to load native-base font in expo
   async componentDidMount(){
-    this.getClientData();
+    await this.getClientData();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -51,7 +56,7 @@ class MenuClienteScreen extends Component {
 
   render() {
     const {navigate} = this.props.navigation;
-    if (this.state.fontLoading) {
+    if (!this.state.loaded) {
       return (
         <Container>
           <Header/>
@@ -62,7 +67,9 @@ class MenuClienteScreen extends Component {
       );
     } else {
       return (
+        
         <Container style={{ backgroundColor: 'red' }}>
+      
           <Header style={{ backgroundColor: 'red', marginTop: 25}}>
             <Left>              
             </Left>
