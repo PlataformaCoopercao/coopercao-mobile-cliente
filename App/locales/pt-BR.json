@@ -46,6 +46,8 @@
     "CadastroClienteScreen":{
         "successRegistration": "Cadastro realizado com sucesso!",
         "unmatchedPasswords": "Senhas devem ser iguais.",
+        "completeAllFields": "Todos os campos devem ser preenchidos",
+        "passwordMinLength": "Senha deve ter pelo menos 6 caracteres",
         "registration": "Cadastro",
         "password": "Senha",
         "confirmPassword": "Confirmar senha",

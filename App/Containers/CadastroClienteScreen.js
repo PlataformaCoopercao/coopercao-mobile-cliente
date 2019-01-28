@@ -49,8 +49,16 @@ class CadastroClienteScreen extends Component {
   //}
 
   onCadastrarPress = () => {
+    if(this.state.CEP.length < 1 || this.state.rua.length < 1 || this.state.numero.length < 1 || this.state.bairro < 1 
+      || this.state.nome.length < 1 || this.state.phoneNumber < 1 || this.state.email.length < 1) {
+        Alert.alert(strings("CadastroClienteScreen.completeAllFields"));
+        return;
+      }
     if (this.state.senha !== this.state.senhaConfirmacao) {
       Alert.alert(strings("CadastroClienteScreen.unmatchedPasswords"));
+      return;
+    } else if (this.state.senha.length < 6) {
+      Alert.alert(strings("CadastroClienteScreen.passwordMinLength"));
       return;
     }
 
@@ -68,12 +76,12 @@ class CadastroClienteScreen extends Component {
       address.district = this.state.bairro;
     let collection = {}
     collection.name = this.state.nome,
+      collection.pass = this.state.senha,
       collection.birth_date = '6.6.666',
       collection.cpf = '66666666666',
       collection.phoneNumber = '+55' + this.state.telefone,
-      collection.photoUrl = 'https://i.pinimg.com/236x/c3/0a/c7/c30ac70d59b040b55dcd089a62bd69a6.jpg',
+      collection.photoUrl = 'https://cdn0.iconfinder.com/data/icons/user-interface-vol-3-12/66/68-512.png',
       collection.email = this.state.email,
-      collection.pass = this.state.senha,
       collection.address = address;
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/registerClient';
     axios.post(url, collection)
@@ -84,6 +92,7 @@ class CadastroClienteScreen extends Component {
       .catch((error) => {
         Alert.alert(error.message);
       });
+      console.log(this.state.senha);
   }
 
   // required to load native-base font in expo

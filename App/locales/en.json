@@ -45,7 +45,9 @@
     },
     "CadastroClienteScreen":{
         "successRegistration": "Registration Confirmed!",
+        "completeAllFields": "All fields must be filled",
         "unmatchedPasswords": "Passwords must be equals.",
+        "passwordMinLength": "Password must be at least 6 characters long",
         "registration": "Registration",
         "password": "Password",
         "confirmPassword": "Confirm password",
