@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import StarRating from 'react-native-star-rating';
 import { strings } from '../locales/i18n';
-import { ScrollView, KeyboardAvoidingView, StyleSheet} from 'react-native'
+import { KeyboardAvoidingView} from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Form, Text, Item, Textarea, Icon,
-  Left, Right, Accordion, Root, Button, ActionSheet,
-  Subtitle, Card, CardItem, List, Footer, FooterTab,
-  Badge, Spinner, Thumbnail, ListItem, Label
+  Left, Root, Button, Footer, FooterTab,
+  Spinner, Label
 } from 'native-base'
 import { Alert } from 'react-native'
 import axios from 'axios';
 import * as firebase from 'firebase';
 import { Font, AppLoading, Expo } from "expo"
 import { Images, Colors } from '../Themes';
-import { StackNavigator } from "react-navigation"
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 

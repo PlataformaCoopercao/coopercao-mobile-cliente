@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
 import { connect } from 'react-redux'
 import {
   Container, Header, Title, Content, Body, Text, Icon, CheckBox, Textarea,
-  Left, Right, Accordion, Root, Button, ActionSheet, Subtitle, Card,
-  CardItem, List, Footer, FooterTab, Badge, Form, Item, Label, Input,
-  Picker, Spinner, Thumbnail, Col, Grid, Row, ListItem, InputGroup, DatePicker
+  Left, Button,
+  List, Footer, FooterTab, Form, Item, Label, Input,
+  Picker, Spinner, ListItem, InputGroup, DatePicker
 } from 'native-base'
 import { Font, AppLoading, Expo } from "expo"
-import { StackNavigator } from "react-navigation"
 import { strings } from '../locales/i18n';
 import axios from 'axios';
 import * as firebase from 'firebase';
@@ -18,8 +16,6 @@ import { Alert } from 'react-native'
 
 // Styles
 import { Images, Colors } from '../Themes';
-import { TextInput } from 'react-native-gesture-handler';
-import { Dropdown } from 'react-native-material-dropdown';
 
 const resposta = [];
 

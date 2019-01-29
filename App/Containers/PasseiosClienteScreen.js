@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Alert, View, FlatList} from 'react-native'
+import { ScrollView, Alert, View} from 'react-native'
 import { connect } from 'react-redux'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import moment from 'moment'
 import {
   Container, Header, Title, Content, Body, Text, Icon,
-  Left, Form, Textarea, Root, Button, ActionSheet, Card,
+  Left, Form, Textarea, Root, Button, Card,
   CardItem, List, Footer, FooterTab, Spinner, ListItem
 } from 'native-base'
 import { Font } from "expo"

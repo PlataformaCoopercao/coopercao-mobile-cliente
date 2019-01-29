@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, TouchableOpacity, Checkbox } from 'react-native'
+import { View, ScrollView, TouchableOpacity} from 'react-native'
 import { connect } from 'react-redux'
 import DateTimePicker from 'react-native-modal-datetime-picker'
 import moment from 'moment'
@@ -18,8 +18,7 @@ import { strings } from '../locales/i18n';
 // Styles
 import CheckBox from 'react-native-check-box'
 import styles from './Styles/PasseioAvulsoScreenStyle'
-import styles2 from './Styles/MenuClienteScreenStyle.js'
-import { Images, Colors } from '../Themes'
+import { Colors } from '../Themes'
 import { TextInput } from 'react-native-gesture-handler';
 
 const respostaDogs = [];
