@@ -23,7 +23,7 @@ class AvaliacaoScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: this.props.navigation.state.params.walkerKey,
+      id: this.props.navigation.state.params.walkerId,
       fontLoading: true, // to load font in expo
       clicked: '',
       edited: '',
@@ -37,9 +37,9 @@ class AvaliacaoScreen extends Component {
     });
   }
   
-  addAvaliacao(key, starCount){
+  addAvaliacao(id, starCount){
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/walkerScore';
-    axios.post(url, { id: key, score: starCount })
+    axios.post(url, { id: id, score: starCount })
       .then(() => {
         Alert.alert(strings("AvaliacaoScreen.confirmFeedback"));
         this.props.navigation.navigate('HistoricoClienteScreen');
@@ -51,7 +51,7 @@ class AvaliacaoScreen extends Component {
   
 
   async componentWillMount() {
-    console.log(this.state.key);
+    console.log(this.state.id);
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
@@ -101,7 +101,7 @@ class AvaliacaoScreen extends Component {
                 <Textarea style={{backgroundColor:'lightgrey'}}rowSpan={5} bordered placeholder={strings('AvaliacaoScreen.placeHComments')} />
               </Form>
               <Body>
-              <Button onPress={() => this.addAvaliacao(this.state.key, this.state.starCount*2)} style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
+              <Button onPress={() => this.addAvaliacao(this.state.id, this.state.starCount*2)} style={{backgroundColor: 'red',  width: 150, height: 60, marginTop: 20, borderRadius: 5, position: 'relative', justifyContent: 'center'}}>
                  <Text style={{color:'white', fontSize: 16}}>{strings('General.rate_button')}</Text>
               </Button>
               </Body>
