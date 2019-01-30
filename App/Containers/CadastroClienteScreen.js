@@ -90,7 +90,7 @@ class CadastroClienteScreen extends Component {
       .catch((error) => {
         Alert.alert(error.message);
       });
-      console.log(this.state.senha);
+      //console.log(this.state.senha);
   }
 
   // required to load native-base font in expo
