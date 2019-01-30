@@ -8,13 +8,12 @@ import {
 } from 'native-base'
 import { Font} from "expo"
 import { Colors } from '../Themes/'
+import { Alert } from 'react-native'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { strings } from '../locales/i18n';
 import axios from 'axios';
 import * as firebase from 'firebase';
-
-var data = new Date();
 
 class HistoricoClienteScreen extends Component {
   constructor(props) {
@@ -24,12 +23,12 @@ class HistoricoClienteScreen extends Component {
       clicked: '',
       edited: '',
       uri: "https://randomuser.me/api/portraits/women/89.jpg",
-      valorAvulso: '',
-      valorPlano: '',
-      valorTotal: '',
+      valorAvulso: 0,
+      valorPlano: 0,
+      valorTotal: 0,
       loaded: false,
-      mesAtual: data.getMonth(),
-      anoAtual: data.getFullYear()
+      month: '0',
+      year: '0'
     };
   }
 
@@ -53,14 +52,24 @@ class HistoricoClienteScreen extends Component {
 
   getExtrato(){
     this.setState({loaded:false});
-    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientBill', {owner_id: firebase.auth().currentUser.uid, month: this.state.mesAtual+1, year: this.state.anoAtual})
-    .then(response => this.setState({valorAvulso: response.data.pagamentosAvulsos, valorPlano: response.data.pagamentosPlano, valorTotal: response.data.pagamentosAvulsos + response.data.pagamentosPlano,loaded:true})).catch((error) => {Alert.alert(error.message)});
-    this.forceUpdate()
+    var data = new Date();
+    this.state.month = "0" + parseInt(data.getMonth() + 1);
+    this.state.year = data.getFullYear();
+    axios.post('https://us-central1-coopercao-backend.cloudfunctions.net/clientBill', {owner_id: firebase.auth().currentUser.uid,
+     month: this.state.month,
+     year: this.state.year})
+    .then(response => this.setState({
+        valorAvulso: parseInt(response.data.pagamentosAvulsos),
+        valorPlano: parseInt(response.data.pagamentosPlano),
+        valorTotal: parseInt(response.data.pagamentosAvulsos) + parseInt(response.data.pagamentosPlano),
+        loaded:true
+      })).catch((error) => {Alert.alert(error.message)});
+    this.forceUpdate();
   }
 
   // required to load native-base font in expo
   async componentDidMount() {
-    this.getExtrato();
+    await this.getExtrato();
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
