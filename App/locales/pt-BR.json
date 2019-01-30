@@ -58,7 +58,8 @@
         "contact": "Contato",
         "cancel": "Cancelar",
         "name": "Nome",
-        "register": "Cadastrar"
+        "register": "Cadastrar",
+        "birthDate": "Data de Nascimento"
     },
     "CadastroDogScreen":{
         "dogRegister": "Cadastro de Cachorro",

@@ -130,7 +130,7 @@ class TelaPasseioAvulsoScreen extends Component {
         time: this.state.time,
         value: '20',
         walk_type: 'Avulso',
-        owner_month_year: this.state.dogSelected.owner + '_' + this.state.month + '_' + this.state.year,
+        owner_month_year: firebase.auth().currentUser.uid + '_' + this.state.month + '_' + this.state.year,
         obs_client: this.state.obs
       }
     })

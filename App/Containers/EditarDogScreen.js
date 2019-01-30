@@ -115,7 +115,7 @@ class EditarDogScreen extends Component {
                   <Input placeholder={strings('CadastroDogScreen.placeHRace')} onChangeText={(text) => { this.state.dog.race = text }}/>
               </InputGroup>
           </ListItem>
-          <ListItem>
+          {/*<ListItem>
               <Text>{strings('CadastroDogScreen.size')}</Text>
               <Picker
                 iosHeader={strings('CadastroDogScreen.chooseOne')}
@@ -128,7 +128,7 @@ class EditarDogScreen extends Component {
                   <Item label={strings('CadastroDogScreen.big')} value="key3" />
                   <Item label={strings('CadastroDogScreen.giant')} value="key4" />
               </Picker>
-          </ListItem>
+          </ListItem>*/} 
           <ListItem>
       <Button style={{ alignSelf: 'flex-start', marginTop: 20, marginHorizontal: 40, backgroundColor:'red' }} onPress={() => this.deleteDog()}>
       <Text>{strings('EditarDogScreen.remove')}</Text>

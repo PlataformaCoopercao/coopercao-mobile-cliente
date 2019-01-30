@@ -33,7 +33,10 @@ class CadastroClienteScreen extends Component {
       numero: '',
       bairro: '',
       complemento: '',
-      telefone: ''
+      telefone: '',
+      cpf: '',
+      dataDeNascimento: ''
+
 
     };
   }
@@ -72,8 +75,8 @@ class CadastroClienteScreen extends Component {
     let collection = {}
     collection.name = this.state.nome,
       collection.pass = this.state.senha,
-      collection.birth_date = '6.6.666',
-      collection.cpf = '66666666666',
+      collection.birth_date = this.state.dataDeNascimento,
+      collection.cpf = this.state.cpf,
       collection.phoneNumber = '+55' + this.state.telefone,
       collection.photoUrl = 'https://cdn0.iconfinder.com/data/icons/user-interface-vol-3-12/66/68-512.png',
       collection.email = this.state.email,
@@ -138,6 +141,18 @@ class CadastroClienteScreen extends Component {
                 <InputGroup>
                   <Input placeholder="Email" keyboardType='email-address' autoCapitalize='none' autoCorrect={false}
                     onChangeText={(text) => { this.setState({ email: text }) }} />
+                </InputGroup>
+              </ListItem>
+              <ListItem>
+                <InputGroup>
+                  <Input placeholder="CPF" keyboardType='numeric' autoCapitalize='none' autoCorrect={false}
+                    onChangeText={(text) => { this.setState({ cpf: text }) }} />
+                </InputGroup>
+              </ListItem>
+              <ListItem>
+                <InputGroup>
+                  <Input autoCapitalize='none' autoCorrect={false}
+                    placeholder={strings("CadastroClienteScreen.birthDate")} onChangeText={(text) => { this.setState({ dataDeNascimento: text }) }} />
                 </InputGroup>
               </ListItem>
               <ListItem>

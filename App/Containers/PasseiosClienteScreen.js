@@ -54,10 +54,11 @@ class PasseiosClienteScreen extends Component {
             
           }
         }
-        this.setState({loaded:true});
+        
         this.forceUpdate()
       }else{
       }
+      this.setState({loaded:true});
     }
     ).catch((error) => {Alert.alert(error.message)});
   }

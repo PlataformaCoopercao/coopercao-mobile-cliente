@@ -58,7 +58,8 @@
         "contact": "Contact",
         "cancel": "Cancel",
         "name": "Name",
-        "register": "Register"
+        "register": "Register",
+        "birthDate": "Birth Date"
     },
     "CadastroDogScreen":{
         "dogRegister": "Dog Registration",
