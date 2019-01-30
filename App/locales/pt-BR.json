@@ -188,6 +188,9 @@
         "cancel": "Cancelar",
         "scheduledWalks": "Passeios agendados",
         "cancelWalk": "Cancelar Passeio",
+        "dog": "Cachorro: ",
+        "date": "\nData: ",
+        "time": " Hora: ",
         "whyReschedule": "Terei que remarcar o passeio pois...",
         "whyCancel": "Estou cancelando o passeio porque..."
     },
