@@ -88,7 +88,7 @@ class CadastroDogScreen extends Component {
     dog.obs = 'normal',
     dog.owner_id = firebase.auth().currentUser.uid,
     dog.owner_data = this.state.owner_data,
-    dog.photoUrl = 'https://i.pinimg.com/originals/8c/24/46/8c2446109522a9d244197544d92fe210.jpg',
+    dog.photoUrl = 'https://static.thenounproject.com/png/151542-200.png',
     dog.port = this.state.port,
     dog.race = this.state.race,
     dog.vet_name = 'João Carlos',
@@ -106,7 +106,7 @@ class CadastroDogScreen extends Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const uri = "https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg";
+    const uri = "https://static.thenounproject.com/png/151542-200.png";
     if (this.state.fontLoading) {
       return (
         <Container>

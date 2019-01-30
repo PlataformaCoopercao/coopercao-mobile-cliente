@@ -27,7 +27,7 @@ class EditarDogScreen extends Component {
       results: {
         items: [],
       },
-      uri: 'https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg'
+      uri: 'https://static.thenounproject.com/png/151542-200.png'
     };
   }
   onValueChange(value: string) {
