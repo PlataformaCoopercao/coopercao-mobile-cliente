@@ -1,9 +1,9 @@
 {
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "packagerPort": 19001,
+  "packagerPid": 11188,
+  "expoServerNgrokUrl": "https://v6-fhq.anonymous.coopercao-cliente.exp.direct",
+  "packagerNgrokUrl": "https://packager.v6-fhq.anonymous.coopercao-cliente.exp.direct",
+  "ngrokPid": 12432,
   "devToolsPort": 19002,
-  "expoServerPort": null
+  "expoServerPort": 19000
 }
