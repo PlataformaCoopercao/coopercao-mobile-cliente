@@ -66,8 +66,8 @@ class LoginScreen extends Component {
     const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
-        <Container>
-        <Header style={{ backgroundColor: 'red', marginTop: 15 }}/>
+        <Container style={{backgroundColor:'white'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}} />
         <Content>
           <Spinner color='red' />
         </Content>

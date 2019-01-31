@@ -64,7 +64,7 @@ class AvaliacaoScreen extends Component {
     const { navigate } = this.props.navigation;
     if (this.state.fontLoading) {
       return (
-        <Container style={{backgroundColor:'black'}}>
+        <Container style={{backgroundColor:'white'}}>
           <Header style={{backgroundColor:'red', marginTop: 22}} />
         <Content>
           <Spinner color='red' />

@@ -116,12 +116,12 @@ class PasseiosClienteScreen extends Component {
     const { navigate } = this.props.navigation;
     if (!this.state.loaded) {
       return (
-        <Container>
-          <Header style={{ backgroundColor: 'red', marginTop: 22 }} />
-          <Content>
-            <Spinner color='red' />
-          </Content>
-        </Container>
+        <Container style={{backgroundColor:'white'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}} />
+        <Content>
+          <Spinner color='red' />
+        </Content>
+      </Container>
       );
     }
     else {

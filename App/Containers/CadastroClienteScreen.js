@@ -108,12 +108,12 @@ class CadastroClienteScreen extends Component {
     const uri = "https://cdn0.iconfinder.com/data/icons/user-interface-vol-3-12/66/68-512.png";
     if (this.state.fontLoading) {
       return (
-        <Container>
-          <Header />
-          <Content>
-            <Spinner color='red' />
-          </Content>
-        </Container>
+        <Container style={{backgroundColor:'white'}}>
+          <Header style={{backgroundColor:'red', marginTop: 22}} />
+        <Content>
+          <Spinner color='red' />
+        </Content>
+      </Container>
       );
     } else {
       return (

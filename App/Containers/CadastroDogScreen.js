@@ -109,12 +109,12 @@ class CadastroDogScreen extends Component {
     const uri = "https://static.thenounproject.com/png/151542-200.png";
     if (this.state.fontLoading) {
       return (
-        <Container>
-          <Header />
-          <Content>
-            <Spinner color='red' />
-          </Content>
-        </Container>
+        <Container style={{backgroundColor:'white'}}>
+        <Header style={{backgroundColor:'red', marginTop: 22}} />
+      <Content>
+        <Spinner color='red' />
+      </Content>
+    </Container>
       );
     } else {
       return (

@@ -76,12 +76,12 @@ class EditarDogScreen extends Component {
     const {navigate} = this.props.navigation;
     if (this.state.fontLoading) {
       return (
-      <Container>
-        <Header />
-        <Content>
-          <Spinner color='red' />
-        </Content>
-      </Container>
+        <Container style={{backgroundColor:'white'}}>
+        <Header style={{backgroundColor:'red', marginTop: 22}} />
+      <Content>
+        <Spinner color='red' />
+      </Content>
+    </Container>
       );
     } else {
     return (
