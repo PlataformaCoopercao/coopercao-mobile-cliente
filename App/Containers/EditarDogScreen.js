@@ -38,12 +38,11 @@ class EditarDogScreen extends Component {
   
   updateDog(){
     let dog = this.state.dog
-    console.log(dog)
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateDog';
     axios.post(url, {dog})
       .then(() => {
         Alert.alert(strings("EditarDogScreen.updateDog"));
-        this.props.navigation.navigate('MeusCachorrosScreen');
+        this.props.navigation.navigate('MenuClienteScreen');
       })
       .catch((error) => {
         Alert.alert(error.message);
@@ -56,7 +55,7 @@ class EditarDogScreen extends Component {
     axios.post(url, {id})
       .then(() => {
         Alert.alert(strings("EditarDogScreen.removeDog"));
-        this.props.navigation.navigate('MeusCachorrosScreen');
+        this.props.navigation.navigate('MenuClienteScreen');
       })
       .catch((error) => {
         Alert.alert(error.message);
