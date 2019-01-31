@@ -84,8 +84,8 @@ class EditarClienteScreen extends Component {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/updateClient';
     axios.post(url, collection)
       .then(() => {
-        Alert.alert('Atualizado com sucesso!');
-        this.props.navigation.navigate('PerfilClienteScreen');
+        Alert.alert(strings("General.success"));
+        this.props.navigation.navigate('MenuClienteScreen');
       })
       .catch((error) => {
         Alert.alert(error.message);

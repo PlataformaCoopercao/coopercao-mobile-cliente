@@ -96,8 +96,8 @@ class CadastroDogScreen extends Component {
     var url = 'https://us-central1-coopercao-backend.cloudfunctions.net/addDog';
     axios.post(url, dog)
       .then(() => {
-        Alert.alert('Cão cadastrado com sucesso!');
-        this.props.navigation.navigate('MeusCachorrosScreen');
+        Alert.alert(strings("General.success"));
+        this.props.navigation.navigate('MenuClienteScreen');
       })
       .catch((error) => {
         Alert.alert(error.message);

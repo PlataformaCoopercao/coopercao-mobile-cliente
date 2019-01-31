@@ -121,9 +121,6 @@ class MeusCachorrosScreen extends Component {
                   <Button onPress={() => navigate('CadastroDogScreen')} trasparent style={{ backgroundColor: 'red', marginTop: 10 }}>
                     <Icon name='ios-add-circle' type='Ionicons' style={{ color: 'white', backgroundColor: 'red' }}></Icon>
                   </Button>
-                  <Button onPress={() => this.forceRemount()} trasparent style={{ backgroundColor: 'red', marginTop: 10 }}>
-                    <Icon name='refresh' type='Ionicons' style={{ color: 'white', backgroundColor: 'red' }}></Icon>
-                  </Button>
                 </Right>
               </ScrollView>
             </Content>

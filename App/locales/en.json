@@ -5,7 +5,9 @@
         "comments": "Comments",
         "cancel": "Cancel",
         "walk": "Walk",
-        "rate_button": "Rate"
+        "rate_button": "Rate",
+        "success": "Success!",
+        "passwordUnmatch": "Password must be equals!"
 
     },
     "AvaliacaoScreen": {
@@ -161,7 +163,8 @@
         "birthDate": "Birth Date: ",
         "address": "Address: ",
         "email": "Email: ",
-        "profile": "Profile"
+        "profile": "Profile",
+        "edit": "Edit"
     },
     "EditarClienteScreen":{
         "edit": "Edit Profile",

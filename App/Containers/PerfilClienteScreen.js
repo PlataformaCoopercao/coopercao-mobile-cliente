@@ -117,7 +117,7 @@ class  PerfilClienteScreen extends Component {
             </List>
             <Text>{""}</Text>
             <Button style={styles.botao} onPress={() => navigate('EditarClienteScreen')}>
-              <Text>{"Editar"}</Text>
+              <Text>{strings("PerfilClienteScreen.edit")}</Text>
             </Button>
           </Content>
           <Footer style={{ backgroundColor: 'red' }}>
