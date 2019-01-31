@@ -55,7 +55,7 @@ class EditarClienteScreen extends Component {
 
   onSalvarPress = () => {
     if (this.state.senha !== this.state.senhaConfirmacao) {
-      Alert.alert("Senhas não estão iguais");
+      Alert.alert(strings("General.passwordUnmatch"));
       return;
     }
 
